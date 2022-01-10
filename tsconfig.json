@@ -12,7 +12,7 @@
       "declaration": false,
       "downlevelIteration": true,
       "paths": {
-        "my-lib": ["projects/my-lib/src/public-api"]
+        "zs-lib": ["projects/zs-lib/src/public-api"]
       },
       "experimentalDecorators": true,
       "moduleResolution": "node",
@@ -31,4 +31,3 @@
       "strictTemplates": true
     }
   }
-  

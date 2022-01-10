@@ -1,0 +1,7 @@
+@import "../../../../assets/styles/mixins/login/login-input";
+
+@include login-input();
+
+.form-control {
+    border-left: 0;
+}

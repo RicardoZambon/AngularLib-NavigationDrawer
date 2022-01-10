@@ -1,57 +1,91 @@
 {
-    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-    "cli": {
-      "analytics": false
-    },
-    "version": 1,
-    "newProjectRoot": "projects",
-    "projects": {
-      "my-lib": {
-        "projectType": "library",
-        "root": "projects/my-lib",
-        "sourceRoot": "projects/my-lib/src",
-        "prefix": "lib",
-        "architect": {
-          "build": {
-            "builder": "@angular-devkit/build-angular:ng-packagr",
-            "options": {
-              "project": "projects/my-lib/ng-package.json"
-            },
-            "configurations": {
-              "production": {
-                "tsConfig": "projects/my-lib/tsconfig.lib.prod.json"
-              },
-              "development": {
-                "tsConfig": "projects/my-lib/tsconfig.lib.json"
-              }
-            },
-            "defaultConfiguration": "production"
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "zs-lib": {
+      "projectType": "library",
+      "root": "projects/zs-lib",
+      "sourceRoot": "projects/zs-lib/src",
+      "prefix": "zslib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/zs-lib/ng-package.json"
           },
-          "test": {
-            "builder": "@angular-devkit/build-angular:karma",
-            "options": {
-              "main": "projects/my-lib/src/test.ts",
-              "tsConfig": "projects/my-lib/tsconfig.spec.json",
-              "karmaConfig": "projects/my-lib/karma.conf.js"
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/zs-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/zs-lib/tsconfig.lib.json"
             }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/zs-lib/src/test.ts",
+            "tsConfig": "projects/zs-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/zs-lib/karma.conf.js"
           }
         }
       },
-      "storybook": {
-        "projectType": "application",
-        "root": "stories",
-        "sourceRoot": "stories",
-        "architect": {
-          "build": {
-            "options": {
-              "tsConfig": "tsconfig.json",
-              "styles": [],
-              "scripts": []
-            }
-          }
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     },
-    "defaultProject": "my-lib"
-  }
+    "storybook": {
+      "projectType": "application",
+      "root": "stories",
+      "sourceRoot": "stories",
+      "architect": {
+        "build": {
+          "options": {
+            "tsConfig": "tsconfig.json",
+            "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss"
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/zs-lib/src/assets/images/",
+                "output": "/assets/images/"
+              },
+              {
+                "glob": "**/*.json",
+                "input": "projects/zs-lib/src/assets/i18n/",
+                "output": "/assets/i18n"
+              },
+              {
+                "glob": "**/*.json",
+                "input": "stories/assets/i18n/",
+                "output": "/assets/i18n"
+              }
+            ]
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    }
+  },
+  "defaultProject": "zs-lib"
+}
   

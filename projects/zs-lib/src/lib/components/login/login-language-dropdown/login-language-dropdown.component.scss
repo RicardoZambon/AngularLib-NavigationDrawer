@@ -1,0 +1,75 @@
+@import "../../../../assets/styles/mixins/login/language-dropdown";
+@import "../../../../assets/styles/mixins/flags";
+
+@include language-dropdown();
+
+.dropdown-toggle {
+    .flag {
+        background-position: 0em 0.7em;
+        padding: 0.5rem 0rem 0.5rem 1.5rem !important;
+        background-size: 18px 18px;
+    }
+}
+
+.dropdown-menu {
+    background-color: transparent;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    overflow: hidden;
+
+    .background {
+        background-position: -10px -40px;
+
+        &:before {
+            filter: blur(5px);
+        }
+    }
+
+    .dropdown-item {
+        font-weight: 400;
+        cursor: pointer;
+        
+        &.flag {
+            background-position: 1.2em 0.5em;
+            padding: 0.5rem 3rem 0.5rem 3.7rem !important;
+        }
+        &.selected {
+            &:after {
+                position: absolute;
+                right: 10px;
+                padding-top: 2px;
+                
+                content: '\f00c';
+                font-family: "Font Awesome 5 Free";
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+
+.flag {
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    min-height: 2rem;
+    
+    &.flag-pt {
+        @include flags('pt');
+    }
+    
+    &.flag-en {
+        @include flags('en');
+    }
+    
+    &.flag-es {
+        @include flags('es');
+    }
+    
+    *.flag-it {
+        @include flags('it');
+    }
+    
+    *.flag-de {
+        @include flags('de');
+    }
+}

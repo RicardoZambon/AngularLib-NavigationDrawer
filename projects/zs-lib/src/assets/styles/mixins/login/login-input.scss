@@ -1,0 +1,32 @@
+@import "../../variables/login.theme";
+
+@mixin login-input-theme($theme-name,
+    $fore-color :$login-base-color,
+    $border-color: darken($login-base-color3, 10%),
+    $background-color: $login-base-color3
+) {
+    :host ::ng-deep zslib-login-input.#{$theme-name} {
+        @include login-input(
+            $fore-color,
+            $border-color,
+            $background-color
+        );
+    }
+}
+
+
+@mixin login-input(
+    $fore-color: $login-base-color,
+    $border-color: darken($login-base-color3, 10%),
+    $background-color: $login-base-color3
+) {
+    .input-group-text {
+        background: $background-color;
+        border-color: $border-color;
+        color: $fore-color;
+    }
+    
+    .form-control {
+        border-color: $border-color;
+    }
+}

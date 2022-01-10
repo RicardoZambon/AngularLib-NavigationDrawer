@@ -1,0 +1,3 @@
+@mixin flags($name) {
+    background-image: url(/assets/images/flags/#{$name}.png);
+}

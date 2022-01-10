@@ -1,0 +1,16 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/zs-lib",
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "styleIncludePaths": [
+      "./assets/styles"
+    ]
+  },
+  "assets": [
+    "src/assets/i18n/**/*",
+    "src/assets/images/**/*",
+    "src/assets/styles/**/*.theme.scss",
+    "src/assets/styles/mixins/**/*.scss"
+  ]
+}

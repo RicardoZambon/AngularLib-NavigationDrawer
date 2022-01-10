@@ -1,0 +1,5 @@
+@import '../../projects/zs-lib/src/assets/styles/mixins/login/language-dropdown';
+
+@include language-dropdown-theme('danger', $item-active-background-color: darkred);
+@include language-dropdown-theme('warning', $item-active-background-color: orange);
+@include language-dropdown-theme('success', $item-active-background-color: green);
