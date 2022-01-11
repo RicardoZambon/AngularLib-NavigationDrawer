@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'storybook-login-input',
-  template: `<zslib-login-language-dropdown [themeName]="theme">
-  </zslib-login-language-dropdown>`,
+  template: `<zambon-lib-login-language-dropdown [themeName]="theme">
+  </zambon-lib-login-language-dropdown>`,
   styleUrls: [ './login-language-dropdown-story.component.scss' ]
 })
 export default class LoginLanguageInputDropdownStoryComponent {

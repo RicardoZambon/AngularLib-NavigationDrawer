@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Dropdown } from 'bootstrap';
 
 @Component({
-  selector: 'zslib-login-language-dropdown',
+  selector: 'zambon-lib-login-language-dropdown',
   host: { '[class]' : 'themeName' },
   templateUrl: './login-language-dropdown.component.html',
   styleUrls: ['./login-language-dropdown.component.scss']

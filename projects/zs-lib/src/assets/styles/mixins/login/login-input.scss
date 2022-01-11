@@ -5,7 +5,7 @@
     $border-color: darken($login-base-color3, 10%),
     $background-color: $login-base-color3
 ) {
-    :host ::ng-deep zslib-login-input.#{$theme-name} {
+    :host ::ng-deep zambon-lib-login-input.#{$theme-name} {
         @include login-input(
             $fore-color,
             $border-color,

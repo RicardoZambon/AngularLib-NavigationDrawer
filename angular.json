@@ -10,7 +10,7 @@
       "projectType": "library",
       "root": "projects/zs-lib",
       "sourceRoot": "projects/zs-lib/src",
-      "prefix": "zslib",
+      "prefix": "zambon-lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

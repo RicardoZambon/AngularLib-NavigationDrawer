@@ -11,7 +11,7 @@
     $selected-shadow-color: $login-base-color4,
     $selected-icon-color: rgb(116 214 60)
 ) {
-    :host ::ng-deep zslib-login-language-dropdown.#{$theme-name} {
+    :host ::ng-deep zambon-lib-login-language-dropdown.#{$theme-name} {
         @include language-dropdown(
             $background-button-color,
             $item-hover-background-color,

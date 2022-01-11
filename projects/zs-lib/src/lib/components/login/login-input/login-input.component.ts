@@ -2,7 +2,7 @@ import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angul
 import { FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'zslib-login-input',
+    selector: 'zambon-lib-login-input',
     host: { '[class]' : 'themeName' },
     templateUrl: './login-input.component.html',
     styleUrls: ['./login-input.component.scss']
