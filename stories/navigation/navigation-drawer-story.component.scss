@@ -1,3 +1,10 @@
+@import '../../projects/zs-lib/src/assets/styles/mixins/navigation/navigation-drawer';
+
+@include navigation-drawer-logos(
+    '/assets/images/logo_menu_expanded.png',
+    '/assets/images/logo_menu_collapsed.png'
+);
+
 .box {
     position: absolute;
     top: 0;

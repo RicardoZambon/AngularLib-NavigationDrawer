@@ -536,7 +536,7 @@
         },
         {
             "name": "LoginInputStoryComponent",
-            "id": "component-LoginInputStoryComponent-ddb304847afea397966a6008b241a949e25b748e398a6df0fb1643603b58e3fd1724403d244fc850d0a1949e8ee2e51b4afd092c9744fc5d63a6afec7eae71db",
+            "id": "component-LoginInputStoryComponent-26146032ec049718b5f44baaf27566b5cf0def8119a1574d51f3b25f376c998dcae017d20c8ba8d677b8be5c62215531d1f72afd57d9a921932361e9b3ff665c",
             "file": "stories/login/login-input-story.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -609,7 +609,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'storybook-login-input',\n  template: `<zambon-lib-login-input\n    [formGroup]=\"form\"\n    [controlName]=\"'component'\"\n    [type]=\"type\"\n    [icon]=\"icon\"\n    [placeholder]=\"placeholder\"\n    [themeName]=\"theme\"\n    [isInvalid]=\"form.controls['component'].invalid && (form.controls['component'].dirty || form.controls['component'].touched)\"\n  >\n    <div validations>\n      <div [class.d-none]=\"!form.controls['component'].errors?.required\">This field is required</div>\n    </div>\n  </zambon-lib-login-input>`,\n  styleUrls: [ './login-input-story.component.scss' ]\n})\nexport default class LoginInputStoryComponent {\n  form!: FormGroup;\n  \n  @Input()\n  type: string = 'text';\n  \n  @Input()\n  icon: string = '';\n  \n  @Input()\n  placeholder: string = '';\n\n  @Input()\n  theme: 'default' | 'danger' | 'warning' | 'success' = 'default';\n\n  constructor(private formBuilder: FormBuilder) {\n    this.form = this.formBuilder.group({\n      component: ['', Validators.required]\n  });\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'storybook-login-input',\n  template: `<zambon-lib-login-input\n    [formGroup]=\"form\"\n    [controlName]=\"'component'\"\n    [type]=\"type\"\n    [icon]=\"icon\"\n    [placeholder]=\"placeholder\"\n    [themeName]=\"theme\"\n    [isInvalid]=\"form.controls['component'].invalid && (form.controls['component'].dirty || form.controls['component'].touched)\"\n  >\n    <div validations>\n      <div [class.d-none]=\"!form.controls['component'].errors?.required\">This field is required</div>\n    </div>\n  </zambon-lib-login-input>`,\n  styleUrls: [ './login-input-story.component.scss' ]\n})\nexport default class LoginInputStoryComponent {\n  form!: FormGroup;\n  \n  @Input()\n  type: string = 'text';\n  \n  @Input()\n  icon: string = '';\n  \n  @Input()\n  placeholder: string = '';\n\n  @Input()\n  theme: 'default' | 'danger' | 'warning' | 'success' = 'default';\n\n  constructor(private formBuilder: FormBuilder) {\n    this.form = this.formBuilder.group({\n      component: ['', Validators.required]\n    });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -849,7 +849,7 @@
         },
         {
             "name": "LoginLanguageInputDropdownStoryComponent",
-            "id": "component-LoginLanguageInputDropdownStoryComponent-f2dea43dd30ece315ca029273a85fbb2aef9d25f7c3286bb3384578eaaddae8bc08e1d2bac205c8f92a381afac8c13268628e3daf78aa5c253a8fef38d242d7d",
+            "id": "component-LoginLanguageInputDropdownStoryComponent-ddb66561e85d11fb028e43424d3babdadb2e322049e960d4bb982bc09df4ccd247cdd36ab7273eeb138b663db28e458bca955d3dcf000aee9f6f5ea6e9db7989",
             "file": "stories/login/login-language-dropdown-story.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -870,7 +870,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 15,
                     "type": "string",
                     "decorators": []
                 },
@@ -879,7 +879,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 18,
                     "type": "string",
                     "decorators": []
                 },
@@ -888,7 +888,7 @@
                     "defaultValue": "'default'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 21,
                     "type": "\"default\" | \"danger\" | \"warning\" | \"success\"",
                     "decorators": []
                 },
@@ -897,23 +897,13 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 12,
                     "type": "string",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "form",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "FormGroup",
-                    "optional": false,
-                    "description": "",
-                    "line": 11
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -922,7 +912,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'storybook-login-input',\n  template: `<zambon-lib-login-language-dropdown [themeName]=\"theme\">\n  </zambon-lib-login-language-dropdown>`,\n  styleUrls: [ './login-language-dropdown-story.component.scss' ]\n})\nexport default class LoginLanguageInputDropdownStoryComponent {\n  form!: FormGroup;\n  \n  @Input()\n  type: string = 'text';\n  \n  @Input()\n  icon: string = '';\n  \n  @Input()\n  placeholder: string = '';\n\n  @Input()\n  theme: 'default' | 'danger' | 'warning' | 'success' = 'default';\n\n  constructor(private formBuilder: FormBuilder) {\n    this.form = this.formBuilder.group({\n      component: ['', Validators.required]\n  });\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'storybook-login-input',\n  template: `<zambon-lib-login-language-dropdown [themeName]=\"theme\">\n  </zambon-lib-login-language-dropdown>`,\n  styleUrls: [ './login-language-dropdown-story.component.scss' ]\n})\nexport default class LoginLanguageInputDropdownStoryComponent {\n  @Input()\n  type: string = 'text';\n  \n  @Input()\n  icon: string = '';\n  \n  @Input()\n  placeholder: string = '';\n\n  @Input()\n  theme: 'default' | 'danger' | 'warning' | 'success' = 'default';\n\n  constructor() {\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -936,26 +926,8 @@
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "args": [
-                    {
-                        "name": "formBuilder",
-                        "type": "FormBuilder",
-                        "deprecated": false,
-                        "deprecationMessage": ""
-                    }
-                ],
-                "line": 23,
-                "jsdoctags": [
-                    {
-                        "name": "formBuilder",
-                        "type": "FormBuilder",
-                        "deprecated": false,
-                        "deprecationMessage": "",
-                        "tagName": {
-                            "text": "param"
-                        }
-                    }
-                ]
+                "args": [],
+                "line": 21
             }
         },
         {
@@ -1320,7 +1292,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n\r\n@import \"../../../../assets/styles/mixins/background\";\r\n@import '../../../../assets/styles/mixins/no-select';\r\n@import \"../../../../assets/styles/mixins/scroll\";\r\n\r\n.menu {\r\n    color: darken($home-base-color, 10%);\r\n\r\n    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n    -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n\r\n    .navbar-header {\r\n        @include background(darken($home-base-color3, 5%), .95);\r\n\r\n        .logo-container {\r\n            text-align: center;\r\n            position: relative;\r\n            height: 50px;\r\n\r\n            .logo-expanded, .logo-collapsed {\r\n                position: absolute;\r\n                left: 0;\r\n                top: 0;\r\n                height: 100%;\r\n            }\r\n\r\n            .logo-expanded {\r\n                width: $menu-width-expanded;\r\n                background: url(#{$home-expanded-logo-url}) no-repeat center center;\r\n                background-size: contain;\r\n            }\r\n    \r\n            .logo-collapsed {\r\n                width: $menu-width-collapsed;\r\n                background: url(#{$home-collapsed-logo-url}) no-repeat center center;\r\n                background-size: contain;\r\n            }\r\n        }\r\n\r\n        .profile-container {\r\n            height: 48px;\r\n\r\n            .profile-picture {\r\n                -webkit-flex: 0 0 48px;\r\n                flex: 0 0 48px;\r\n\r\n                background-color: $home-base-color;\r\n                border-radius: 24px;\r\n                max-height: 48px;\r\n                margin-right: .7rem;\r\n                margin-left: .7rem;\r\n                overflow: hidden;\r\n                width: 48px;\r\n\r\n                @include no-select();\r\n    \r\n                img {\r\n                    width: 48px;\r\n                    height: 48px;\r\n                }\r\n            }\r\n            \r\n            .user-name, .user-department {\r\n                flex: 0 0 50%;\r\n                -webkit-flex: 0 0 50%;\r\n                font-size: .9rem;\r\n                width: calc(#{$menu-width-expanded} - #{$menu-width-collapsed});\r\n                \r\n                @include no-select();\r\n            }\r\n    \r\n            .user-name {\r\n                font-weight: bold;\r\n            }\r\n    \r\n            .user-department {\r\n                font-weight: 100;\r\n                font-size: .8rem;\r\n                color: lighten($home-fore-color, 40%);\r\n            }\r\n        }\r\n    }\r\n\r\n    .navbar-menu {\r\n        overflow-y: auto;\r\n        @include scroll(darken($home-base-color3, 7%));\r\n\r\n        .nav {\r\n            z-index: 1;\r\n                \r\n            .background-fill {\r\n                z-index: -1;\r\n                @include background(darken($home-base-color3, 7%), .95);\r\n            }\r\n        }\r\n    }\r\n}",
+                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n\r\n@import \"../../../../assets/styles/mixins/background\";\r\n@import '../../../../assets/styles/mixins/no-select';\r\n@import \"../../../../assets/styles/mixins/scroll\";\r\n\r\n.menu {\r\n    color: darken($home-base-color, 10%);\r\n\r\n    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n    -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n\r\n    .navbar-header {\r\n        @include background(darken($home-base-color3, 5%), .95);\r\n\r\n        .logo-container {\r\n            text-align: center;\r\n            position: relative;\r\n            height: 50px;\r\n\r\n            .logo-expanded, .logo-collapsed {\r\n                position: absolute;\r\n                left: 0;\r\n                top: 0;\r\n                height: 100%;\r\n\r\n                background-repeat: no-repeat;\r\n                background-position: center center;\r\n                background-size: contain;\r\n            }\r\n\r\n            .logo-expanded {\r\n                width: $menu-width-expanded;\r\n            }\r\n    \r\n            .logo-collapsed {\r\n                width: $menu-width-collapsed;\r\n            }\r\n        }\r\n\r\n        .profile-container {\r\n            height: 48px;\r\n\r\n            .profile-picture {\r\n                -webkit-flex: 0 0 48px;\r\n                flex: 0 0 48px;\r\n\r\n                background-color: $home-base-color;\r\n                border-radius: 24px;\r\n                max-height: 48px;\r\n                margin-right: .7rem;\r\n                margin-left: .7rem;\r\n                overflow: hidden;\r\n                width: 48px;\r\n\r\n                @include no-select();\r\n    \r\n                img {\r\n                    width: 48px;\r\n                    height: 48px;\r\n                }\r\n            }\r\n            \r\n            .user-name, .user-department {\r\n                flex: 0 0 50%;\r\n                -webkit-flex: 0 0 50%;\r\n                font-size: .9rem;\r\n                width: calc(#{$menu-width-expanded} - #{$menu-width-collapsed});\r\n                \r\n                @include no-select();\r\n            }\r\n    \r\n            .user-name {\r\n                font-weight: bold;\r\n            }\r\n    \r\n            .user-department {\r\n                font-weight: 100;\r\n                font-size: .8rem;\r\n                color: lighten($home-fore-color, 40%);\r\n            }\r\n        }\r\n    }\r\n\r\n    .navbar-menu {\r\n        overflow-y: auto;\r\n        @include scroll(darken($home-base-color3, 7%));\r\n\r\n        .nav {\r\n            z-index: 1;\r\n                \r\n            .background-fill {\r\n                z-index: -1;\r\n                @include background(darken($home-base-color3, 7%), .95);\r\n            }\r\n        }\r\n    }\r\n}",
                     "styleUrl": "./navigation-drawer.component.scss"
                 },
                 {
@@ -1414,7 +1386,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".box {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    \r\n    .main {\r\n        overflow: hidden;\r\n\r\n        .toolbar {\r\n            border-bottom: 1px solid darken(white, 15%);\r\n            font-size: 0.9rem;\r\n            color: black;\r\n            z-index: 2;\r\n\r\n            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n    }\r\n}",
+                    "data": "@import '../../projects/zs-lib/src/assets/styles/mixins/navigation/navigation-drawer';\r\n\r\n@include navigation-drawer-logos('/assets/images/logo_menu_expanded.png', '/assets/images/logo_menu_expanded.png');\r\n\r\n.box {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    \r\n    .main {\r\n        overflow: hidden;\r\n\r\n        .toolbar {\r\n            border-bottom: 1px solid darken(white, 15%);\r\n            font-size: 0.9rem;\r\n            color: black;\r\n            z-index: 2;\r\n\r\n            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n    }\r\n}",
                     "styleUrl": "./navigation-drawer-story.component.scss"
                 }
             ],
@@ -1839,7 +1811,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "stories/navigation/navigation-drawer.stories.ts",
+                "file": "stories/login/login-language-dropdown.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1849,7 +1821,7 @@
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "stories/login/login-language-dropdown.stories.ts",
+                "file": "stories/navigation/navigation-drawer.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1959,21 +1931,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "stories/my-lib.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<MyLibComponent>",
-                "defaultValue": "(args: MyLibComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "stories/Header.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Header>",
                 "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/my-lib.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<MyLibComponent>",
+                "defaultValue": "(args: MyLibComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1999,21 +1971,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "stories/navigation/navigation-drawer.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<NavigationDrawerStoryComponent>",
-                "defaultValue": "(args: NavigationDrawerStoryComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "stories/login/login-language-dropdown.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<LoginLanguageInputDropdownStoryComponent>",
                 "defaultValue": "(args: LoginLanguageInputDropdownStoryComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/navigation/navigation-drawer.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<NavigationDrawerStoryComponent>",
+                "defaultValue": "(args: NavigationDrawerStoryComponent) => ({\r\n  props: args,\r\n})"
             }
         ],
         "functions": [
@@ -2136,28 +2108,6 @@
                     "defaultValue": "(args: LoginInputStoryComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
-            "stories/navigation/navigation-drawer.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/navigation/navigation-drawer.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/navigation/navigation-drawer.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<NavigationDrawerStoryComponent>",
-                    "defaultValue": "(args: NavigationDrawerStoryComponent) => ({\r\n  props: args,\r\n})"
-                }
-            ],
             "stories/login/login-language-dropdown.stories.ts": [
                 {
                     "name": "Default",
@@ -2178,6 +2128,28 @@
                     "deprecationMessage": "",
                     "type": "Story<LoginLanguageInputDropdownStoryComponent>",
                     "defaultValue": "(args: LoginLanguageInputDropdownStoryComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "stories/navigation/navigation-drawer.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/navigation/navigation-drawer.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/navigation/navigation-drawer.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<NavigationDrawerStoryComponent>",
+                    "defaultValue": "(args: NavigationDrawerStoryComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "projects/zs-lib/src/lib/i18n/i18n.module.ts": [
@@ -2639,7 +2611,7 @@
                 "linktype": "component",
                 "name": "LoginLanguageInputDropdownStoryComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {

@@ -63,7 +63,7 @@
               {
                 "glob": "**/*",
                 "input": "projects/zs-lib/src/assets/images/",
-                "output": "/assets/images/"
+                "output": "/assets/images"
               },
               {
                 "glob": "**/*.json",
@@ -74,6 +74,11 @@
                 "glob": "**/*.json",
                 "input": "stories/assets/i18n/",
                 "output": "/assets/i18n"
+              },
+              {
+                "glob": "**/*",
+                "input": "stories/assets/images/",
+                "output": "/assets/images"
               }
             ]
           }

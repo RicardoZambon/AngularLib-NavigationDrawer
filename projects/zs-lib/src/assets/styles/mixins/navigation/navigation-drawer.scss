@@ -1,0 +1,16 @@
+@mixin navigation-drawer-logos(
+    $logo-expanded-url,
+    $logo-collapsed-url
+) {
+    :host ::ng-deep zambon-lib-navigation-drawer {
+        .menu .navbar-header .logo-container {
+            .logo-expanded {
+                background: url($logo-expanded-url);
+            }
+
+            .logo-collapsed {
+                background: url($logo-collapsed-url);
+            }
+        }
+    }
+}
