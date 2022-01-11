@@ -36,6 +36,6 @@ export default class LoginInputStoryComponent {
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       component: ['', Validators.required]
-  });
+    });
   }
 }

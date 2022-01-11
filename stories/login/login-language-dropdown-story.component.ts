@@ -8,8 +8,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: [ './login-language-dropdown-story.component.scss' ]
 })
 export default class LoginLanguageInputDropdownStoryComponent {
-  form!: FormGroup;
-  
   @Input()
   type: string = 'text';
   
@@ -22,9 +20,6 @@ export default class LoginLanguageInputDropdownStoryComponent {
   @Input()
   theme: 'default' | 'danger' | 'warning' | 'success' = 'default';
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      component: ['', Validators.required]
-  });
+  constructor() {
   }
 }
