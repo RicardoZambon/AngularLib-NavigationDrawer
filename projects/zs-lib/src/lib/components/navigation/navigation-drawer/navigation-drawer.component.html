@@ -1,0 +1,48 @@
+<nav class="menu h-100 mh-100 d-flex flex-column"
+    [class.expanded]="!collapsed"
+    [class.collapsed]="collapsed"
+    [class.first-opened]="firstOpened"
+    >
+    
+    <!--Header-->
+    <div class="navbar-header pt-2 pb-3 flex-shrink-0">
+        <div class="logo-container replace-content d-flex justify-content-center mb-3">
+            <div class="logo-expanded"></div>
+            <div class="logo-collapsed"></div>
+        </div>
+
+        <div class="profile-container d-flex flex-wrap flex-column">
+            <div class="profile-picture">
+                <img [src]="this.userImage" />
+            </div>
+            <div class="user-name">{{ this.userName }}</div>
+            <div class="user-department">{{ this.userDepartment }}</div>
+        </div>
+    </div>
+
+    <div class="navbar-menu d-flex flex-column flex-grow-1" #navMenu zambon-lib-track-scroll (scrolled)="updateScroll($event)">
+        <ul class="nav flex-column flex-nowrap w-100 flex-grow-1">
+    
+            <ng-container *ngIf="menus !== null">
+                <ng-container *ngFor="let menu of menus">
+                    <!-- <app-nav-item
+                        [parentCollapsed]="collapsed"
+                        [parentScrolling]="scrolling"
+                        [firstOpened]="firstOpened"
+                        [menu]="menu"
+                        [parentScroll]="currentScroll"
+                        [parentOffsetTop]="getOffsetTop()"
+                        [parentOffsetHeight]="getOffsetHeight()"
+                        (menuClick)="menuClick($event)"
+                        (closeFloatMenu)="closeFloatMenu()"></app-nav-item> -->
+                </ng-container>
+            </ng-container>
+    
+            <li class="background-fill flex-grow-1">
+                <div *ngIf="menus === null" class="loading text-center pt-2">
+                    <i class="spinner-border spinner-border-md"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

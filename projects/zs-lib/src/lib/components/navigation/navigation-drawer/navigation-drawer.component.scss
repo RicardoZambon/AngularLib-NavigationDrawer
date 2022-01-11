@@ -1,0 +1,99 @@
+@import "../../../../assets/styles/variables/navigation.theme";
+
+@import "../../../../assets/styles/mixins/background";
+@import '../../../../assets/styles/mixins/no-select';
+@import "../../../../assets/styles/mixins/scroll";
+
+.menu {
+    color: darken($home-base-color, 10%);
+
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);
+
+    .navbar-header {
+        @include background(darken($home-base-color3, 5%), .95);
+
+        .logo-container {
+            text-align: center;
+            position: relative;
+            height: 50px;
+
+            .logo-expanded, .logo-collapsed {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+            }
+
+            .logo-expanded {
+                width: $menu-width-expanded;
+                background: url(#{$home-expanded-logo-url}) no-repeat center center;
+                background-size: contain;
+            }
+    
+            .logo-collapsed {
+                width: $menu-width-collapsed;
+                background: url(#{$home-collapsed-logo-url}) no-repeat center center;
+                background-size: contain;
+            }
+        }
+
+        .profile-container {
+            height: 48px;
+
+            .profile-picture {
+                -webkit-flex: 0 0 48px;
+                flex: 0 0 48px;
+
+                background-color: $home-base-color;
+                border-radius: 24px;
+                max-height: 48px;
+                margin-right: .7rem;
+                margin-left: .7rem;
+                overflow: hidden;
+                width: 48px;
+
+                @include no-select();
+    
+                img {
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+            
+            .user-name, .user-department {
+                flex: 0 0 50%;
+                -webkit-flex: 0 0 50%;
+                font-size: .9rem;
+                width: calc(#{$menu-width-expanded} - #{$menu-width-collapsed});
+                
+                @include no-select();
+            }
+    
+            .user-name {
+                font-weight: bold;
+            }
+    
+            .user-department {
+                font-weight: 100;
+                font-size: .8rem;
+                color: lighten($home-fore-color, 40%);
+            }
+        }
+    }
+
+    .navbar-menu {
+        overflow-y: auto;
+        @include scroll(darken($home-base-color3, 7%));
+
+        .nav {
+            z-index: 1;
+                
+            .background-fill {
+                z-index: -1;
+                @include background(darken($home-base-color3, 7%), .95);
+            }
+        }
+    }
+}

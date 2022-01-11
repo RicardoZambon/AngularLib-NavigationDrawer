@@ -1,0 +1,22 @@
+.box {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    .main {
+        overflow: hidden;
+
+        .toolbar {
+            border-bottom: 1px solid darken(white, 15%);
+            font-size: 0.9rem;
+            color: black;
+            z-index: 2;
+
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
+            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    }
+}

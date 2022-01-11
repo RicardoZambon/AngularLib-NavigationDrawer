@@ -17,8 +17,192 @@
     "injectables": [],
     "guards": [],
     "interceptors": [],
-    "classes": [],
-    "directives": [],
+    "classes": [
+        {
+            "name": "MenuItem",
+            "id": "class-MenuItem-eb573608474890945a20e3fb22aa9b421f88bfb7b683ff582dcdfe7d2c0236dd6b72e08f5d1aee4ef0ab4bbf96f0b1c8cc942a954cc88b4b4d13a60158ae5003",
+            "file": "projects/zs-lib/src/lib/models/menu-item.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "export class MenuItem {\n    parent: MenuItem | null = null;\n    \n    linkActive: boolean = false;\n    selected: boolean = false;\n    floatMenuState: 'opening' | 'show' | 'closing' | 'hide' | '' = '';\n\n    id!: number;\n\n    icon!: string;\n    label!: string;\n    url!: string | undefined;\n\n    children: MenuItem[] = new Array<MenuItem>();\n\n\n    public getRootNode(): MenuItem {\n        return (this.parent)\n            ? this.parent.getRootNode()\n            : this;\n    }\n}",
+            "properties": [
+                {
+                    "name": "children",
+                    "defaultValue": "new Array<MenuItem>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "floatMenuState",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"opening\" | \"show\" | \"closing\" | \"hide\" | string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "icon",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "linkActive",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "parent",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "selected",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | undefined",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getRootNode",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "MenuItem",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [
+        {
+            "name": "TrackScrollDirective",
+            "id": "directive-TrackScrollDirective-bf84ab4dcbbc782d94008a19d91370e6c21eccba8821672bf4a23b1d6ef6b9f7164f14bbee78ab548398efc85e9c5fd9411932bf1f33e1f55d9dde5ac3eab186",
+            "file": "projects/zs-lib/src/lib/directives/track-scroll.directive.ts",
+            "type": "directive",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Directive, EventEmitter, Output } from '@angular/core';\n\n@Directive({\n    selector: '[zambon-lib-track-scroll]'\n})\nexport class TrackScrollDirective {\n\n    @Output() scrolled = new EventEmitter<number>();\n\n    constructor() { }\n\n    track($event: Event) {\n        this.scrolled.emit(($event.target as HTMLElement).scrollTop);\n    }\n}",
+            "selector": "[zambon-lib-track-scroll]",
+            "providers": [],
+            "inputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "scrolled",
+                    "defaultValue": "new EventEmitter<number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 8,
+                    "type": "EventEmitter"
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "track",
+                    "args": [
+                        {
+                            "name": "$event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "$event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            }
+        }
+    ],
     "components": [
         {
             "name": "ButtonComponent",
@@ -219,7 +403,7 @@
         },
         {
             "name": "LoginInputComponent",
-            "id": "component-LoginInputComponent-d9d387818c0b658cb1b7fe8f2e6349eb7db77aa4c081389bf920765eae984f29748defd094164d628a3d41169ef993731881b53902715d10fff3d5689575a3a8",
+            "id": "component-LoginInputComponent-cf22f77abf700d2f388d13c30c60e13ea3ff69e742a20f5d2e733bc151f9e21636a614c959bc301a4ed1f8693b1c9c856c8a5f5863688c2c449099014feeb719",
             "file": "projects/zs-lib/src/lib/components/login/login-input/login-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -227,7 +411,7 @@
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "zslib-login-input",
+            "selector": "zambon-lib-login-input",
             "styleUrls": [
                 "./login-input.component.scss"
             ],
@@ -328,7 +512,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\n\n@Component({\n    selector: 'zslib-login-input',\n    host: { '[class]' : 'themeName' },\n    templateUrl: './login-input.component.html',\n    styleUrls: ['./login-input.component.scss']\n})\nexport class LoginInputComponent implements OnInit {\n\n    @Input() formGroup!: FormGroup;\n\n    @Input() controlName!: string;\n\n    @Input() type: string = \"text\";\n    @Input() icon: string = '';\n    @Input() placeholder: string = '';\n    @Input() themeName?: string;\n\n    @Input() isInvalid: boolean = false;\n\n    @HostBinding('attr.autofocus') @Input() autofocus: boolean = false;\n\n\n    constructor() { }\n\n    ngOnInit(): void {\n    }\n}",
+            "sourceCode": "import { Component, HostBinding, Input, OnInit, ViewEncapsulation } from '@angular/core';\nimport { FormGroup } from '@angular/forms';\n\n@Component({\n    selector: 'zambon-lib-login-input',\n    host: { '[class]' : 'themeName' },\n    templateUrl: './login-input.component.html',\n    styleUrls: ['./login-input.component.scss']\n})\nexport class LoginInputComponent implements OnInit {\n\n    @Input() formGroup!: FormGroup;\n\n    @Input() controlName!: string;\n\n    @Input() type: string = \"text\";\n    @Input() icon: string = '';\n    @Input() placeholder: string = '';\n    @Input() themeName?: string;\n\n    @Input() isInvalid: boolean = false;\n\n    @HostBinding('attr.autofocus') @Input() autofocus: boolean = false;\n\n\n    constructor() { }\n\n    ngOnInit(): void {\n    }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -352,7 +536,7 @@
         },
         {
             "name": "LoginInputStoryComponent",
-            "id": "component-LoginInputStoryComponent-990a9f528827e92f52be6aab2f9abbe6064a7c3d2f1c3e351bdaa652b6e16851c1e41c6361b489b6b35bc9b3a8f4a01fdeb8bfdba67455d4bab97dc49c073846",
+            "id": "component-LoginInputStoryComponent-ddb304847afea397966a6008b241a949e25b748e398a6df0fb1643603b58e3fd1724403d244fc850d0a1949e8ee2e51b4afd092c9744fc5d63a6afec7eae71db",
             "file": "stories/login/login-input-story.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -364,7 +548,7 @@
                 "./login-input-story.component.scss"
             ],
             "styles": [],
-            "template": "<zslib-login-input    [formGroup]=\"form\"\n    [controlName]=\"'component'\"\n    [type]=\"type\"\n    [icon]=\"icon\"\n    [placeholder]=\"placeholder\"\n    [themeName]=\"theme\"\n    [isInvalid]=\"form.controls['component'].invalid && (form.controls['component'].dirty || form.controls['component'].touched)\"\n  >\n    <div validations>\n      <div [class.d-none]=\"!form.controls['component'].errors?.required\">This field is required</div>\n    </div>\n  </zslib-login-input>",
+            "template": "<zambon-lib-login-input    [formGroup]=\"form\"\n    [controlName]=\"'component'\"\n    [type]=\"type\"\n    [icon]=\"icon\"\n    [placeholder]=\"placeholder\"\n    [themeName]=\"theme\"\n    [isInvalid]=\"form.controls['component'].invalid && (form.controls['component'].dirty || form.controls['component'].touched)\"\n  >\n    <div validations>\n      <div [class.d-none]=\"!form.controls['component'].errors?.required\">This field is required</div>\n    </div>\n  </zambon-lib-login-input>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -425,7 +609,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'storybook-login-input',\n  template: `<zslib-login-input\n    [formGroup]=\"form\"\n    [controlName]=\"'component'\"\n    [type]=\"type\"\n    [icon]=\"icon\"\n    [placeholder]=\"placeholder\"\n    [themeName]=\"theme\"\n    [isInvalid]=\"form.controls['component'].invalid && (form.controls['component'].dirty || form.controls['component'].touched)\"\n  >\n    <div validations>\n      <div [class.d-none]=\"!form.controls['component'].errors?.required\">This field is required</div>\n    </div>\n  </zslib-login-input>`,\n  styleUrls: [ './login-input-story.component.scss' ]\n})\nexport default class LoginInputStoryComponent {\n  form!: FormGroup;\n  \n  @Input()\n  type: string = 'text';\n  \n  @Input()\n  icon: string = '';\n  \n  @Input()\n  placeholder: string = '';\n\n  @Input()\n  theme: 'default' | 'danger' | 'warning' | 'success' = 'default';\n\n  constructor(private formBuilder: FormBuilder) {\n    this.form = this.formBuilder.group({\n      component: ['', Validators.required]\n  });\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'storybook-login-input',\n  template: `<zambon-lib-login-input\n    [formGroup]=\"form\"\n    [controlName]=\"'component'\"\n    [type]=\"type\"\n    [icon]=\"icon\"\n    [placeholder]=\"placeholder\"\n    [themeName]=\"theme\"\n    [isInvalid]=\"form.controls['component'].invalid && (form.controls['component'].dirty || form.controls['component'].touched)\"\n  >\n    <div validations>\n      <div [class.d-none]=\"!form.controls['component'].errors?.required\">This field is required</div>\n    </div>\n  </zambon-lib-login-input>`,\n  styleUrls: [ './login-input-story.component.scss' ]\n})\nexport default class LoginInputStoryComponent {\n  form!: FormGroup;\n  \n  @Input()\n  type: string = 'text';\n  \n  @Input()\n  icon: string = '';\n  \n  @Input()\n  placeholder: string = '';\n\n  @Input()\n  theme: 'default' | 'danger' | 'warning' | 'success' = 'default';\n\n  constructor(private formBuilder: FormBuilder) {\n    this.form = this.formBuilder.group({\n      component: ['', Validators.required]\n  });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -463,7 +647,7 @@
         },
         {
             "name": "LoginLanguageDropdownComponent",
-            "id": "component-LoginLanguageDropdownComponent-687b8dad150650103f1a23c8549181b78acf84975482d671c5fd6cfb4472f68c1cf33685d1d386876122ee20ac44dac65ff376c04d1a3a0ba897535142ec0c00",
+            "id": "component-LoginLanguageDropdownComponent-86a4fb8fe8afc7fd05f66385260d916cb514a8e59585da5d27d8d4007f69e328307eda4bde403c7afcca2ca0b34cd273496510c95b5b34cdf153f23169c79350",
             "file": "projects/zs-lib/src/lib/components/login/login-language-dropdown/login-language-dropdown.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -471,7 +655,7 @@
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "zslib-login-language-dropdown",
+            "selector": "zambon-lib-login-language-dropdown",
             "styleUrls": [
                 "./login-language-dropdown.component.scss"
             ],
@@ -623,7 +807,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';\nimport { TranslateService } from '@ngx-translate/core';\nimport { Dropdown } from 'bootstrap';\n\n@Component({\n  selector: 'zslib-login-language-dropdown',\n  host: { '[class]' : 'themeName' },\n  templateUrl: './login-language-dropdown.component.html',\n  styleUrls: ['./login-language-dropdown.component.scss']\n})\nexport class LoginLanguageDropdownComponent implements OnInit {\n\n    @ViewChild('dropdown') dropdownElement!: ElementRef<HTMLButtonElement>;\n    dropdown!: Dropdown;\n\n    languages!: string[];\n\n    @Input() title: string = 'SelectLanguage-Title';\n    @Input() languagePrefix: string = 'SelectLanguage-';\n    @Input() themeName?: string;\n\n    constructor(public translate: TranslateService) {\n        this.languages = this.translate.getLangs();\n    }\n\n    ngOnInit(): void {\n    }\n\n    ngAfterViewInit(): void {\n        this.dropdown = new Dropdown(this.dropdownElement.nativeElement);\n    }\n\n    dropdownClick(): void {\n        this.dropdown.toggle();\n    }\n\n    itemClick(selectedLanguage: string): void {\n        this.translate.use(selectedLanguage);\n    }\n}\n",
+            "sourceCode": "import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';\nimport { TranslateService } from '@ngx-translate/core';\nimport { Dropdown } from 'bootstrap';\n\n@Component({\n  selector: 'zambon-lib-login-language-dropdown',\n  host: { '[class]' : 'themeName' },\n  templateUrl: './login-language-dropdown.component.html',\n  styleUrls: ['./login-language-dropdown.component.scss']\n})\nexport class LoginLanguageDropdownComponent implements OnInit {\n\n    @ViewChild('dropdown') dropdownElement!: ElementRef<HTMLButtonElement>;\n    dropdown!: Dropdown;\n\n    languages!: string[];\n\n    @Input() title: string = 'SelectLanguage-Title';\n    @Input() languagePrefix: string = 'SelectLanguage-';\n    @Input() themeName?: string;\n\n    constructor(public translate: TranslateService) {\n        this.languages = this.translate.getLangs();\n    }\n\n    ngOnInit(): void {\n    }\n\n    ngAfterViewInit(): void {\n        this.dropdown = new Dropdown(this.dropdownElement.nativeElement);\n    }\n\n    dropdownClick(): void {\n        this.dropdown.toggle();\n    }\n\n    itemClick(selectedLanguage: string): void {\n        this.translate.use(selectedLanguage);\n    }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -665,7 +849,7 @@
         },
         {
             "name": "LoginLanguageInputDropdownStoryComponent",
-            "id": "component-LoginLanguageInputDropdownStoryComponent-bae826adebfd4db34c4539587bf5c4fd5dd5d39ed74b922f153420cd18448e59f65c9d41ae2101a86d8353fde7c3cb829cf2f2b41f0c8fd67a8bd26671db140e",
+            "id": "component-LoginLanguageInputDropdownStoryComponent-f2dea43dd30ece315ca029273a85fbb2aef9d25f7c3286bb3384578eaaddae8bc08e1d2bac205c8f92a381afac8c13268628e3daf78aa5c253a8fef38d242d7d",
             "file": "stories/login/login-language-dropdown-story.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -677,7 +861,7 @@
                 "./login-language-dropdown-story.component.scss"
             ],
             "styles": [],
-            "template": "<zslib-login-language-dropdown [themeName]=\"theme\">  </zslib-login-language-dropdown>",
+            "template": "<zambon-lib-login-language-dropdown [themeName]=\"theme\">  </zambon-lib-login-language-dropdown>",
             "templateUrl": [],
             "viewProviders": [],
             "inputsClass": [
@@ -738,11 +922,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'storybook-login-input',\n  template: `<zslib-login-language-dropdown [themeName]=\"theme\">\n  </zslib-login-language-dropdown>`,\n  styleUrls: [ './login-language-dropdown-story.component.scss' ]\n})\nexport default class LoginLanguageInputDropdownStoryComponent {\n  form!: FormGroup;\n  \n  @Input()\n  type: string = 'text';\n  \n  @Input()\n  icon: string = '';\n  \n  @Input()\n  placeholder: string = '';\n\n  @Input()\n  theme: 'default' | 'danger' | 'warning' | 'success' = 'default';\n\n  constructor(private formBuilder: FormBuilder) {\n    this.form = this.formBuilder.group({\n      component: ['', Validators.required]\n  });\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'storybook-login-input',\n  template: `<zambon-lib-login-language-dropdown [themeName]=\"theme\">\n  </zambon-lib-login-language-dropdown>`,\n  styleUrls: [ './login-language-dropdown-story.component.scss' ]\n})\nexport default class LoginLanguageInputDropdownStoryComponent {\n  form!: FormGroup;\n  \n  @Input()\n  type: string = 'text';\n  \n  @Input()\n  icon: string = '';\n  \n  @Input()\n  placeholder: string = '';\n\n  @Input()\n  theme: 'default' | 'danger' | 'warning' | 'success' = 'default';\n\n  constructor(private formBuilder: FormBuilder) {\n    this.form = this.formBuilder.group({\n      component: ['', Validators.required]\n  });\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../../projects/zs-lib/src/assets/styles/mixins/login/language-dropdown';\r\n\r\n@include language-dropdown-theme('danger', $item-active-fore-color: darkred);\r\n@include language-dropdown-theme('warning', $item-active-fore-color: orange);\r\n@include language-dropdown-theme('success', $item-active-fore-color: green);",
+                    "data": "@import '../../projects/zs-lib/src/assets/styles/mixins/login/language-dropdown';\r\n\r\n@include language-dropdown-theme('danger', $item-active-background-color: darkred);\r\n@include language-dropdown-theme('warning', $item-active-background-color: orange);\r\n@include language-dropdown-theme('success', $item-active-background-color: green);",
                     "styleUrl": "./login-language-dropdown-story.component.scss"
                 }
             ],
@@ -773,6 +957,479 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "NavigationDrawerComponent",
+            "id": "component-NavigationDrawerComponent-5de62e4e4e68718831d1c23f9539e2f41d26738303ffbe638f6cf78384d0e5f0b2fb7d81f88ea58b7b4deb27b89c33c0113a19fb6169cedc8aac185b888e3aa5",
+            "file": "projects/zs-lib/src/lib/components/navigation/navigation-drawer/navigation-drawer.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "zambon-lib-navigation-drawer",
+            "styleUrls": [
+                "./navigation-drawer.component.scss",
+                "./navigation-drawer.component-animations.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./navigation-drawer.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "menus",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "MenuItem[] | null",
+                    "decorators": []
+                },
+                {
+                    "name": "userDepartment",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "userImage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "SafeUrl",
+                    "decorators": []
+                },
+                {
+                    "name": "userName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "navigated",
+                    "defaultValue": "new EventEmitter<MenuItem>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "activeRootNode",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "MenuItem | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 35,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "collapsed",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "currentScroll",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 22,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "firstOpened",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "navMenu",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLUListElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'navMenu'"
+                        }
+                    ]
+                },
+                {
+                    "name": "scrolling",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "scrollingTimer",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NodeJS.Timeout | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "clearSelection",
+                    "args": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 69,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121,
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "closeFloatMenu",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 163,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123,
+                        131
+                    ]
+                },
+                {
+                    "name": "getOffsetHeight",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 170,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "getOffsetTop",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 174,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "menuClick",
+                    "args": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "selectMenu",
+                    "args": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 96,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121,
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleState",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123,
+                        131
+                    ]
+                },
+                {
+                    "name": "updateScroll",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 178,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';\nimport { SafeUrl } from '@angular/platform-browser';\nimport { of } from 'rxjs';\nimport { delay, map } from 'rxjs/operators';\n\nimport { MenuItem } from '../../../models/menu-item';\n\n@Component({\n    selector: 'zambon-lib-navigation-drawer',\n    templateUrl: './navigation-drawer.component.html',\n    styleUrls: [\n        './navigation-drawer.component.scss',\n        './navigation-drawer.component-animations.scss'\n    ]\n})\nexport class NavigationDrawerComponent implements OnInit {\n\n    @Input() menus: MenuItem[] | null = null;\n\n    public firstOpened: boolean = true;\n    public collapsed: boolean = false;\n    public currentScroll: number = 0;\n\n    public scrolling: boolean = false;\n    private scrollingTimer: NodeJS.Timeout | null = null;\n\n    @Input() userName!: string;\n    @Input() userDepartment!: string;\n    @Input() userImage!: SafeUrl;\n\n    @ViewChild('navMenu') navMenu!: ElementRef<HTMLUListElement>;\n\n    @Output() navigated = new EventEmitter<MenuItem>();\n\n    private activeRootNode: MenuItem | null = null;\n\n    constructor() { }\n\n    ngOnInit(): void { \n    }\n\n\n    public async toggleState() {\n        if (this.activeRootNode?.floatMenuState === 'show') {\n            await this.clearSelection(this.activeRootNode);\n            this.activeRootNode = null;\n        }\n\n        this.collapsed = !this.collapsed;\n        this.firstOpened = false;\n    }\n\n\n    async menuClick(menu: MenuItem) {\n        await this.selectMenu(menu);\n\n        if (menu.url) {\n            this.navigated.emit(menu);\n\n            if (this.collapsed) {\n                this.closeFloatMenu();\n            }\n            else if (this.activeRootNode) {\n                this.clearSelection(this.activeRootNode);\n            }\n        }\n    }\n\n    private async clearSelection(menu: MenuItem): Promise<void> {\n        if (!(menu.parent) && menu.floatMenuState == 'show') {\n            menu.floatMenuState = 'closing';\n\n            await of(menu)\n                .pipe(\n                    delay(400),\n                    map(menu => {\n                        menu.floatMenuState = 'hide';\n                        return menu;\n                    }),\n                    delay(100),\n                    map(menu => {\n                        menu.floatMenuState = '';\n                        return;\n                    })\n                ).toPromise();\n        }\n\n        menu.selected = false;\n        menu = menu.children.filter(el => el.selected)[0];\n        if (menu) {\n            this.clearSelection(menu);\n        }\n        return;\n    }\n\n    private async selectMenu(menu: MenuItem): Promise<void> {\n        const rootNode = menu.getRootNode();\n\n        if (this.collapsed && menu.parent === null) {\n            if (this.activeRootNode?.floatMenuState === 'show') {\n                this.clearSelection(this.activeRootNode);\n\n                if (this.activeRootNode === menu) {\n                    this.activeRootNode = null;\n                    return;\n                }\n            }\n            else if (this.activeRootNode && this.activeRootNode !== menu) {\n                this.clearSelection(this.activeRootNode);\n            }\n\n            if (menu.children.length > 0) {\n                this.activeRootNode = menu;\n                this.activeRootNode.floatMenuState = 'opening';\n                this.activeRootNode.selected = true;\n                \n                return of(this.activeRootNode)\n                    .pipe(\n                        delay(400),\n                        map(menu => {\n                            menu.floatMenuState = 'show';\n                        })\n                    ).toPromise();\n            }\n        }\n        else {\n            if (this.activeRootNode) {\n                if (this.activeRootNode !== rootNode) {\n                    await this.clearSelection(this.activeRootNode);\n                }\n                else {\n                    let activeNode: MenuItem | null = this.activeRootNode;\n                    let menuNode = rootNode;\n\n                    while (activeNode) {\n                        if (activeNode === menu) {\n                            this.clearSelection(activeNode);\n\n                            if (activeNode === this.activeRootNode) {\n                                this.activeRootNode = null;\n                            }\n                            return;\n                        }\n                        else if (activeNode !== menuNode) {\n                            this.clearSelection(activeNode);\n                            break;\n                        }\n                        \n                        activeNode = activeNode.children.filter(el => el.selected)[0];\n\n                        menuNode = menuNode.children.filter(el => el.id == menu.id)[0]\n                                    ?? menuNode.children.filter(el => el.selected)[0];\n                    }\n                }\n            }\n        }\n        \n        this.activeRootNode = rootNode;\n        menu.selected = true;\n    }\n\n\n    public async closeFloatMenu() {\n        if (this.activeRootNode && this.activeRootNode.floatMenuState === 'show') {\n            await this.clearSelection(this.activeRootNode);\n        }\n    }\n\n\n    public getOffsetHeight(): number {\n        return this.navMenu.nativeElement.offsetHeight;\n    }\n\n    public getOffsetTop(): number {\n        return this.navMenu.nativeElement.offsetTop;\n    }\n\n    public updateScroll(event: number) {\n        this.currentScroll = event;\n        this.scrolling = true;\n\n        if(this.scrollingTimer) {\n            clearTimeout(this.scrollingTimer);\n        }\n\n        this.scrollingTimer = setTimeout(() => {\n            this.scrolling = false;\n            this.scrollingTimer = null;\n        }, 100);\n    }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n\r\n@import \"../../../../assets/styles/mixins/background\";\r\n@import '../../../../assets/styles/mixins/no-select';\r\n@import \"../../../../assets/styles/mixins/scroll\";\r\n\r\n.menu {\r\n    color: darken($home-base-color, 10%);\r\n\r\n    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n    -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n\r\n    .navbar-header {\r\n        @include background(darken($home-base-color3, 5%), .95);\r\n\r\n        .logo-container {\r\n            text-align: center;\r\n            position: relative;\r\n            height: 50px;\r\n\r\n            .logo-expanded, .logo-collapsed {\r\n                position: absolute;\r\n                left: 0;\r\n                top: 0;\r\n                height: 100%;\r\n            }\r\n\r\n            .logo-expanded {\r\n                width: $menu-width-expanded;\r\n                background: url(#{$home-expanded-logo-url}) no-repeat center center;\r\n                background-size: contain;\r\n            }\r\n    \r\n            .logo-collapsed {\r\n                width: $menu-width-collapsed;\r\n                background: url(#{$home-collapsed-logo-url}) no-repeat center center;\r\n                background-size: contain;\r\n            }\r\n        }\r\n\r\n        .profile-container {\r\n            height: 48px;\r\n\r\n            .profile-picture {\r\n                -webkit-flex: 0 0 48px;\r\n                flex: 0 0 48px;\r\n\r\n                background-color: $home-base-color;\r\n                border-radius: 24px;\r\n                max-height: 48px;\r\n                margin-right: .7rem;\r\n                margin-left: .7rem;\r\n                overflow: hidden;\r\n                width: 48px;\r\n\r\n                @include no-select();\r\n    \r\n                img {\r\n                    width: 48px;\r\n                    height: 48px;\r\n                }\r\n            }\r\n            \r\n            .user-name, .user-department {\r\n                flex: 0 0 50%;\r\n                -webkit-flex: 0 0 50%;\r\n                font-size: .9rem;\r\n                width: calc(#{$menu-width-expanded} - #{$menu-width-collapsed});\r\n                \r\n                @include no-select();\r\n            }\r\n    \r\n            .user-name {\r\n                font-weight: bold;\r\n            }\r\n    \r\n            .user-department {\r\n                font-weight: 100;\r\n                font-size: .8rem;\r\n                color: lighten($home-fore-color, 40%);\r\n            }\r\n        }\r\n    }\r\n\r\n    .navbar-menu {\r\n        overflow-y: auto;\r\n        @include scroll(darken($home-base-color3, 7%));\r\n\r\n        .nav {\r\n            z-index: 1;\r\n                \r\n            .background-fill {\r\n                z-index: -1;\r\n                @include background(darken($home-base-color3, 7%), .95);\r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./navigation-drawer.component.scss"
+                },
+                {
+                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n\r\n/* Animations */\r\n@keyframes collapse {\r\n    from { width: $menu-width-expanded; }\r\n    to { width: $menu-width-collapsed; }\r\n}\r\n\r\n@keyframes expand {\r\n    from { width: $menu-width-collapsed; }\r\n    to { width: $menu-width-expanded; }\r\n}\r\n\r\n\r\n@keyframes fadeout {\r\n    from { opacity: 1; }\r\n    to { opacity: 0; }\r\n}\r\n\r\n@keyframes fadein {\r\n    from { opacity: 0; }\r\n    to { opacity: 1; }\r\n}\r\n\r\n\r\n.menu {\r\n    /* Collapsed */\r\n    &.collapsed {\r\n        width: $menu-width-collapsed;\r\n\r\n        &:not(.first-opened) {\r\n            animation: collapse $menu-animation-speed ease-in-out;\r\n\r\n            .logo-container {\r\n                .logo-expanded {\r\n                    animation: fadeout $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n                .logo-collapsed {\r\n                    animation: fadein $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n\r\n            .profile-container {\r\n                .user-name, .user-department {\r\n                    animation: fadeout $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n        }\r\n\r\n        .logo-container {\r\n            .logo-expanded {\r\n                opacity: 0;\r\n            }\r\n        }\r\n\r\n        .profile-container {\r\n            .user-name, .user-department {\r\n                opacity: 0;\r\n            }\r\n        }\r\n    }\r\n\r\n    /* Expanded */\r\n    &.expanded {\r\n        width: $menu-width-expanded;\r\n\r\n        &:not(.first-opened) {\r\n            animation: expand $menu-animation-speed ease-in-out;\r\n\r\n            .logo-container {\r\n                .logo-expanded {\r\n                    animation: fadein $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n                .logo-collapsed {\r\n                    animation: fadeout $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n\r\n            .profile-container {\r\n                .user-name, .user-department {\r\n                    animation: fadein $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n        }\r\n\r\n        .logo-container {\r\n            .logo-collapsed {\r\n                opacity: 0;\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n\r\n@media (max-width:768px) {\r\n    .menu {\r\n        margin-left: -70px;\r\n        max-width: 70px !important;\r\n        width: 70px !important;\r\n        transition: margin-left $menu-animation-speed ease-in-out;\r\n\r\n        &.collapsed {\r\n            margin-left: 0px;\r\n            padding-left: 0px;\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./navigation-drawer.component-animations.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 35
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<nav class=\"menu h-100 mh-100 d-flex flex-column\"\n    [class.expanded]=\"!collapsed\"\n    [class.collapsed]=\"collapsed\"\n    [class.first-opened]=\"firstOpened\"\n    >\n    \n    <!--Header-->\n    <div class=\"navbar-header pt-2 pb-3 flex-shrink-0\">\n        <div class=\"logo-container replace-content d-flex justify-content-center mb-3\">\n            <div class=\"logo-expanded\"></div>\n            <div class=\"logo-collapsed\"></div>\n        </div>\n\n        <div class=\"profile-container d-flex flex-wrap flex-column\">\n            <div class=\"profile-picture\">\n                <img [src]=\"this.userImage\" />\n            </div>\n            <div class=\"user-name\">{{ this.userName }}</div>\n            <div class=\"user-department\">{{ this.userDepartment }}</div>\n        </div>\n    </div>\n\n    <div class=\"navbar-menu d-flex flex-column flex-grow-1\" #navMenu zambon-lib-track-scroll (scrolled)=\"updateScroll($event)\">\n        <ul class=\"nav flex-column flex-nowrap w-100 flex-grow-1\">\n    \n            <ng-container *ngIf=\"menus !== null\">\n                <ng-container *ngFor=\"let menu of menus\">\n                    <!-- <app-nav-item\n                        [parentCollapsed]=\"collapsed\"\n                        [parentScrolling]=\"scrolling\"\n                        [firstOpened]=\"firstOpened\"\n                        [menu]=\"menu\"\n                        [parentScroll]=\"currentScroll\"\n                        [parentOffsetTop]=\"getOffsetTop()\"\n                        [parentOffsetHeight]=\"getOffsetHeight()\"\n                        (menuClick)=\"menuClick($event)\"\n                        (closeFloatMenu)=\"closeFloatMenu()\"></app-nav-item> -->\n                </ng-container>\n            </ng-container>\n    \n            <li class=\"background-fill flex-grow-1\">\n                <div *ngIf=\"menus === null\" class=\"loading text-center pt-2\">\n                    <i class=\"spinner-border spinner-border-md\"></i>\n                </div>\n            </li>\n        </ul>\n    </div>\n</nav>"
+        },
+        {
+            "name": "NavigationDrawerStoryComponent",
+            "id": "component-NavigationDrawerStoryComponent-71e5f34fa257010e27b21cb9c6db92c11400e5fc5592aa9e9037be9608a75a3dcf3c1e2200cc642f978075b67ee8761455fba898d6238f2c0f64f1574d8157a8",
+            "file": "stories/navigation/navigation-drawer.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-navigation-drawer",
+            "styleUrls": [
+                "./navigation-drawer-story.component.scss"
+            ],
+            "styles": [],
+            "template": "<div class=\"d-flex box\">\n    <zambon-lib-navigation-drawer #navigation\n        [userName]=\"'Test'\"\n        [userDepartment]=\"'Test department'\"\n        [userImage]=\"null\"\n    >\n    </zambon-lib-navigation-drawer>\n\n    <div class=\"main d-flex flex-grow-1 flex-column\">\n        <div class=\"toolbar position-relative d-flex flex-shrink-0 p-2 align-items-center\">\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleNavigation()\">\n                <i class=\"fas fa-bars\"></i>\n            </button>\n        </div>\n\n        <div class=\"container-fluid position-relative flex-grow-1 pt-3 pb-2\">\n        </div>\n    </div>\n</div>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "navigation",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "NavigationDrawerComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 29,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'navigation'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ]
+                },
+                {
+                    "name": "toggleNavigation",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\nimport { MenuItem, NavigationDrawerComponent } from 'zs-lib';\n\n@Component({\n  selector: 'storybook-navigation-drawer',\n  template: `\n    <div class=\"d-flex box\">\n        <zambon-lib-navigation-drawer #navigation\n            [userName]=\"'Test'\"\n            [userDepartment]=\"'Test department'\"\n            [userImage]=\"null\"\n        >\n        </zambon-lib-navigation-drawer>\n        \n        <div class=\"main d-flex flex-grow-1 flex-column\">\n            <div class=\"toolbar position-relative d-flex flex-shrink-0 p-2 align-items-center\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleNavigation()\">\n                    <i class=\"fas fa-bars\"></i>\n                </button>\n            </div>\n\n            <div class=\"container-fluid position-relative flex-grow-1 pt-3 pb-2\">\n            </div>\n        </div>\n    </div>`,\n  styleUrls: [ './navigation-drawer-story.component.scss' ]\n})\nexport default class NavigationDrawerStoryComponent implements AfterViewInit {\n  @ViewChild('navigation') navigation!: NavigationDrawerComponent;\n  \n  constructor() {\n    \n  }\n\n  async ngAfterViewInit(): Promise<void> {\n    const home = new MenuItem(); home.id = 1; home.icon = 'home'; home.label = 'Home page'; home.url = '';\n    \n    const menus = [\n      home\n    ];\n\n    this.navigation.menus = menus;  \n  }\n\n\n  toggleNavigation() {\n    this.navigation.toggleState();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".box {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    \r\n    .main {\r\n        overflow: hidden;\r\n\r\n        .toolbar {\r\n            border-bottom: 1px solid darken(white, 15%);\r\n            font-size: 0.9rem;\r\n            color: black;\r\n            z-index: 2;\r\n\r\n            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./navigation-drawer-story.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 29
+            },
+            "implements": [
+                "AfterViewInit"
+            ]
         },
         {
             "name": "PageComponent",
@@ -851,13 +1508,13 @@
     "modules": [
         {
             "name": "ComponentsModule",
-            "id": "module-ComponentsModule-c80281f7f0acf1278b368707750114bb0e8b116057feb04617bf1782284ea7fb0eb0c0c8fef8c9d289a0594e14d5875d8db02796b0a7337c4e62d552e2da6085",
+            "id": "module-ComponentsModule-485d125e94f40da0139733f6210e5ef566aa9534f5a974a55e2c51bfd31f9b1e96fc7a7150f9c207f525becbc94df493cbcab3b2337e96ae655b68e4d5afb634",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/zs-lib/src/lib/components/components.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { LoginModule } from './login/login.module';\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule,\n    LoginModule\n  ],\n  exports: [\n      LoginModule\n  ]\n})\nexport class ComponentsModule { }",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\n\nimport { LoginModule } from './login/login.module';\nimport { NavigationModule } from './navigation/navigation.module';\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule,\n    LoginModule,\n    NavigationModule\n  ],\n  exports: [\n      LoginModule,\n      NavigationModule\n  ]\n})\nexport class ComponentsModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -872,6 +1529,9 @@
                     "elements": [
                         {
                             "name": "LoginModule"
+                        },
+                        {
+                            "name": "NavigationModule"
                         }
                     ]
                 },
@@ -880,6 +1540,53 @@
                     "elements": [
                         {
                             "name": "LoginModule"
+                        },
+                        {
+                            "name": "NavigationModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "DirectivesModule",
+            "id": "module-DirectivesModule-1d093c3944a0f8ff8485df39e57af9ef000cf4987b13ef17346473ba0cb6785499ec37747b37d0d1f4a8c84e722f32413d9aefb635e80fc54fdbc89b544f8a1f",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/zs-lib/src/lib/directives/directives.module.ts",
+            "methods": [],
+            "sourceCode": "import { TrackScrollDirective } from './track-scroll.directive';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [ TrackScrollDirective ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n      TrackScrollDirective\n  ]\n})\nexport class DirectivesModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "TrackScrollDirective"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "TrackScrollDirective"
                         }
                     ]
                 },
@@ -1015,13 +1722,13 @@
         },
         {
             "name": "MyLibModule",
-            "id": "module-MyLibModule-6db8f5b4a16425cbcd213c6720c121f5bf159f03f6eaf84af10ade2c223bbfda02957ca652e78441e53f95275d8cefcd13202b0cbd72e1597c1274f5153ba19f",
+            "id": "module-MyLibModule-411e9a3ee31acaf64f4b45b3d7851b14da8a0d8f101dc72241f5ae52ffbd75adffd20954431d1f83d07bcb6eb28004a671e499d183de1ee9b33a8665ad85fc3b",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/zs-lib/src/lib/my-lib.module.ts",
             "methods": [],
-            "sourceCode": "import { TranslateModule } from '@ngx-translate/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { ComponentsModule } from './components/components.module';\r\nimport { I18nModule } from './i18n/i18n.module';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n  ],\r\n  imports: [\r\n      CommonModule,\r\n      I18nModule,\r\n      ComponentsModule,\r\n  ],\r\n  exports: [\r\n    I18nModule,\r\n    ComponentsModule\r\n  ]\r\n})\r\nexport class MyLibModule { }",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { ComponentsModule } from './components/components.module';\r\nimport { I18nModule } from './i18n/i18n.module';\r\n\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n      CommonModule,\r\n      I18nModule,\r\n      ComponentsModule,\r\n  ],\r\n  exports: [\r\n    I18nModule,\r\n    ComponentsModule\r\n  ]\r\n})\r\nexport class MyLibModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -1056,6 +1763,54 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "NavigationModule",
+            "id": "module-NavigationModule-18dad92d55572be1bd5e8229cfebef59a056f3753a1124d52816da4e5cb49cce7561ce1adad47f75080a942e632c4934520039b29e58b7943f9c36574f657d0c",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/zs-lib/src/lib/components/navigation/navigation.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { DirectivesModule } from './../../directives/directives.module';\nimport { NavigationDrawerComponent } from './navigation-drawer/navigation-drawer.component';\n\n\n@NgModule({\n  declarations: [\n      NavigationDrawerComponent\n  ],\n  imports: [\n    CommonModule,\n    DirectivesModule\n  ],\n  exports: [\n    NavigationDrawerComponent\n  ]\n})\nexport class NavigationModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "NavigationDrawerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "DirectivesModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "NavigationDrawerComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
@@ -1075,6 +1830,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "stories/login/login-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/navigation/navigation-drawer.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1194,21 +1959,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "stories/Header.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<Header>",
-                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "stories/my-lib.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<MyLibComponent>",
                 "defaultValue": "(args: MyLibComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/Header.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<Header>",
+                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
             },
             {
                 "name": "Template",
@@ -1229,6 +1994,16 @@
                 "deprecationMessage": "",
                 "type": "Story<LoginInputStoryComponent>",
                 "defaultValue": "(args: LoginInputStoryComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/navigation/navigation-drawer.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<NavigationDrawerStoryComponent>",
+                "defaultValue": "(args: NavigationDrawerStoryComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1359,6 +2134,28 @@
                     "deprecationMessage": "",
                     "type": "Story<LoginInputStoryComponent>",
                     "defaultValue": "(args: LoginInputStoryComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "stories/navigation/navigation-drawer.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/navigation/navigation-drawer.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/navigation/navigation-drawer.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<NavigationDrawerStoryComponent>",
+                    "defaultValue": "(args: NavigationDrawerStoryComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "stories/login/login-language-dropdown.stories.ts": [
@@ -1614,6 +2411,24 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/zs-lib/src/lib/components/navigation/navigation-drawer/navigation-drawer.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavigationDrawerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/23",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zs-lib/src/lib/directives/track-scroll.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "TrackScrollDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
                 "type": "function",
                 "linktype": "miscellaneous",
@@ -1641,6 +2456,15 @@
                 "name": "Languages",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zs-lib/src/lib/models/menu-item.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "MenuItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
                 "status": "low"
             },
             {
@@ -1850,6 +2674,35 @@
             },
             {
                 "filePath": "stories/my-lib.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/navigation/navigation-drawer.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavigationDrawerStoryComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/navigation/navigation-drawer.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/navigation/navigation-drawer.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
