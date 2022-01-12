@@ -1,3 +1,21 @@
+@import "../../variables/navigation.theme";
+
+@import "../background";
+@import "../scroll";
+
+@mixin navigation-drawer-background(
+    $background-url
+) {
+    :host ::ng-deep zambon-lib-navigation-drawer {
+        .menu {
+            .navbar-header:before,
+            .navbar-menu .nav .background-fill:before {
+                background: url(#{$background-url});
+            }
+        }
+    }
+}
+
 @mixin navigation-drawer-logos(
     $logo-expanded-url,
     $logo-collapsed-url
@@ -11,6 +29,112 @@
             .logo-collapsed {
                 background: url($logo-collapsed-url);
             }
+        }
+    }
+}
+
+@mixin navigation-drawer-set-custom-size(
+    $menu-expanded-width,
+    $menu-collapsed-width
+) {
+    :host ::ng-deep zambon-lib-navigation-drawer {
+        @include navigation-drawer-set-size(
+            $menu-expanded-width,
+            $menu-collapsed-width
+        );
+    }
+}
+
+
+@mixin navigation-drawer(
+    $menu-fore-color: darken($home-base-color, 10%),
+    $menu-background-color: darken($home-base-color3, 5%),
+    $menu-shadow-color: $home-base-color4,
+    $picture-background-color: $home-base-color,
+    $department-fore-color: lighten($home-fore-color, 40%),
+    $scroll-color: darken($home-base-color3, 7%),
+    $items-container-background-color: darken($home-base-color3, 7%)
+) {
+    .menu {
+        color: darken($menu-fore-color, 10%);
+
+        box-shadow: 0 0 4px 0 rgba($menu-shadow-color, 0.2), 6px 0 20px 0 rgba($menu-shadow-color, 0.19);
+        -webkit-box-shadow: 0 0 4px 0 rgba($menu-shadow-color, 0.2), 6px 0 20px 0 rgba($menu-shadow-color, 0.19);
+        -moz-box-shadow: 0 0 4px 0 rgba($menu-shadow-color, 0.2), 6px 0 20px 0 rgba($menu-shadow-color, 0.19);
+
+        .navbar-header {
+            @include background($menu-background-color, .95);
+
+            .profile-container {
+                .profile-picture {
+                    background-color: $picture-background-color;
+                }
+
+                .user-department {
+                    color: $department-fore-color;
+                }
+            }
+        }
+
+        .navbar-menu {
+            @include scroll($scroll-color);
+    
+            .nav .background-fill {
+                @include background($items-container-background-color, .95);
+            }
+        }
+    }
+}
+
+@mixin navigation-drawer-set-size(
+    $menu-expanded-width: $menu-expanded-default-width,
+    $menu-collapsed-width: $menu-collapsed-default-width,
+) {
+    @keyframes collapse#{$menu-expanded-width}_#{$menu-collapsed-width} {
+        from { width: $menu-expanded-width; }
+        to { width: $menu-collapsed-width; }
+    }
+    
+    @keyframes expand#{$menu-collapsed-width}_#{$menu-expanded-width} {
+        from { width: $menu-collapsed-width; }
+        to { width: $menu-expanded-width; }
+    }
+
+    .menu {
+        &.collapsed {
+            width: $menu-collapsed-width;
+
+            &:not(.first-opened) {
+                animation-name: collapse#{$menu-expanded-width}_#{$menu-collapsed-width};
+            }
+        }
+
+        &.expanded {
+            width: $menu-expanded-width;
+
+            &:not(.first-opened) {
+                animation-name: expand#{$menu-collapsed-width}_#{$menu-expanded-width};
+            }
+        }
+    }
+
+    .logo-expanded {
+        width: $menu-expanded-width;
+    }
+
+    .logo-collapsed {
+        width: $menu-collapsed-width;
+    }
+
+    .user-name, .user-department {
+        width: calc(#{$menu-expanded-width} - #{$menu-collapsed-width});
+    }
+
+    @media (max-width:768px) {
+        .menu {
+            margin-left: -$menu-collapsed-width;
+            max-width: $menu-collapsed-width !important;
+            width: $menu-collapsed-width !important;
         }
     }
 }

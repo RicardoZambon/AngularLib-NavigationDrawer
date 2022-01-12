@@ -1386,7 +1386,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../../projects/zambon-lib/src/assets/styles/mixins/navigation/navigation-drawer';\r\n\r\n@include navigation-drawer-logos(\r\n    '/assets/images/logo_menu_expanded.png',\r\n    '/assets/images/logo_menu_collapsed.png'\r\n);\r\n\r\n.box {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    \r\n    .main {\r\n        overflow: hidden;\r\n\r\n        .toolbar {\r\n            border-bottom: 1px solid darken(white, 15%);\r\n            font-size: 0.9rem;\r\n            color: black;\r\n            z-index: 2;\r\n\r\n            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n    }\r\n}",
+                    "data": "@import '../../projects/zambon-lib/src/assets/styles/mixins/navigation/navigation-drawer';\r\n\r\n@include navigation-drawer-background(\r\n    '/assets/images/background.png'\r\n);\r\n\r\n@include navigation-drawer-logos(\r\n    '/assets/images/logo_menu_expanded.png',\r\n    '/assets/images/logo_menu_collapsed.png'\r\n);\r\n\r\n.box {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    \r\n    .main {\r\n        overflow: hidden;\r\n\r\n        .toolbar {\r\n            border-bottom: 1px solid darken(white, 15%);\r\n            font-size: 0.9rem;\r\n            color: black;\r\n            z-index: 2;\r\n\r\n            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n    }\r\n}",
                     "styleUrl": "./navigation-drawer-story.component.scss"
                 }
             ],
@@ -1693,50 +1693,6 @@
             ]
         },
         {
-            "name": "MyLibModule",
-            "id": "module-MyLibModule-411e9a3ee31acaf64f4b45b3d7851b14da8a0d8f101dc72241f5ae52ffbd75adffd20954431d1f83d07bcb6eb28004a671e499d183de1ee9b33a8665ad85fc3b",
-            "description": "",
-            "deprecationMessage": "",
-            "deprecated": false,
-            "file": "projects/zambon-lib/src/lib/my-lib.module.ts",
-            "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { ComponentsModule } from './components/components.module';\r\nimport { I18nModule } from './i18n/i18n.module';\r\n\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n      CommonModule,\r\n      I18nModule,\r\n      ComponentsModule,\r\n  ],\r\n  exports: [\r\n    I18nModule,\r\n    ComponentsModule\r\n  ]\r\n})\r\nexport class MyLibModule { }",
-            "children": [
-                {
-                    "type": "providers",
-                    "elements": []
-                },
-                {
-                    "type": "declarations",
-                    "elements": []
-                },
-                {
-                    "type": "imports",
-                    "elements": [
-                        {
-                            "name": "I18nModule"
-                        }
-                    ]
-                },
-                {
-                    "type": "exports",
-                    "elements": [
-                        {
-                            "name": "I18nModule"
-                        }
-                    ]
-                },
-                {
-                    "type": "bootstrap",
-                    "elements": []
-                },
-                {
-                    "type": "classes",
-                    "elements": []
-                }
-            ]
-        },
-        {
             "name": "NavigationModule",
             "id": "module-NavigationModule-5d5ed7b52560e8ba513e9df85b3373c03b60174ff0e7b0803070b4b3e3be9b08067dfc22f047039ff0b4d6f8dd229b8d32130f3280bf79fc717f9ec20e3a1341",
             "description": "",
@@ -1783,20 +1739,54 @@
                     "elements": []
                 }
             ]
+        },
+        {
+            "name": "ZambonLibModule",
+            "id": "module-ZambonLibModule-00a6f3650ab3a08f280ebf13e7c024d4fec9a72a8a0c635a211afecc3053e914b168ab694d8255cf4653d2889a5f0d1263a302294df583544f00022627dd3144",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/zambon-lib/src/lib/zambon-lib.module.ts",
+            "methods": [],
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { ComponentsModule } from './components/components.module';\r\nimport { I18nModule } from './i18n/i18n.module';\r\n\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n      CommonModule,\r\n      I18nModule,\r\n      ComponentsModule,\r\n  ],\r\n  exports: [\r\n    I18nModule,\r\n    ComponentsModule\r\n  ]\r\n})\r\nexport class ZambonLibModule { }",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "I18nModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "I18nModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
         }
     ],
     "miscellaneous": {
         "variables": [
-            {
-                "name": "Default",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "stories/my-lib.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
-            },
             {
                 "name": "Default",
                 "ctype": "miscellaneous",
@@ -1941,16 +1931,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "stories/my-lib.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<MyLibComponent>",
-                "defaultValue": "(args: MyLibComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "stories/Page.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2064,28 +2044,6 @@
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
-            "stories/my-lib.stories.ts": [
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/my-lib.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "stories/my-lib.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<MyLibComponent>",
-                    "defaultValue": "(args: MyLibComponent) => ({\r\n  props: args,\r\n})"
-                }
-            ],
             "stories/login/login-input.stories.ts": [
                 {
                     "name": "Default",
@@ -2626,26 +2584,6 @@
             },
             {
                 "filePath": "stories/login/login-language-dropdown.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Template",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "stories/my-lib.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "stories/my-lib.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

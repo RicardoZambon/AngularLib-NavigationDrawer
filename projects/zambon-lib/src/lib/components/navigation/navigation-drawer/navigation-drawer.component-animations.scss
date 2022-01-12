@@ -1,17 +1,9 @@
 @import "../../../../assets/styles/variables/navigation.theme";
 
+@import '../../../../assets/styles/mixins/navigation/navigation-drawer';
+@include navigation-drawer-set-size();
+
 /* Animations */
-@keyframes collapse {
-    from { width: $menu-width-expanded; }
-    to { width: $menu-width-collapsed; }
-}
-
-@keyframes expand {
-    from { width: $menu-width-collapsed; }
-    to { width: $menu-width-expanded; }
-}
-
-
 @keyframes fadeout {
     from { opacity: 1; }
     to { opacity: 0; }
@@ -26,10 +18,10 @@
 .menu {
     /* Collapsed */
     &.collapsed {
-        width: $menu-width-collapsed;
-
         &:not(.first-opened) {
-            animation: collapse $menu-animation-speed ease-in-out;
+            // animation-name: collapse;
+            animation-duration: $menu-animation-speed;
+            animation-timing-function: ease-in-out;
 
             .logo-container {
                 .logo-expanded {
@@ -65,10 +57,10 @@
 
     /* Expanded */
     &.expanded {
-        width: $menu-width-expanded;
-
         &:not(.first-opened) {
-            animation: expand $menu-animation-speed ease-in-out;
+            // animation-name: expand;
+            animation-duration: $menu-animation-speed;
+            animation-timing-function: ease-in-out;
 
             .logo-container {
                 .logo-expanded {
@@ -100,9 +92,6 @@
 
 @media (max-width:768px) {
     .menu {
-        margin-left: -70px;
-        max-width: 70px !important;
-        width: 70px !important;
         transition: margin-left $menu-animation-speed ease-in-out;
 
         &.collapsed {

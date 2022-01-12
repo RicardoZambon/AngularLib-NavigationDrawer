@@ -1,10 +1,25 @@
 @import '../../projects/zambon-lib/src/assets/styles/mixins/navigation/navigation-drawer';
 
+@include navigation-drawer-background(
+    '/assets/images/background.jpg'
+);
+
 @include navigation-drawer-logos(
     '/assets/images/logo_menu_expanded.png',
     '/assets/images/logo_menu_collapsed.png'
 );
 
+// If you require custom navigation size, use the following mixin
+// @include navigation-drawer-set-custom-size(
+//     300px,
+//     100px
+// );
+
+/*
+
+Workarounds for story page
+
+*/
 .box {
     position: absolute;
     top: 0;
