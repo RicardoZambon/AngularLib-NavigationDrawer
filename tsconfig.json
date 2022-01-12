@@ -12,7 +12,7 @@
       "declaration": false,
       "downlevelIteration": true,
       "paths": {
-        "zs-lib": ["projects/zs-lib/src/public-api"]
+        "zambon-lib": ["projects/zambon-lib/src/public-api"]
       },
       "experimentalDecorators": true,
       "moduleResolution": "node",

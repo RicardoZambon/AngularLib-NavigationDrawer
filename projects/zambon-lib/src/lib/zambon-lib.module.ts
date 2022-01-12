@@ -16,4 +16,4 @@ import { I18nModule } from './i18n/i18n.module';
     ComponentsModule
   ]
 })
-export class MyLibModule { }
+export class ZambonLibModule { }

@@ -1,5 +1,5 @@
 {
-  "extends": "../projects/zs-lib/tsconfig.lib.json",
+  "extends": "../projects/zambon-lib/tsconfig.lib.json",
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "types": [

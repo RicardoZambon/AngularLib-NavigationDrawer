@@ -21,7 +21,7 @@
         {
             "name": "MenuItem",
             "id": "class-MenuItem-eb573608474890945a20e3fb22aa9b421f88bfb7b683ff582dcdfe7d2c0236dd6b72e08f5d1aee4ef0ab4bbf96f0b1c8cc942a954cc88b4b4d13a60158ae5003",
-            "file": "projects/zs-lib/src/lib/models/menu-item.ts",
+            "file": "projects/zambon-lib/src/lib/models/menu-item.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "class",
@@ -140,7 +140,7 @@
         {
             "name": "TrackScrollDirective",
             "id": "directive-TrackScrollDirective-bf84ab4dcbbc782d94008a19d91370e6c21eccba8821672bf4a23b1d6ef6b9f7164f14bbee78ab548398efc85e9c5fd9411932bf1f33e1f55d9dde5ac3eab186",
-            "file": "projects/zs-lib/src/lib/directives/track-scroll.directive.ts",
+            "file": "projects/zambon-lib/src/lib/directives/track-scroll.directive.ts",
             "type": "directive",
             "description": "",
             "rawdescription": "\n",
@@ -404,7 +404,7 @@
         {
             "name": "LoginInputComponent",
             "id": "component-LoginInputComponent-cf22f77abf700d2f388d13c30c60e13ea3ff69e742a20f5d2e733bc151f9e21636a614c959bc301a4ed1f8693b1c9c856c8a5f5863688c2c449099014feeb719",
-            "file": "projects/zs-lib/src/lib/components/login/login-input/login-input.component.ts",
+            "file": "projects/zambon-lib/src/lib/components/login/login-input/login-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "host": {},
@@ -613,7 +613,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../../projects/zs-lib/src/assets/styles/mixins/login/login-input';\r\n\r\n@include login-input-theme('danger', $background-color: darkred);\r\n@include login-input-theme('warning', $background-color: orange);\r\n@include login-input-theme('success', $background-color: green);",
+                    "data": "@import '../../projects/zambon-lib/src/assets/styles/mixins/login/login-input';\r\n\r\n@include login-input-theme('danger', $background-color: darkred);\r\n@include login-input-theme('warning', $background-color: orange);\r\n@include login-input-theme('success', $background-color: green);",
                     "styleUrl": "./login-input-story.component.scss"
                 }
             ],
@@ -648,7 +648,7 @@
         {
             "name": "LoginLanguageDropdownComponent",
             "id": "component-LoginLanguageDropdownComponent-86a4fb8fe8afc7fd05f66385260d916cb514a8e59585da5d27d8d4007f69e328307eda4bde403c7afcca2ca0b34cd273496510c95b5b34cdf153f23169c79350",
-            "file": "projects/zs-lib/src/lib/components/login/login-language-dropdown/login-language-dropdown.component.ts",
+            "file": "projects/zambon-lib/src/lib/components/login/login-language-dropdown/login-language-dropdown.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "host": {},
@@ -916,7 +916,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../../projects/zs-lib/src/assets/styles/mixins/login/language-dropdown';\r\n\r\n@include language-dropdown-theme('danger', $item-active-background-color: darkred);\r\n@include language-dropdown-theme('warning', $item-active-background-color: orange);\r\n@include language-dropdown-theme('success', $item-active-background-color: green);",
+                    "data": "@import '../../projects/zambon-lib/src/assets/styles/mixins/login/language-dropdown';\r\n\r\n@include language-dropdown-theme('danger', $item-active-background-color: darkred);\r\n@include language-dropdown-theme('warning', $item-active-background-color: orange);\r\n@include language-dropdown-theme('success', $item-active-background-color: green);",
                     "styleUrl": "./login-language-dropdown-story.component.scss"
                 }
             ],
@@ -933,7 +933,7 @@
         {
             "name": "NavigationDrawerComponent",
             "id": "component-NavigationDrawerComponent-5de62e4e4e68718831d1c23f9539e2f41d26738303ffbe638f6cf78384d0e5f0b2fb7d81f88ea58b7b4deb27b89c33c0113a19fb6169cedc8aac185b888e3aa5",
-            "file": "projects/zs-lib/src/lib/components/navigation/navigation-drawer/navigation-drawer.component.ts",
+            "file": "projects/zambon-lib/src/lib/components/navigation/navigation-drawer/navigation-drawer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -1316,7 +1316,7 @@
         },
         {
             "name": "NavigationDrawerStoryComponent",
-            "id": "component-NavigationDrawerStoryComponent-71e5f34fa257010e27b21cb9c6db92c11400e5fc5592aa9e9037be9608a75a3dcf3c1e2200cc642f978075b67ee8761455fba898d6238f2c0f64f1574d8157a8",
+            "id": "component-NavigationDrawerStoryComponent-c2aed5417a3d9950a6f273ad5d57d9dc440347ab2a52deb1fc049b7da4ff2423cbc73a58895dce88af9fec7dfcd800eeb98e24a58544e1715e5664b631bc2c7e",
             "file": "stories/navigation/navigation-drawer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1382,11 +1382,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\nimport { MenuItem, NavigationDrawerComponent } from 'zs-lib';\n\n@Component({\n  selector: 'storybook-navigation-drawer',\n  template: `\n    <div class=\"d-flex box\">\n        <zambon-lib-navigation-drawer #navigation\n            [userName]=\"'Test'\"\n            [userDepartment]=\"'Test department'\"\n            [userImage]=\"null\"\n        >\n        </zambon-lib-navigation-drawer>\n        \n        <div class=\"main d-flex flex-grow-1 flex-column\">\n            <div class=\"toolbar position-relative d-flex flex-shrink-0 p-2 align-items-center\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleNavigation()\">\n                    <i class=\"fas fa-bars\"></i>\n                </button>\n            </div>\n\n            <div class=\"container-fluid position-relative flex-grow-1 pt-3 pb-2\">\n            </div>\n        </div>\n    </div>`,\n  styleUrls: [ './navigation-drawer-story.component.scss' ]\n})\nexport default class NavigationDrawerStoryComponent implements AfterViewInit {\n  @ViewChild('navigation') navigation!: NavigationDrawerComponent;\n  \n  constructor() {\n    \n  }\n\n  async ngAfterViewInit(): Promise<void> {\n    const home = new MenuItem(); home.id = 1; home.icon = 'home'; home.label = 'Home page'; home.url = '';\n    \n    const menus = [\n      home\n    ];\n\n    this.navigation.menus = menus;  \n  }\n\n\n  toggleNavigation() {\n    this.navigation.toggleState();\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\nimport { MenuItem, NavigationDrawerComponent } from 'projects/zambon-lib/src/public-api';\n\n@Component({\n  selector: 'storybook-navigation-drawer',\n  template: `\n    <div class=\"d-flex box\">\n        <zambon-lib-navigation-drawer #navigation\n            [userName]=\"'Test'\"\n            [userDepartment]=\"'Test department'\"\n            [userImage]=\"null\"\n        >\n        </zambon-lib-navigation-drawer>\n        \n        <div class=\"main d-flex flex-grow-1 flex-column\">\n            <div class=\"toolbar position-relative d-flex flex-shrink-0 p-2 align-items-center\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleNavigation()\">\n                    <i class=\"fas fa-bars\"></i>\n                </button>\n            </div>\n\n            <div class=\"container-fluid position-relative flex-grow-1 pt-3 pb-2\">\n            </div>\n        </div>\n    </div>`,\n  styleUrls: [ './navigation-drawer-story.component.scss' ]\n})\nexport default class NavigationDrawerStoryComponent implements AfterViewInit {\n  @ViewChild('navigation') navigation!: NavigationDrawerComponent;\n  \n  constructor() {\n    \n  }\n\n  async ngAfterViewInit(): Promise<void> {\n    const home = new MenuItem(); home.id = 1; home.icon = 'home'; home.label = 'Home page'; home.url = '';\n    \n    const menus = [\n      home\n    ];\n\n    this.navigation.menus = menus;  \n  }\n\n\n  toggleNavigation() {\n    this.navigation.toggleState();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../../projects/zs-lib/src/assets/styles/mixins/navigation/navigation-drawer';\r\n\r\n@include navigation-drawer-logos('/assets/images/logo_menu_expanded.png', '/assets/images/logo_menu_expanded.png');\r\n\r\n.box {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    \r\n    .main {\r\n        overflow: hidden;\r\n\r\n        .toolbar {\r\n            border-bottom: 1px solid darken(white, 15%);\r\n            font-size: 0.9rem;\r\n            color: black;\r\n            z-index: 2;\r\n\r\n            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n    }\r\n}",
+                    "data": "@import '../../projects/zambon-lib/src/assets/styles/mixins/navigation/navigation-drawer';\r\n\r\n@include navigation-drawer-logos(\r\n    '/assets/images/logo_menu_expanded.png',\r\n    '/assets/images/logo_menu_collapsed.png'\r\n);\r\n\r\n.box {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    \r\n    .main {\r\n        overflow: hidden;\r\n\r\n        .toolbar {\r\n            border-bottom: 1px solid darken(white, 15%);\r\n            font-size: 0.9rem;\r\n            color: black;\r\n            z-index: 2;\r\n\r\n            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n    }\r\n}",
                     "styleUrl": "./navigation-drawer-story.component.scss"
                 }
             ],
@@ -1484,7 +1484,7 @@
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "projects/zs-lib/src/lib/components/components.module.ts",
+            "file": "projects/zambon-lib/src/lib/components/components.module.ts",
             "methods": [],
             "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\n\nimport { LoginModule } from './login/login.module';\nimport { NavigationModule } from './navigation/navigation.module';\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule,\n    LoginModule,\n    NavigationModule\n  ],\n  exports: [\n      LoginModule,\n      NavigationModule\n  ]\n})\nexport class ComponentsModule { }",
             "children": [
@@ -1534,7 +1534,7 @@
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "projects/zs-lib/src/lib/directives/directives.module.ts",
+            "file": "projects/zambon-lib/src/lib/directives/directives.module.ts",
             "methods": [],
             "sourceCode": "import { TrackScrollDirective } from './track-scroll.directive';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [ TrackScrollDirective ],\n  imports: [\n    CommonModule\n  ],\n  exports: [\n      TrackScrollDirective\n  ]\n})\nexport class DirectivesModule { }\n",
             "children": [
@@ -1578,7 +1578,7 @@
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+            "file": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
             "methods": [
                 {
                     "name": "forRoot",
@@ -1648,7 +1648,7 @@
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "projects/zs-lib/src/lib/components/login/login.module.ts",
+            "file": "projects/zambon-lib/src/lib/components/login/login.module.ts",
             "methods": [],
             "sourceCode": "import { TranslateModule } from '@ngx-translate/core';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ReactiveFormsModule } from '@angular/forms';\n\nimport { LoginInputComponent } from './login-input/login-input.component';\nimport { LoginLanguageDropdownComponent } from './login-language-dropdown/login-language-dropdown.component';\n\n\n@NgModule({\n  declarations: [\n    LoginInputComponent,\n    LoginLanguageDropdownComponent\n  ],\n  imports: [\n    CommonModule,\n    ReactiveFormsModule,\n    TranslateModule\n  ],\n  exports: [\n    LoginInputComponent,\n    LoginLanguageDropdownComponent\n  ]\n})\nexport class LoginModule { }",
             "children": [
@@ -1698,7 +1698,7 @@
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "projects/zs-lib/src/lib/my-lib.module.ts",
+            "file": "projects/zambon-lib/src/lib/my-lib.module.ts",
             "methods": [],
             "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { ComponentsModule } from './components/components.module';\r\nimport { I18nModule } from './i18n/i18n.module';\r\n\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n      CommonModule,\r\n      I18nModule,\r\n      ComponentsModule,\r\n  ],\r\n  exports: [\r\n    I18nModule,\r\n    ComponentsModule\r\n  ]\r\n})\r\nexport class MyLibModule { }",
             "children": [
@@ -1738,13 +1738,13 @@
         },
         {
             "name": "NavigationModule",
-            "id": "module-NavigationModule-18dad92d55572be1bd5e8229cfebef59a056f3753a1124d52816da4e5cb49cce7561ce1adad47f75080a942e632c4934520039b29e58b7943f9c36574f657d0c",
+            "id": "module-NavigationModule-5d5ed7b52560e8ba513e9df85b3373c03b60174ff0e7b0803070b4b3e3be9b08067dfc22f047039ff0b4d6f8dd229b8d32130f3280bf79fc717f9ec20e3a1341",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "projects/zs-lib/src/lib/components/navigation/navigation.module.ts",
+            "file": "projects/zambon-lib/src/lib/components/navigation/navigation.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { DirectivesModule } from './../../directives/directives.module';\nimport { NavigationDrawerComponent } from './navigation-drawer/navigation-drawer.component';\n\n\n@NgModule({\n  declarations: [\n      NavigationDrawerComponent\n  ],\n  imports: [\n    CommonModule,\n    DirectivesModule\n  ],\n  exports: [\n    NavigationDrawerComponent\n  ]\n})\nexport class NavigationModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { DirectivesModule } from '../../directives/directives.module';\nimport { NavigationDrawerComponent } from './navigation-drawer/navigation-drawer.component';\n\n\n@NgModule({\n  declarations: [\n      NavigationDrawerComponent\n  ],\n  imports: [\n    CommonModule,\n    DirectivesModule\n  ],\n  exports: [\n    NavigationDrawerComponent\n  ]\n})\nexport class NavigationModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -1831,7 +1831,7 @@
                 "name": "Languages",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+                "file": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -1991,7 +1991,7 @@
         "functions": [
             {
                 "name": "translateCacheFactory",
-                "file": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+                "file": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -2034,7 +2034,7 @@
             },
             {
                 "name": "translateLoaderFactory",
-                "file": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+                "file": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
                 "ctype": "miscellaneous",
                 "subtype": "function",
                 "deprecated": false,
@@ -2152,12 +2152,12 @@
                     "defaultValue": "(args: NavigationDrawerStoryComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
-            "projects/zs-lib/src/lib/i18n/i18n.module.ts": [
+            "projects/zambon-lib/src/lib/i18n/i18n.module.ts": [
                 {
                     "name": "Languages",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+                    "file": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2282,10 +2282,10 @@
             ]
         },
         "groupedFunctions": {
-            "projects/zs-lib/src/lib/i18n/i18n.module.ts": [
+            "projects/zambon-lib/src/lib/i18n/i18n.module.ts": [
                 {
                     "name": "translateCacheFactory",
-                    "file": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+                    "file": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -2328,7 +2328,7 @@
                 },
                 {
                     "name": "translateLoaderFactory",
-                    "file": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+                    "file": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
                     "ctype": "miscellaneous",
                     "subtype": "function",
                     "deprecated": false,
@@ -2365,7 +2365,7 @@
         "status": "low",
         "files": [
             {
-                "filePath": "projects/zs-lib/src/lib/components/login/login-input/login-input.component.ts",
+                "filePath": "projects/zambon-lib/src/lib/components/login/login-input/login-input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "LoginInputComponent",
@@ -2374,7 +2374,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/zs-lib/src/lib/components/login/login-language-dropdown/login-language-dropdown.component.ts",
+                "filePath": "projects/zambon-lib/src/lib/components/login/login-language-dropdown/login-language-dropdown.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "LoginLanguageDropdownComponent",
@@ -2383,7 +2383,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/zs-lib/src/lib/components/navigation/navigation-drawer/navigation-drawer.component.ts",
+                "filePath": "projects/zambon-lib/src/lib/components/navigation/navigation-drawer/navigation-drawer.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "NavigationDrawerComponent",
@@ -2392,7 +2392,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/zs-lib/src/lib/directives/track-scroll.directive.ts",
+                "filePath": "projects/zambon-lib/src/lib/directives/track-scroll.directive.ts",
                 "type": "directive",
                 "linktype": "directive",
                 "name": "TrackScrollDirective",
@@ -2401,7 +2401,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+                "filePath": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
                 "type": "function",
                 "linktype": "miscellaneous",
                 "linksubtype": "function",
@@ -2411,7 +2411,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+                "filePath": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
                 "type": "function",
                 "linktype": "miscellaneous",
                 "linksubtype": "function",
@@ -2421,7 +2421,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/zs-lib/src/lib/i18n/i18n.module.ts",
+                "filePath": "projects/zambon-lib/src/lib/i18n/i18n.module.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -2431,7 +2431,7 @@
                 "status": "low"
             },
             {
-                "filePath": "projects/zs-lib/src/lib/models/menu-item.ts",
+                "filePath": "projects/zambon-lib/src/lib/models/menu-item.ts",
                 "type": "class",
                 "linktype": "classe",
                 "name": "MenuItem",

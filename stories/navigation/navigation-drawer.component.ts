@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MenuItem, NavigationDrawerComponent } from 'zs-lib';
+import { MenuItem, NavigationDrawerComponent } from 'projects/zambon-lib/src/public-api';
 
 @Component({
   selector: 'storybook-navigation-drawer',

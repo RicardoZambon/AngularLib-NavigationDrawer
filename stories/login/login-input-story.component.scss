@@ -1,4 +1,4 @@
-@import '../../projects/zs-lib/src/assets/styles/mixins/login/login-input';
+@import '../../projects/zambon-lib/src/assets/styles/mixins/login/login-input';
 
 @include login-input-theme('danger', $background-color: darkred);
 @include login-input-theme('warning', $background-color: orange);

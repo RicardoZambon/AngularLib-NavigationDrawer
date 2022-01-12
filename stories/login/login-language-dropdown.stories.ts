@@ -1,5 +1,5 @@
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
-import { I18nModule, MyLibModule } from 'zs-lib';
+import { I18nModule, ZambonLibModule } from 'zambon-lib';
 
 import LoginLanguageInputDropdownStoryComponent from './login-language-dropdown-story.component';
 
@@ -10,7 +10,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
-        MyLibModule,
+        ZambonLibModule,
         I18nModule.forRoot(['en', 'pt'])
       ],
     }),

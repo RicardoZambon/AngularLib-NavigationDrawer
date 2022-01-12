@@ -6,23 +6,23 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "zs-lib": {
+    "zambon-lib": {
       "projectType": "library",
-      "root": "projects/zs-lib",
-      "sourceRoot": "projects/zs-lib/src",
+      "root": "projects/zambon-lib",
+      "sourceRoot": "projects/zambon-lib/src",
       "prefix": "zambon-lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/zs-lib/ng-package.json"
+            "project": "projects/zambon-lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/zs-lib/tsconfig.lib.prod.json"
+              "tsConfig": "projects/zambon-lib/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/zs-lib/tsconfig.lib.json"
+              "tsConfig": "projects/zambon-lib/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -30,9 +30,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/zs-lib/src/test.ts",
-            "tsConfig": "projects/zs-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/zs-lib/karma.conf.js"
+            "main": "projects/zambon-lib/src/test.ts",
+            "tsConfig": "projects/zambon-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/zambon-lib/karma.conf.js"
           }
         }
       },
@@ -62,12 +62,12 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/zs-lib/src/assets/images/",
+                "input": "projects/zambon-lib/src/assets/images/",
                 "output": "/assets/images"
               },
               {
                 "glob": "**/*.json",
-                "input": "projects/zs-lib/src/assets/i18n/",
+                "input": "projects/zambon-lib/src/assets/i18n/",
                 "output": "/assets/i18n"
               },
               {
@@ -91,6 +91,6 @@
       }
     }
   },
-  "defaultProject": "zs-lib"
+  "defaultProject": "zambon-lib"
 }
   

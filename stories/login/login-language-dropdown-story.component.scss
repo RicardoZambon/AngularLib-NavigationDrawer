@@ -1,4 +1,4 @@
-@import '../../projects/zs-lib/src/assets/styles/mixins/login/language-dropdown';
+@import '../../projects/zambon-lib/src/assets/styles/mixins/login/language-dropdown';
 
 @include language-dropdown-theme('danger', $item-active-background-color: darkred);
 @include language-dropdown-theme('warning', $item-active-background-color: orange);
