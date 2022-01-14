@@ -5,6 +5,7 @@
 export * from './lib/components/login/login-input/login-input.component';
 export * from './lib/components/login/login-language-dropdown/login-language-dropdown.component';
 export * from './lib/components/navigation/navigation-drawer/navigation-drawer.component';
+export * from './lib/components/navigation/navigation-item/navigation-item.component';
 
 export * from './lib/models/menu-item'
 

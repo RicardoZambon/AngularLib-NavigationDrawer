@@ -25,8 +25,8 @@
     
             <ng-container *ngIf="menus !== null">
                 <ng-container *ngFor="let menu of menus">
-                    <!-- <app-nav-item
-                        [parentCollapsed]="collapsed"
+                    <zambon-lib-navigation-item
+                    [parentCollapsed]="collapsed"
                         [parentScrolling]="scrolling"
                         [firstOpened]="firstOpened"
                         [menu]="menu"
@@ -34,7 +34,7 @@
                         [parentOffsetTop]="getOffsetTop()"
                         [parentOffsetHeight]="getOffsetHeight()"
                         (menuClick)="menuClick($event)"
-                        (closeFloatMenu)="closeFloatMenu()"></app-nav-item> -->
+                        (closeFloatMenu)="closeFloatMenu()"></zambon-lib-navigation-item>
                 </ng-container>
             </ng-container>
     

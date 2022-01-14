@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
@@ -27,6 +28,7 @@ export class NavigationDrawerComponent implements OnInit {
     @Input() userName!: string;
     @Input() userDepartment!: string;
     @Input() userImage!: SafeUrl;
+    @Input() autoNavigate: boolean = true;
 
     @ViewChild('navMenu') navMenu!: ElementRef<HTMLUListElement>;
 
@@ -34,7 +36,7 @@ export class NavigationDrawerComponent implements OnInit {
 
     private activeRootNode: MenuItem | null = null;
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit(): void { 
     }
@@ -55,13 +57,17 @@ export class NavigationDrawerComponent implements OnInit {
         await this.selectMenu(menu);
 
         if (menu.url) {
-            this.navigated.emit(menu);
+            if (this.autoNavigate) {
+                this.router.navigate([menu.url]);
+            } else {
+                this.navigated.emit(menu);
+            }
 
             if (this.collapsed) {
                 this.closeFloatMenu();
             }
             else if (this.activeRootNode) {
-                this.clearSelection(this.activeRootNode);
+                //this.clearSelection(this.activeRootNode);
             }
         }
     }
@@ -85,6 +91,7 @@ export class NavigationDrawerComponent implements OnInit {
                 ).toPromise();
         }
 
+        console.log('clearSelection', menu.label);
         menu.selected = false;
         menu = menu.children.filter(el => el.selected)[0];
         if (menu) {
@@ -126,6 +133,7 @@ export class NavigationDrawerComponent implements OnInit {
         else {
             if (this.activeRootNode) {
                 if (this.activeRootNode !== rootNode) {
+                    console.log('clearSelection', this.activeRootNode.label, rootNode.label);
                     await this.clearSelection(this.activeRootNode);
                 }
                 else {

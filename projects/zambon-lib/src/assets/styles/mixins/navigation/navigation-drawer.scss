@@ -13,6 +13,10 @@
                 background: url(#{$background-url});
             }
         }
+
+        .nav-item .nav-link .item-background {
+            background: url(#{$background-url}) no-repeat;
+        }
     }
 }
 
@@ -88,7 +92,7 @@
 
 @mixin navigation-drawer-set-size(
     $menu-expanded-width: $menu-expanded-default-width,
-    $menu-collapsed-width: $menu-collapsed-default-width,
+    $menu-collapsed-width: $menu-collapsed-default-width
 ) {
     @keyframes collapse#{$menu-expanded-width}_#{$menu-collapsed-width} {
         from { width: $menu-expanded-width; }
@@ -136,5 +140,143 @@
             max-width: $menu-collapsed-width !important;
             width: $menu-collapsed-width !important;
         }
+    }
+
+
+    @keyframes openFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width} {
+        from { left: - ($menu-expanded-width - $menu-collapsed-width); }
+        to { left: $menu-collapsed-width; }
+    }
+    
+    @keyframes closeFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width} {
+        from { left: $menu-collapsed-width; }
+        to { left: - ($menu-expanded-width - $menu-collapsed-width); }
+    }
+
+    @keyframes expandNav#{$menu-collapsed-width}_#{$menu-expanded-width} {
+        0% {
+            position: absolute;
+            top: 0;
+            width: 150px;
+            border-top-right-radius: 0.4rem;
+            border-bottom-right-radius: 0.4rem;
+            transition: .4s ease-in-out;
+            z-index: -1;
+            max-height: inherit;
+            height: auto !important;
+            
+            left: - ($menu-expanded-width - $menu-collapsed-width);
+        }
+        1% { height: 0px; }
+    }
+    
+    @keyframes expandNavFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width} {
+        0% {
+            position: absolute;
+            top: 0;
+            width: 150px;
+            border-top-right-radius: 0.4rem;
+            border-bottom-right-radius: 0.4rem;
+            transition: .4s ease-in-out;
+            z-index: -1;
+            max-height: inherit;
+            height: auto !important;
+            
+            left: $menu-collapsed-width;
+        }
+        50% {
+            position: absolute;
+            top: 0;
+            width: 150px;
+            border-top-right-radius: 0.4rem;
+            border-bottom-right-radius: 0.4rem;
+            transition: .4s ease-in-out;
+            z-index: -1;
+            max-height: inherit;
+            height: auto !important;
+    
+            left: - ($menu-expanded-width - $menu-collapsed-width);
+        }
+        51% { height: 0px; }
+    }
+
+    .nav-item {
+        &.menu-collapsed.first-level > .nav {
+            &.open-float-menu {
+                animation-name: openFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width};
+            }
+            &.close-float-menu {
+                animation: closeFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width};
+            }
+            &.show {
+                left: $menu-collapsed-width;
+            }
+        }
+
+        &.menu-expanded:not(.menu-first-opened).first-level > .nav {
+            &.open-float-menu {
+                animation-name: expandNavFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width};
+            }
+        }
+    }
+}
+
+@mixin navigation-item(
+    $item-fore-color: darken($home-base-color, 10%),
+    $item-background-color: darken($home-base-color3, 13%),
+    $item-hover-background-color: darken($home-base-color3, 17%),
+    $active-item-indicator-color: darken($home-base-color, 10%),
+    $subitem-fore-color: $home-base-color,
+    $subitem-background-color: darken($home-base-color3, 10%),
+    $subitem-hover-background-color: darken($home-base-color3, 15%),
+    $scroll-color: darken($home-base-color3, 7%),
+) {
+    .nav-item {
+        
+        .active-item:before {
+            background-color: $active-item-indicator-color;
+        }
+
+        &.first-level {
+            &.active > .nav-link, > .nav .nav-link {
+                &:before {
+                    box-shadow: inset 0 0 500px 500px rgba($item-background-color, 0.95);
+                }
+
+                &:hover, &:focus {
+                    &:before {
+                        box-shadow: inset 0 0 500px 500px rgba($item-hover-background-color, 0.95);
+                    }
+                }
+            }
+        }
+
+        &.menu-collapsed.first-level > .nav.show {
+            @include scroll($scroll-color);
+        }
+
+        .nav-link {
+            color: $item-fore-color;
+
+            &:hover, &:focus {
+                color: $subitem-fore-color;
+    
+                &:before {
+                    box-shadow: inset 0 0 500px 500px rgba($subitem-hover-background-color, 0.95);
+                }
+            }
+
+            .item-background {
+                @include background($subitem-background-color, .95);
+            }
+        }
+    }
+}
+
+@mixin navigation-item-set-size(
+    $item-height: $item-default-height
+) {
+    .nav-item .active-item:before, .nav-link {
+        height: $item-height;
     }
 }

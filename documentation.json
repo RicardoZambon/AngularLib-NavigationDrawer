@@ -1292,11 +1292,11 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n\r\n@import \"../../../../assets/styles/mixins/background\";\r\n@import '../../../../assets/styles/mixins/no-select';\r\n@import \"../../../../assets/styles/mixins/scroll\";\r\n\r\n.menu {\r\n    color: darken($home-base-color, 10%);\r\n\r\n    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n    -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 6px 0 20px 0 rgba(0, 0, 0, 0.19);\r\n\r\n    .navbar-header {\r\n        @include background(darken($home-base-color3, 5%), .95);\r\n\r\n        .logo-container {\r\n            text-align: center;\r\n            position: relative;\r\n            height: 50px;\r\n\r\n            .logo-expanded, .logo-collapsed {\r\n                position: absolute;\r\n                left: 0;\r\n                top: 0;\r\n                height: 100%;\r\n\r\n                background-repeat: no-repeat;\r\n                background-position: center center;\r\n                background-size: contain;\r\n            }\r\n\r\n            .logo-expanded {\r\n                width: $menu-width-expanded;\r\n            }\r\n    \r\n            .logo-collapsed {\r\n                width: $menu-width-collapsed;\r\n            }\r\n        }\r\n\r\n        .profile-container {\r\n            height: 48px;\r\n\r\n            .profile-picture {\r\n                -webkit-flex: 0 0 48px;\r\n                flex: 0 0 48px;\r\n\r\n                background-color: $home-base-color;\r\n                border-radius: 24px;\r\n                max-height: 48px;\r\n                margin-right: .7rem;\r\n                margin-left: .7rem;\r\n                overflow: hidden;\r\n                width: 48px;\r\n\r\n                @include no-select();\r\n    \r\n                img {\r\n                    width: 48px;\r\n                    height: 48px;\r\n                }\r\n            }\r\n            \r\n            .user-name, .user-department {\r\n                flex: 0 0 50%;\r\n                -webkit-flex: 0 0 50%;\r\n                font-size: .9rem;\r\n                width: calc(#{$menu-width-expanded} - #{$menu-width-collapsed});\r\n                \r\n                @include no-select();\r\n            }\r\n    \r\n            .user-name {\r\n                font-weight: bold;\r\n            }\r\n    \r\n            .user-department {\r\n                font-weight: 100;\r\n                font-size: .8rem;\r\n                color: lighten($home-fore-color, 40%);\r\n            }\r\n        }\r\n    }\r\n\r\n    .navbar-menu {\r\n        overflow-y: auto;\r\n        @include scroll(darken($home-base-color3, 7%));\r\n\r\n        .nav {\r\n            z-index: 1;\r\n                \r\n            .background-fill {\r\n                z-index: -1;\r\n                @include background(darken($home-base-color3, 7%), .95);\r\n            }\r\n        }\r\n    }\r\n}",
+                    "data": "@import '../../../../assets/styles/mixins/navigation/navigation-drawer';\r\n@import '../../../../assets/styles/mixins/no-select';\r\n\r\n@include navigation-drawer();\r\n\r\n.menu {\r\n    .navbar-header {\r\n        .logo-container {\r\n            text-align: center;\r\n            position: relative;\r\n            height: 50px;\r\n\r\n            .logo-expanded, .logo-collapsed {\r\n                position: absolute;\r\n                left: 0;\r\n                top: 0;\r\n                height: 100%;\r\n\r\n                background-repeat: no-repeat;\r\n                background-position: center center;\r\n                background-size: contain;\r\n            }\r\n        }\r\n\r\n        .profile-container {\r\n            height: 48px;\r\n\r\n            .profile-picture {\r\n                -webkit-flex: 0 0 48px;\r\n                flex: 0 0 48px;\r\n\r\n                border-radius: 24px;\r\n                max-height: 48px;\r\n                margin-right: .7rem;\r\n                margin-left: .7rem;\r\n                overflow: hidden;\r\n                width: 48px;\r\n\r\n                @include no-select();\r\n    \r\n                img {\r\n                    width: 48px;\r\n                    height: 48px;\r\n                }\r\n            }\r\n            \r\n            .user-name, .user-department {\r\n                flex: 0 0 50%;\r\n                -webkit-flex: 0 0 50%;\r\n                font-size: .9rem;\r\n                \r\n                @include no-select();\r\n            }\r\n    \r\n            .user-name {\r\n                font-weight: bold;\r\n            }\r\n    \r\n            .user-department {\r\n                font-weight: 100;\r\n                font-size: .8rem;\r\n            }\r\n        }\r\n    }\r\n\r\n    .navbar-menu {\r\n        overflow-y: auto;\r\n\r\n        .nav {\r\n            z-index: 1;\r\n                \r\n            .background-fill {\r\n                z-index: -1;\r\n            }\r\n        }\r\n    }\r\n}",
                     "styleUrl": "./navigation-drawer.component.scss"
                 },
                 {
-                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n\r\n/* Animations */\r\n@keyframes collapse {\r\n    from { width: $menu-width-expanded; }\r\n    to { width: $menu-width-collapsed; }\r\n}\r\n\r\n@keyframes expand {\r\n    from { width: $menu-width-collapsed; }\r\n    to { width: $menu-width-expanded; }\r\n}\r\n\r\n\r\n@keyframes fadeout {\r\n    from { opacity: 1; }\r\n    to { opacity: 0; }\r\n}\r\n\r\n@keyframes fadein {\r\n    from { opacity: 0; }\r\n    to { opacity: 1; }\r\n}\r\n\r\n\r\n.menu {\r\n    /* Collapsed */\r\n    &.collapsed {\r\n        width: $menu-width-collapsed;\r\n\r\n        &:not(.first-opened) {\r\n            animation: collapse $menu-animation-speed ease-in-out;\r\n\r\n            .logo-container {\r\n                .logo-expanded {\r\n                    animation: fadeout $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n                .logo-collapsed {\r\n                    animation: fadein $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n\r\n            .profile-container {\r\n                .user-name, .user-department {\r\n                    animation: fadeout $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n        }\r\n\r\n        .logo-container {\r\n            .logo-expanded {\r\n                opacity: 0;\r\n            }\r\n        }\r\n\r\n        .profile-container {\r\n            .user-name, .user-department {\r\n                opacity: 0;\r\n            }\r\n        }\r\n    }\r\n\r\n    /* Expanded */\r\n    &.expanded {\r\n        width: $menu-width-expanded;\r\n\r\n        &:not(.first-opened) {\r\n            animation: expand $menu-animation-speed ease-in-out;\r\n\r\n            .logo-container {\r\n                .logo-expanded {\r\n                    animation: fadein $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n                .logo-collapsed {\r\n                    animation: fadeout $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n\r\n            .profile-container {\r\n                .user-name, .user-department {\r\n                    animation: fadein $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n        }\r\n\r\n        .logo-container {\r\n            .logo-collapsed {\r\n                opacity: 0;\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n\r\n@media (max-width:768px) {\r\n    .menu {\r\n        margin-left: -70px;\r\n        max-width: 70px !important;\r\n        width: 70px !important;\r\n        transition: margin-left $menu-animation-speed ease-in-out;\r\n\r\n        &.collapsed {\r\n            margin-left: 0px;\r\n            padding-left: 0px;\r\n        }\r\n    }\r\n}",
+                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n\r\n@import '../../../../assets/styles/mixins/navigation/navigation-drawer';\r\n@include navigation-drawer-set-size();\r\n\r\n/* Animations */\r\n@keyframes fadeout {\r\n    from { opacity: 1; }\r\n    to { opacity: 0; }\r\n}\r\n\r\n@keyframes fadein {\r\n    from { opacity: 0; }\r\n    to { opacity: 1; }\r\n}\r\n\r\n\r\n.menu {\r\n    /* Collapsed */\r\n    &.collapsed {\r\n        &:not(.first-opened) {\r\n            // animation-name: collapse;\r\n            animation-duration: $menu-animation-speed;\r\n            animation-timing-function: ease-in-out;\r\n\r\n            .logo-container {\r\n                .logo-expanded {\r\n                    animation: fadeout $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n                .logo-collapsed {\r\n                    animation: fadein $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n\r\n            .profile-container {\r\n                .user-name, .user-department {\r\n                    animation: fadeout $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n        }\r\n\r\n        .logo-container {\r\n            .logo-expanded {\r\n                opacity: 0;\r\n            }\r\n        }\r\n\r\n        .profile-container {\r\n            .user-name, .user-department {\r\n                opacity: 0;\r\n            }\r\n        }\r\n    }\r\n\r\n    /* Expanded */\r\n    &.expanded {\r\n        &:not(.first-opened) {\r\n            // animation-name: expand;\r\n            animation-duration: $menu-animation-speed;\r\n            animation-timing-function: ease-in-out;\r\n\r\n            .logo-container {\r\n                .logo-expanded {\r\n                    animation: fadein $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n                .logo-collapsed {\r\n                    animation: fadeout $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n\r\n            .profile-container {\r\n                .user-name, .user-department {\r\n                    animation: fadein $opacity-animation-speed ease;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n            }\r\n        }\r\n\r\n        .logo-container {\r\n            .logo-collapsed {\r\n                opacity: 0;\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n\r\n@media (max-width:768px) {\r\n    .menu {\r\n        transition: margin-left $menu-animation-speed ease-in-out;\r\n\r\n        &.collapsed {\r\n            margin-left: 0px;\r\n            padding-left: 0px;\r\n        }\r\n    }\r\n}",
                     "styleUrl": "./navigation-drawer.component-animations.scss"
                 }
             ],
@@ -1312,7 +1312,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<nav class=\"menu h-100 mh-100 d-flex flex-column\"\n    [class.expanded]=\"!collapsed\"\n    [class.collapsed]=\"collapsed\"\n    [class.first-opened]=\"firstOpened\"\n    >\n    \n    <!--Header-->\n    <div class=\"navbar-header pt-2 pb-3 flex-shrink-0\">\n        <div class=\"logo-container replace-content d-flex justify-content-center mb-3\">\n            <div class=\"logo-expanded\"></div>\n            <div class=\"logo-collapsed\"></div>\n        </div>\n\n        <div class=\"profile-container d-flex flex-wrap flex-column\">\n            <div class=\"profile-picture\">\n                <img [src]=\"this.userImage\" />\n            </div>\n            <div class=\"user-name\">{{ this.userName }}</div>\n            <div class=\"user-department\">{{ this.userDepartment }}</div>\n        </div>\n    </div>\n\n    <div class=\"navbar-menu d-flex flex-column flex-grow-1\" #navMenu zambon-lib-track-scroll (scrolled)=\"updateScroll($event)\">\n        <ul class=\"nav flex-column flex-nowrap w-100 flex-grow-1\">\n    \n            <ng-container *ngIf=\"menus !== null\">\n                <ng-container *ngFor=\"let menu of menus\">\n                    <!-- <app-nav-item\n                        [parentCollapsed]=\"collapsed\"\n                        [parentScrolling]=\"scrolling\"\n                        [firstOpened]=\"firstOpened\"\n                        [menu]=\"menu\"\n                        [parentScroll]=\"currentScroll\"\n                        [parentOffsetTop]=\"getOffsetTop()\"\n                        [parentOffsetHeight]=\"getOffsetHeight()\"\n                        (menuClick)=\"menuClick($event)\"\n                        (closeFloatMenu)=\"closeFloatMenu()\"></app-nav-item> -->\n                </ng-container>\n            </ng-container>\n    \n            <li class=\"background-fill flex-grow-1\">\n                <div *ngIf=\"menus === null\" class=\"loading text-center pt-2\">\n                    <i class=\"spinner-border spinner-border-md\"></i>\n                </div>\n            </li>\n        </ul>\n    </div>\n</nav>"
+            "templateData": "<nav class=\"menu h-100 mh-100 d-flex flex-column\"\n    [class.expanded]=\"!collapsed\"\n    [class.collapsed]=\"collapsed\"\n    [class.first-opened]=\"firstOpened\"\n    >\n    \n    <!--Header-->\n    <div class=\"navbar-header pt-2 pb-3 flex-shrink-0\">\n        <div class=\"logo-container replace-content d-flex justify-content-center mb-3\">\n            <div class=\"logo-expanded\"></div>\n            <div class=\"logo-collapsed\"></div>\n        </div>\n\n        <div class=\"profile-container d-flex flex-wrap flex-column\">\n            <div class=\"profile-picture\">\n                <img [src]=\"this.userImage\" />\n            </div>\n            <div class=\"user-name\">{{ this.userName }}</div>\n            <div class=\"user-department\">{{ this.userDepartment }}</div>\n        </div>\n    </div>\n\n    <div class=\"navbar-menu d-flex flex-column flex-grow-1\" #navMenu zambon-lib-track-scroll (scrolled)=\"updateScroll($event)\">\n        <ul class=\"nav flex-column flex-nowrap w-100 flex-grow-1\">\n    \n            <ng-container *ngIf=\"menus !== null\">\n                <ng-container *ngFor=\"let menu of menus\">\n                    <zambon-lib-navigation-item\n                    [parentCollapsed]=\"collapsed\"\n                        [parentScrolling]=\"scrolling\"\n                        [firstOpened]=\"firstOpened\"\n                        [menu]=\"menu\"\n                        [parentScroll]=\"currentScroll\"\n                        [parentOffsetTop]=\"getOffsetTop()\"\n                        [parentOffsetHeight]=\"getOffsetHeight()\"\n                        (menuClick)=\"menuClick($event)\"\n                        (closeFloatMenu)=\"closeFloatMenu()\"></zambon-lib-navigation-item>\n                </ng-container>\n            </ng-container>\n    \n            <li class=\"background-fill flex-grow-1\">\n                <div *ngIf=\"menus === null\" class=\"loading text-center pt-2\">\n                    <i class=\"spinner-border spinner-border-md\"></i>\n                </div>\n            </li>\n        </ul>\n    </div>\n</nav>"
         },
         {
             "name": "NavigationDrawerStoryComponent",
@@ -1386,7 +1386,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../../projects/zambon-lib/src/assets/styles/mixins/navigation/navigation-drawer';\r\n\r\n@include navigation-drawer-background(\r\n    '/assets/images/background.png'\r\n);\r\n\r\n@include navigation-drawer-logos(\r\n    '/assets/images/logo_menu_expanded.png',\r\n    '/assets/images/logo_menu_collapsed.png'\r\n);\r\n\r\n.box {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    \r\n    .main {\r\n        overflow: hidden;\r\n\r\n        .toolbar {\r\n            border-bottom: 1px solid darken(white, 15%);\r\n            font-size: 0.9rem;\r\n            color: black;\r\n            z-index: 2;\r\n\r\n            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n    }\r\n}",
+                    "data": "@import '../../projects/zambon-lib/src/assets/styles/mixins/navigation/navigation-drawer';\r\n\r\n@include navigation-drawer-background(\r\n    '/assets/images/background.jpg'\r\n);\r\n\r\n@include navigation-drawer-logos(\r\n    '/assets/images/logo_menu_expanded.png',\r\n    '/assets/images/logo_menu_collapsed.png'\r\n);\r\n\r\n//If you require custom navigation size, use the following mixin\r\n// @include navigation-drawer-set-custom-size(\r\n//     300px,\r\n//     100px\r\n// );\r\n\r\n/*\r\n\r\nWorkarounds for story page\r\n\r\n*/\r\n.box {\r\n    position: absolute;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    \r\n    .main {\r\n        overflow: hidden;\r\n\r\n        .toolbar {\r\n            border-bottom: 1px solid darken(white, 15%);\r\n            font-size: 0.9rem;\r\n            color: black;\r\n            z-index: 2;\r\n\r\n            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n        }\r\n    }\r\n}",
                     "styleUrl": "./navigation-drawer-story.component.scss"
                 }
             ],
@@ -1402,6 +1402,320 @@
             "implements": [
                 "AfterViewInit"
             ]
+        },
+        {
+            "name": "NavigationItemComponent",
+            "id": "component-NavigationItemComponent-37b0ca118c90cd5a5f42b6e1c64bab927315e5b839470598f56322132409d8edeab65e458054f5353936e9fba81202ae1ca97ec05e386e72c6c2c3da9676dba5",
+            "file": "projects/zambon-lib/src/lib/components/navigation/navigation-item/navigation-item.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "zambon-lib-navigation-item",
+            "styleUrls": [
+                "./navigation-item.component.scss",
+                "./navigation-item.component-animations.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./navigation-item.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "firstOpened",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "level",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "menu",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "MenuItem",
+                    "decorators": []
+                },
+                {
+                    "name": "parentCollapsed",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "parentOffsetHeight",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "parentOffsetTop",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "parentScroll",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "parentScrolling",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "closeFloatMenu",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "menuClick",
+                    "defaultValue": "new EventEmitter<MenuItem>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "navItem",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLLIElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'navItem'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "calculateHeight",
+                    "args": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 78,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "calculateMarginTop",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "calculateMaxHeight",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number | null",
+                    "typeParameters": [],
+                    "line": 110,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "click",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 65,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "subMenuClick",
+                    "args": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 69,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "menu",
+                            "type": "MenuItem",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "subMenuCloseFloatMenu",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 73,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';\nimport { ActivatedRoute, ActivationEnd, Router } from '@angular/router';\n\nimport { MenuItem } from '../../../models/menu-item';\n\n@Component({\n    selector: 'zambon-lib-navigation-item',\n    templateUrl: './navigation-item.component.html',\n    styleUrls: [\n        './navigation-item.component.scss',\n        './navigation-item.component-animations.scss'\n    ]\n})\nexport class NavigationItemComponent implements OnInit {\n\n    @ViewChild('navItem') navItem!: ElementRef<HTMLLIElement>;\n\n    @Input() parentCollapsed!: boolean;\n    @Input() parentScrolling!: boolean;\n    @Input() firstOpened!: boolean;\n    @Input() level: number = 0;\n\n    @Input() parentOffsetTop!: number;\n    @Input() parentScroll: number = 0;\n    @Input() parentOffsetHeight!: number;\n    \n    @Input() menu!: MenuItem;\n\n    @Output() menuClick = new EventEmitter<MenuItem>();\n    @Output() closeFloatMenu = new EventEmitter();\n        \n    constructor(private router: Router, private activatedRoute: ActivatedRoute) { }\n\n    ngOnInit(): void {\n        const activatedPath = this.router.url.substring(1, this.router.url.length);\n        if (activatedPath === this.menu.url) {\n            this.menuClick.emit(this.menu);\n        }\n\n        this.router.events.subscribe(event => {\n            if (event instanceof ActivationEnd) {\n                if (event.snapshot.component && event.snapshot.firstChild?.url[0] && event.snapshot.firstChild?.url[0].path === this.menu.url) {\n                    this.menu.linkActive = true;\n                    let menu = this.menu;\n                    \n                    while (menu.parent) {\n                        menu.parent.linkActive = true;\n                        menu = menu.parent;\n                    }\n                }\n                else if (this.menu.linkActive) {\n                    this.menu.linkActive = false;\n                    let menu = this.menu;\n                    \n                    while (menu.parent) {\n                        menu.parent.linkActive = false;\n                        menu = menu.parent;\n                    }\n                }\n            }\n        });\n    }\n    \n\n    public click() {\n        this.menuClick.emit(this.menu);\n    }\n\n    public subMenuClick(menu: MenuItem) {\n        this.menuClick.emit(menu);\n    }\n\n    public subMenuCloseFloatMenu() {\n        this.closeFloatMenu.emit();\n    }\n\n    \n    public calculateHeight(menu: MenuItem): number {\n        if (menu.children.length > 0 && menu.selected) {\n            \n            let height = menu.children.length * 45;\n            menu.children.forEach(subMenu => {\n                height += this.calculateHeight(subMenu);\n            });\n\n            const maxHeight = this.calculateMaxHeight() as number;\n\n            return height < maxHeight || this.level > 0 || !this.parentCollapsed\n                ? height\n                : maxHeight ?? height;\n        }\n        return 0;\n    }\n\n    public calculateMarginTop() {\n        if (this.parentCollapsed && (this.menu.floatMenuState === 'opening' || this.menu.floatMenuState === 'show' || this.menu.floatMenuState === 'closing')) {\n            if (this.navItem.nativeElement.offsetTop - this.parentScroll <= this.parentOffsetTop) {\n                //this.closeFloatMenu.emit();\n                return this.parentOffsetTop - this.navItem.nativeElement.offsetTop - 45;\n            }\n            else if (this.navItem.nativeElement.offsetTop + this.calculateHeight(this.menu) - this.parentOffsetTop - this.parentScroll > this.parentOffsetHeight) {\n                //this.closeFloatMenu.emit();\n                return this.parentOffsetTop - this.navItem.nativeElement.offsetTop + this.parentOffsetHeight - this.calculateHeight(this.menu) - 45;\n            }\n            return (this.parentScroll + this.navItem.nativeElement.clientHeight) * -1;\n        }\n        return 0;\n    }\n\n    public calculateMaxHeight(): number | null {\n        return this.parentCollapsed\n            ? this.parentOffsetHeight\n            : null;\n    }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n@import '../../../../assets/styles/mixins/navigation/navigation-drawer';\r\n@import '../../../../assets/styles/mixins/no-select';\r\n\r\n@include navigation-item();\r\n\r\n.nav-item {\r\n    font-size: 0.9rem;\r\n    position: static;\r\n\r\n    &.first-level {\r\n\r\n        > .nav-link {\r\n            z-index: 1;\r\n\r\n            &.has-sub-menu {\r\n                &:after {\r\n                    opacity: 1;\r\n                    transition: all $opacity-animation-speed ease;\r\n                }\r\n            }\r\n\r\n            .icon {\r\n                transition: all $icon-animation-speed ease-in-out;\r\n            }\r\n\r\n            .label {\r\n                opacity: 1;\r\n                transition: opacity $opacity-animation-speed ease;\r\n            }\r\n        }\r\n\r\n        > .nav {\r\n            max-height: 90%;\r\n        }\r\n    }\r\n\r\n    .active-item {\r\n        position: relative;\r\n\r\n        &:before {\r\n            content: '';\r\n            position: absolute;\r\n            top: 0;\r\n            left: 0;\r\n            right: 0;\r\n            width: 0px;\r\n            height: $menu-height-item;\r\n            z-index: 2;\r\n            transition: width $menu-animation-speed linear;\r\n        }\r\n    }\r\n\r\n    .nav-link {\r\n        display: block;\r\n        position: relative;\r\n        font-weight: 600;\r\n        padding: .75rem 1.4rem;\r\n        cursor: pointer;\r\n        height: $menu-height-item;\r\n        white-space: nowrap;\r\n        text-overflow: ellipsis;\r\n\r\n        @include no-select();\r\n\r\n        &.has-sub-menu {\r\n            &:after {\r\n                content: \"\\f104\";\r\n                position: absolute;\r\n                font-family: \"Font Awesome 5 Free\";\r\n                font-weight: 900;\r\n                text-align: center;\r\n                width: 1.25em;\r\n                right: .5rem;\r\n                top: .8rem;\r\n            }\r\n        }\r\n\r\n        .item-background {\r\n            position: absolute;\r\n            top: 0;\r\n            left: 0;\r\n            right: 0;\r\n            bottom: 0;\r\n            z-index: -1;\r\n\r\n            background: url(#{$background-url}) no-repeat;\r\n        }\r\n    }\r\n\r\n    .nav {\r\n        overflow: hidden;\r\n        position: relative;\r\n    }\r\n}",
+                    "styleUrl": "./navigation-item.component.scss"
+                },
+                {
+                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n@import \"../../../../assets/styles/mixins/scroll\";\r\n\r\n/* Animations */\r\n@keyframes collapseItem {\r\n    from { text-overflow: ellipsis; }\r\n    to { text-overflow: clip; }\r\n}\r\n\r\n@keyframes expandItem {\r\n    from { text-overflow: clip; }\r\n    to { text-overflow: ellipsis; }\r\n}\r\n\r\n.nav-item {\r\n\r\n    &:not(.menu-first-opened) {\r\n        .nav-link {\r\n            transition: all $menu-hover-speed;\r\n\r\n            &.has-sub-menu {\r\n                &:after {\r\n                    transition: all $menu-animation-speed ease-in-out;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    &.menu-collapsed {\r\n\r\n        &:not(.menu-first-opened) {\r\n            \r\n            &.first-level {\r\n                > .nav-link {\r\n                    animation: collapseItem $menu-animation-speed ease-in-out;\r\n                    animation-fill-mode: forwards;\r\n\r\n                    &.has-sub-menu {\r\n                        &:after {\r\n                            opacity: 0;\r\n                        }\r\n                    }\r\n\r\n                    .icon {\r\n                        font-size: 1.3333333333em;\r\n                        line-height: 0.75em;\r\n                        vertical-align: -0.0667em;\r\n                    }\r\n            \r\n                    .label {\r\n                        opacity: 0;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        &.menu-first-opened {\r\n            .icon {\r\n                font-size: 1.3333333333em;\r\n                line-height: 0.75em;\r\n                vertical-align: -0.0667em;\r\n            }\r\n        }\r\n\r\n        &.first-level {\r\n            > .nav-link {\r\n                text-overflow: clip;\r\n\r\n                &.has-sub-menu {\r\n                    &:after {\r\n                        opacity: 0;\r\n                    }\r\n                }\r\n\r\n                .label {\r\n                    opacity: 0;\r\n                }\r\n            }\r\n\r\n            > .nav {\r\n                &:not(.open-float-menu):not(.close-float-menu):not(.show) {\r\n                    height: 0px !important;\r\n                }\r\n\r\n                &.hide {\r\n                    transition: height 0s;\r\n                }\r\n\r\n                &.open-float-menu, &.close-float-menu, &.show {\r\n                    position: absolute;\r\n                    width: 150px;\r\n                    border-top-right-radius: 0.4rem;\r\n                    border-bottom-right-radius: 0.4rem;\r\n                    z-index: -1;\r\n                    max-height: inherit;\r\n                }\r\n                \r\n                &.open-float-menu, &.close-float-menu {\r\n                    animation-duration: 0.4s;\r\n                    animation-timing-function: ease-in-out;;\r\n                    animation-fill-mode: forwards;\r\n                    transition: height 0s;\r\n                }\r\n\r\n                &.show {\r\n                    overflow-y: auto;\r\n                    @include scroll(darken($home-base-color3, 7%));\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    &.menu-expanded {\r\n\r\n        &:not(.menu-first-opened) {\r\n            &.first-level {\r\n\r\n                > .nav-link {\r\n                    animation: expandItem $menu-animation-speed ease-in-out;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n\r\n                > .nav {\r\n                    &.open-float-menu {\r\n                        animation-duration: $menu-open-close-speed;\r\n                        animation-fill-mode: forwards;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    &.menu-scrolling {\r\n        .nav {\r\n            transition:\r\n                height $menu-open-close-speed ease-in-out,\r\n                margin-top 0s ease-in-out\r\n        }\r\n    }\r\n\r\n    &.active {\r\n        .active-item {\r\n            &:before {\r\n                width: 4px;\r\n            }\r\n        }\r\n    }\r\n\r\n    .nav {\r\n        transition:\r\n            height $menu-open-close-speed ease-in-out,\r\n            margin-top $menu-open-close-speed ease-in-out;\r\n    }\r\n\r\n    &:not(.opened) {\r\n        .nav {\r\n            height: 0px !important;\r\n        }\r\n    }\r\n\r\n    &.opened {\r\n        > .nav-link {\r\n            &.has-sub-menu {\r\n                &:after {\r\n                    -webkit-transform: rotate(-90deg);\r\n                    -moz-transform: rotate(-90deg);\r\n                    -ms-transform: rotate(-90deg);\r\n                    -o-transform: rotate(-90deg);\r\n                    transform: rotate(-90deg);\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n\r\n@media (max-width:768px) {\r\n    .nav-item {\r\n        &.menu-expanded {\r\n            &.first-level {\r\n                .nav-link {\r\n\r\n                    &.has-sub-menu {\r\n                        &:after {\r\n                            opacity: 0;\r\n                        }\r\n                    }\r\n\r\n                    .icon {\r\n                        font-size: 1.3333333333em;\r\n                        line-height: 0.75em;\r\n                        vertical-align: -0.0667em;\r\n                    }\r\n\r\n                    .label {\r\n                        opacity: 0;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+                    "styleUrl": "./navigation-item.component-animations.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 30,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<li class=\"nav-item\" #navItem\n    [class.menu-expanded]=\"!parentCollapsed\"\n    [class.menu-collapsed]=\"parentCollapsed\"\n    [class.menu-scrolling]=\"parentScrolling\"\n    [class.menu-first-opened]=\"firstOpened\"\n\n    [class.first-level]=\"level === 0\"\n\n    [class.active]=\"menu.selected || menu.linkActive\"\n    [class.opened]=\"menu.children.length > 0 && menu.selected\"\n>\n    <div *ngIf=\"level === 0\" class=\"active-item\"></div>\n\n    <a class=\"nav-link replace-content has-sub-menu\"\n        [class.has-sub-menu]=\"menu.children.length > 0\"\n        (click)=\"click()\"\n    >\n        <div class=\"item-background\"></div>\n        <i class=\"icon fa-fw fas fa-{{ menu.icon }}\" *ngIf=\"level === 0\"></i>\n        <span class=\"label ps-2\">{{ menu.label }}</span>\n    </a>\n\n    <ul *ngIf=\"menu.children.length > 0\"\n        class=\"nav flex-column flex-nowrap\"\n        [class.open-float-menu]=\"level === 0 && menu.floatMenuState === 'opening'\"\n        [class.close-float-menu]=\"level === 0 && menu.floatMenuState === 'closing'\"\n        [class.hide]=\"level === 0 && menu.floatMenuState === 'hide'\"\n        [class.show]=\"level === 0 && menu.floatMenuState === 'show'\"\n        [ngStyle]=\"{\n            'height.px': this.calculateHeight(this.menu),\n            'margin-top.px': this.calculateMarginTop(),\n            'max-height.px': this.calculateMaxHeight()\n        }\"\n        >\n        <ng-container *ngFor=\"let subMenu of menu.children\">\n            <zambon-lib-navigation-item\n                [parentCollapsed]=\"parentCollapsed\"\n                [parentScrolling]=\"parentScrolling\"\n                [firstOpened]=\"firstOpened\"\n                [level]=\"level + 1\"\n                [menu]=\"subMenu\"\n                [parentScroll]=\"parentScroll\"\n                [parentOffsetTop]=\"parentOffsetTop\"\n                [parentOffsetHeight]=\"parentOffsetHeight\"\n                (menuClick)=\"subMenuClick($event)\"\n                (closeFloatMenu)=\"subMenuCloseFloatMenu()\"></zambon-lib-navigation-item>\n        </ng-container>\n    </ul>\n</li>"
         },
         {
             "name": "PageComponent",
@@ -1694,13 +2008,13 @@
         },
         {
             "name": "NavigationModule",
-            "id": "module-NavigationModule-5d5ed7b52560e8ba513e9df85b3373c03b60174ff0e7b0803070b4b3e3be9b08067dfc22f047039ff0b4d6f8dd229b8d32130f3280bf79fc717f9ec20e3a1341",
+            "id": "module-NavigationModule-eaf1196dc0f7834e1d06f76304b38ffdf96e1fbc9f339ace96fe62b1cf5358642df03e3d0d0470ad780ba55848fe80c03a48db0dba23806a136d2868d459dd64",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/zambon-lib/src/lib/components/navigation/navigation.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { DirectivesModule } from '../../directives/directives.module';\nimport { NavigationDrawerComponent } from './navigation-drawer/navigation-drawer.component';\n\n\n@NgModule({\n  declarations: [\n      NavigationDrawerComponent\n  ],\n  imports: [\n    CommonModule,\n    DirectivesModule\n  ],\n  exports: [\n    NavigationDrawerComponent\n  ]\n})\nexport class NavigationModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { DirectivesModule } from '../../directives/directives.module';\nimport { NavigationDrawerComponent } from './navigation-drawer/navigation-drawer.component';\nimport { NavigationItemComponent } from './navigation-item/navigation-item.component';\n\n\n@NgModule({\n  declarations: [\n      NavigationDrawerComponent,\n      NavigationItemComponent\n  ],\n  imports: [\n    CommonModule,\n    DirectivesModule\n  ],\n  exports: [\n    NavigationDrawerComponent,\n    NavigationItemComponent\n  ]\n})\nexport class NavigationModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -1711,6 +2025,9 @@
                     "elements": [
                         {
                             "name": "NavigationDrawerComponent"
+                        },
+                        {
+                            "name": "NavigationItemComponent"
                         }
                     ]
                 },
@@ -1727,6 +2044,9 @@
                     "elements": [
                         {
                             "name": "NavigationDrawerComponent"
+                        },
+                        {
+                            "name": "NavigationItemComponent"
                         }
                     ]
                 },
@@ -2347,6 +2667,15 @@
                 "name": "NavigationDrawerComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/23",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zambon-lib/src/lib/components/navigation/navigation-item/navigation-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NavigationItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/20",
                 "status": "low"
             },
             {

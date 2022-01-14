@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { create } from 'domain';
 import { MenuItem, NavigationDrawerComponent } from 'projects/zambon-lib/src/public-api';
 
 @Component({
@@ -33,17 +34,34 @@ export default class NavigationDrawerStoryComponent implements AfterViewInit {
   }
 
   async ngAfterViewInit(): Promise<void> {
-    const home = new MenuItem(); home.id = 1; home.icon = 'home'; home.label = 'Home page'; home.url = '';
+    const home = this.createMenuItem(1, 'home', 'Home page', '');
     
-    const menus = [
-      home
+    const reports = this.createMenuItem(2, 'file-alt', 'Reports');
+    reports.children.push(this.createMenuItem(3, '', 'Report A', '3', reports));
+    reports.children.push(this.createMenuItem(4, '', 'Report B', '4', reports));
+    reports.children.push(this.createMenuItem(5, '', 'Report C', '5', reports));
+    
+    this.navigation.menus = [
+        home,
+        reports
     ];
-
-    this.navigation.menus = menus;  
   }
 
 
   toggleNavigation() {
     this.navigation.toggleState();
+  }
+
+  private createMenuItem(id: number, icon: string, label: string, url: string | undefined = undefined, parent: MenuItem | null = null) {
+      const menuItem = new MenuItem();
+
+      menuItem.id = id;
+      menuItem.icon = icon;
+      menuItem.label = label;
+      menuItem.url = url;
+
+      menuItem.parent = parent;
+
+      return menuItem;
   }
 }
