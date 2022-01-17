@@ -66,9 +66,9 @@ export class NavigationDrawerComponent implements OnInit {
             if (this.collapsed) {
                 this.closeFloatMenu();
             }
-            else if (this.activeRootNode) {
-                //this.clearSelection(this.activeRootNode);
-            }
+            //else if (this.activeRootNode) {
+            //    this.clearSelection(this.activeRootNode);
+            //}
         }
     }
 
@@ -91,7 +91,6 @@ export class NavigationDrawerComponent implements OnInit {
                 ).toPromise();
         }
 
-        console.log('clearSelection', menu.label);
         menu.selected = false;
         menu = menu.children.filter(el => el.selected)[0];
         if (menu) {
@@ -133,7 +132,6 @@ export class NavigationDrawerComponent implements OnInit {
         else {
             if (this.activeRootNode) {
                 if (this.activeRootNode !== rootNode) {
-                    console.log('clearSelection', this.activeRootNode.label, rootNode.label);
                     await this.clearSelection(this.activeRootNode);
                 }
                 else {

@@ -200,22 +200,24 @@
         51% { height: 0px; }
     }
 
-    .nav-item {
-        &.menu-collapsed.first-level > .nav {
-            &.open-float-menu {
-                animation-name: openFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width};
+    :host ::ng-deep zambon-lib-navigation-item {
+        .nav-item {
+            &.menu-collapsed.first-level > .nav {
+                &.open-float-menu {
+                    animation-name: openFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width};
+                }
+                &.close-float-menu {
+                    animation: closeFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width};
+                }
+                &.show {
+                    left: $menu-collapsed-width;
+                }
             }
-            &.close-float-menu {
-                animation: closeFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width};
-            }
-            &.show {
-                left: $menu-collapsed-width;
-            }
-        }
 
-        &.menu-expanded:not(.menu-first-opened).first-level > .nav {
-            &.open-float-menu {
-                animation-name: expandNavFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width};
+            &.menu-expanded:not(.menu-first-opened).first-level > .nav {
+                &.open-float-menu {
+                    animation-name: expandNavFloatMenu#{$menu-collapsed-width}_#{$menu-expanded-width};
+                }
             }
         }
     }

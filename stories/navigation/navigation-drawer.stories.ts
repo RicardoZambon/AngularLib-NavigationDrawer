@@ -17,9 +17,12 @@ export default {
             { path: '', component: NavigationDrawerStoryComponent, children: [
                 { path: '', component: NavigationDrawerStoryComponent, pathMatch: 'full' },
                 { path: 'iframe.html', component: NavigationDrawerStoryComponent },
+                { path: '1', component: NavigationDrawerStoryComponent },
+                { path: '2', component: NavigationDrawerStoryComponent },
                 { path: '3', component: NavigationDrawerStoryComponent },
                 { path: '4', component: NavigationDrawerStoryComponent },
-                { path: '5', component: NavigationDrawerStoryComponent }
+                { path: '5', component: NavigationDrawerStoryComponent },
+                { path: '6', component: NavigationDrawerStoryComponent }
             ] }
         ]),
         I18nModule.forRoot(['en', 'pt'])

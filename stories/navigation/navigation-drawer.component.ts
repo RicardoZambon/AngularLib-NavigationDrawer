@@ -35,14 +35,20 @@ export default class NavigationDrawerStoryComponent implements AfterViewInit {
 
   async ngAfterViewInit(): Promise<void> {
     const home = this.createMenuItem(1, 'home', 'Home page', '');
+
+    const security = this.createMenuItem(2, 'user', 'Security');
+    security.children.push(this.createMenuItem(3, '', 'Users', '1', security));
+    security.children.push(this.createMenuItem(4, '', 'Roles', '2', security));
+    security.children.push(this.createMenuItem(5, '', 'Actions', '3', security));
     
-    const reports = this.createMenuItem(2, 'file-alt', 'Reports');
-    reports.children.push(this.createMenuItem(3, '', 'Report A', '3', reports));
-    reports.children.push(this.createMenuItem(4, '', 'Report B', '4', reports));
-    reports.children.push(this.createMenuItem(5, '', 'Report C', '5', reports));
+    const reports = this.createMenuItem(6, 'file-alt', 'Reports');
+    reports.children.push(this.createMenuItem(7, '', 'Report A', '4', reports));
+    reports.children.push(this.createMenuItem(8, '', 'Report B', '5', reports));
+    reports.children.push(this.createMenuItem(9, '', 'Report C', '6', reports));
     
     this.navigation.menus = [
         home,
+        security,
         reports
     ];
   }
