@@ -1,0 +1,15 @@
+<div #modal class="modal fade" id="closeModal" tabindex="-1" aria-hidden="true" aria-hidden="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5 class="mb-2">{{ title | translate }}</h5>
+                <h6>{{ message | translate }}</h6>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ cancelLabel | translate }}</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="confirmClick()">{{ confirmLabel | translate }}</button>
+            </div>
+        </div>
+    </div>
+</div>

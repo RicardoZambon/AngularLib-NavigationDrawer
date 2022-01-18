@@ -1,5 +1,12 @@
 {
     "locale": "pt_BR",
 
-    "SelectLanguage-Title": "Selecionar idioma"
+    "SelectLanguage-Title": "Selecionar idioma",
+
+    "TabContainer-CloseConfirmModal-Title": "Tem certeza que deseja fechar esta aba?",
+    "TabContainer-CloseConfirmModal-Message": "Alterações feitas por você podem não ser salvas.",
+    "TabContainer-CloseConfirmModal-ButtonCancel": "Cancelar",
+    "TabContainer-CloseConfirmModal-ButtonClose": "Confirmar fechar",
+
+    "TabItem-LoadingMessage": "Carregando..."
 }

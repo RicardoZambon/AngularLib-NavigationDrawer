@@ -2,6 +2,179 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "IBaseView",
+            "id": "interface-IBaseView-5b93aae0198dca114dd54aebf2d8e7a81482208a30ef42e7d1fe210fc70ed8263827ddf4b960b5bca5600f04b10b8fdea91ff73709090c864f3531e8c93aba75",
+            "file": "projects/zambon-lib/src/lib/interfaces/ibase-view.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { EventEmitter, QueryList } from '@angular/core';\n\nexport interface IBaseView {\n    \n    currentUrl: string;\n    entityId?: number;\n    \n    title?: string;\n\n    titleUpdated: EventEmitter<void>;\n\n    get formDisabled(): boolean;\n    \n    \n    initTab(): Promise<void>\n\n    refresh(): Promise<void>;\n\n    refreshModel(model?: any): Promise<void>;\n\n    isValid(): boolean;\n\n    showValidation(): void;\n\n    disableForm(): void;\n\n    saveView(): Promise<any>;\n}",
+            "properties": [
+                {
+                    "name": "currentUrl",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "entityId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "titleUpdated",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "EventEmitter<void>",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 167,
+            "methods": [
+                {
+                    "name": "disableForm",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "initTab",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "isValid",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "refresh",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "refreshModel",
+                    "args": [
+                        {
+                            "name": "model",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "model",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "saveView",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<any>",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "showValidation",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ]
+        },
+        {
+            "name": "RouteStorageObject",
+            "id": "interface-RouteStorageObject-51faefb6e407bdd830bdd53b4329adde381c9a84c468ee9f570fdc649dc8aa71c36540d2f97416923714aaf0a886947f4e654ef099e3630e95399a204fa5d646",
+            "file": "projects/zambon-lib/src/lib/routes/custom-reuse-strategy.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { ActivatedRouteSnapshot, DetachedRouteHandle, RouteReuseStrategy } from '@angular/router';\n\ninterface RouteStorageObject {\n    snapshot: ActivatedRouteSnapshot;\n    handle: DetachedRouteHandle | null;\n}\n\nexport class CustomReuseStrategy implements RouteReuseStrategy {\n    \n    private storedRoutes: { [key: string]: RouteStorageObject } = {};\n    \n\n    shouldDetach(route: ActivatedRouteSnapshot): boolean {\n        const routePath = this.getFullRoute(route);\n        if (route.component && this.storedRoutes[routePath]) {\n            return true;\n        }\n        return false;\n    }\n\n    store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle | null): void {\n        const routePath = this.getFullRoute(route);\n        if (route.component && this.storedRoutes[routePath]) {\n            this.storedRoutes[routePath].snapshot = route;\n            this.storedRoutes[routePath].handle = handle;\n        }\n    }\n\n    shouldAttach(route: ActivatedRouteSnapshot): boolean {\n        const routePath = this.getFullRoute(route);\n        if (route.component && this.storedRoutes[routePath] && this.storedRoutes[routePath].handle) {\n            return true;\n        }\n        return false;\n    }\n\n    retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle | null {\n        const routePath = this.getFullRoute(route);\n        if (route.component && this.storedRoutes[routePath]) {\n            return this.storedRoutes[routePath].handle;\n        }\n        return null;\n    }\n\n    shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {\n        const futureRoute = this.getFullRoute(future);\n        const currRoute = this.getFullRoute(curr);\n        return future.routeConfig === curr.routeConfig && futureRoute === currRoute;\n    }\n\n\n    private getFullRoute(route: ActivatedRouteSnapshot): string {\n        let parentRoute = '';\n        if (route.parent) {\n            parentRoute = this.getFullRoute(route.parent);\n            if (parentRoute !== '' && route.routeConfig?.path) {\n                parentRoute += '/';\n            }\n        }\n\n        let path = route.routeConfig?.path ?? '';\n        route.paramMap.keys.forEach(k => {\n            path = path.replace(':' + k, route.paramMap.get(k) ?? '');\n        });\n\n        return parentRoute + path;\n    }\n\n    public storeNewRoute(route: string): void {\n        let newStoredRoute: RouteStorageObject = {\n            snapshot: new ActivatedRouteSnapshot(),\n            handle: null\n        };\n        this.storedRoutes[route] = newStoredRoute;\n    }\n\n    public redirectRoute(oldUrl: string, newUrl: string) {\n        const route = this.storedRoutes[oldUrl];\n        this.storedRoutes[newUrl] = route;\n    }\n\n    public removeRoute(route: string): void {\n        delete this.storedRoutes[route];\n    }\n}",
+            "properties": [
+                {
+                    "name": "handle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DetachedRouteHandle | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "snapshot",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ActivatedRouteSnapshot",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "User",
             "id": "interface-User-9c7e5f1bbbab702cb032307d130876cb68969b0cd4eedef32a0c8cad8081a54e5f8f577ed6ad4539c1b99a1d246cb34031d198c2ea8eba440e64e91b14f01fdc",
             "file": "stories/User.ts",
@@ -14,10 +187,1006 @@
             "methods": []
         }
     ],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "TabService",
+            "id": "injectable-TabService-ecb191e1ea9c6920e0bcab089178d22bc9b202370cd33f8ef292336099cac4deea46ca35e70a2e8ba65197cbeb828c14e16275b9c2ac89678bc1bfd8ff48a7ee",
+            "file": "projects/zambon-lib/src/lib/services/tab.service.ts",
+            "properties": [
+                {
+                    "name": "_activeTab",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Tab | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 11,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "_openTabs",
+                    "defaultValue": "new Array<Tab>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "tabClosed",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "tabOpened",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "tabRedirected",
+                    "defaultValue": "new EventEmitter<{ oldUrl: string, newUrl: string }>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "clearChangedValues",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 219,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "closeAllTabs",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 194,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "closeCurrentTab",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 199,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "closeTab",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "Tab",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 165,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "Tab",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "disableTabForm",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 150,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getTab",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Tab",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isOpen",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isTabFormDisabled",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 117,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isTabValid",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 109,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "openUrl",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "openView",
+                    "args": [
+                        {
+                            "name": "view",
+                            "type": "IBaseView",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 64,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "view",
+                            "type": "IBaseView",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "redirectTab",
+                    "args": [
+                        {
+                            "name": "oldUrl",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "newUrl",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 133,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "oldUrl",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "newUrl",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "refreshTabModel",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "model",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 126,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "model",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "saveTab",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<any>",
+                    "typeParameters": [],
+                    "line": 157,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setChangedValues",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 211,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setTabActive",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "Tab | null",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 92,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "Tab | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "showTabValidation",
+                    "args": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 143,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "url",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { EventEmitter, Injectable } from '@angular/core';\nimport { Router } from '@angular/router';\n\nimport { IBaseView } from '../interfaces/ibase-view';\nimport { Tab } from '../models/tab';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class TabService {\n    private _activeTab: Tab | null = null;\n    private _openTabs = new Array<Tab>();\n\n    public get openTabs(): Array<Tab> {\n        return this._openTabs;\n    }\n    public set openTabs(value: Array<Tab>) {\n        this._openTabs = value;\n    }\n\n    public get activeTab(): Tab | null {\n        return this._activeTab;\n    }\n\n    public get hasChangedTab(): boolean {\n        return this._openTabs.filter(x => x.changedValues).length > 0;\n    }\n\n\n    public tabOpened = new EventEmitter<string>();\n    public tabRedirected = new EventEmitter<{ oldUrl: string, newUrl: string }>();\n    public tabClosed = new EventEmitter<string>();\n\n    constructor(private router: Router) { }\n\n\n    \n    isOpen(url: string): boolean {\n        return this.openTabs.some(x => x.url === url);\n    }\n\n    getTab(url: string): Tab {\n        return this.openTabs.filter(x => x.url === url)[0];\n    }\n\n\n    openUrl(url: string): void {\n        let tab: Tab;\n\n        if (!this.isOpen(url)) {\n            tab = new Tab();\n            tab.url = url;\n\n            this.openTabs.push(tab);\n            this.tabOpened.emit(url);\n        }\n        else {\n            tab = this.getTab(url);\n        }\n            \n        this.setTabActive(tab);\n    }\n\n    openView(view: IBaseView, url: string): void {\n        let tab: Tab;\n\n        if (!this.isOpen(url)) {\n            tab = new Tab();\n            tab.url = url;\n\n            this.openTabs.push(tab);\n            this.tabOpened.emit(url);\n        }\n        else {\n            tab = this.getTab(url);\n        }\n\n        if (tab.view) {\n            //tab.view.titleUpdated.unsubscribe();\n        }\n\n        tab.view = view;\n        tab.view.titleUpdated.subscribe(x => tab?.updatePosition());\n        \n        setTimeout(() => {\n            tab.view.currentUrl = tab.url;\n        });\n\n        this.setTabActive(tab);\n    }\n\n    setTabActive(tab: Tab | null): void {\n        if (this.activeTab) {\n            this._activeTab = null;\n        }\n        \n        if (tab) {\n            this._activeTab = tab;\n            this._activeTab.updatePosition();\n\n            this.router.navigate([tab.url]);\n        }\n        else {\n            this.router.navigate(['/']);\n        }\n    }\n\n\n    isTabValid(url: string): boolean {\n        const tab = this.getTab(url);\n        if (tab && tab.view) {\n            return tab.view.isValid();\n        }\n        return false;\n    }\n\n    isTabFormDisabled(url: string) : boolean {\n        const tab = this.getTab(url);\n        if (tab && tab.view) {\n            return tab.view.formDisabled;\n        }\n        return false;\n    }\n\n\n    refreshTabModel(url: string, model?: any) {\n        const tab = this.getTab(url);\n        if (tab && tab.view) {\n            tab.view.refreshModel(model);\n        }\n    }\n\n    redirectTab(oldUrl: string, newUrl: string): void {\n        const tab = this.getTab(oldUrl);\n        if (tab) {\n            tab.url = newUrl;\n            tab.view.currentUrl = newUrl;\n            this.tabRedirected.emit({oldUrl: oldUrl, newUrl: newUrl});\n            this.router.navigate([newUrl]);\n        }\n    }\n\n    showTabValidation(url: string): void {\n        const tab = this.getTab(url);\n        if (tab && tab.view) {\n            return tab.view.showValidation();\n        }\n    }\n\n    disableTabForm(url: string): void {\n        const tab = this.getTab(url);\n        if (tab && tab.view) {\n            return tab.view.disableForm();\n        }\n    }\n\n    async saveTab(url: string): Promise<any> {\n        const tab = this.getTab(url);\n        if (tab && tab.view) {\n            return await tab.view.saveView();\n        }\n    }\n\n\n    closeTab(tab: Tab): void {\n\n        if (tab.view) {\n            tab.view.titleUpdated.unsubscribe();\n        }\n\n        const index = this.openTabs.indexOf(tab);\n        if (index > -1) {\n            this.openTabs.splice(index, 1);\n            this.tabClosed.emit(tab.url);\n\n            if (this.openTabs.length <= 0) {\n                this.setTabActive(null);\n            }\n            else if (tab === this.activeTab) {\n                if (index >= this.openTabs.length) {\n                    this.setTabActive(this.openTabs[this.openTabs.length - 1]);\n                }\n                else {\n                    this.setTabActive(this.openTabs[index]);\n                }\n            }\n            \n            if (this.activeTab) {\n                this.activeTab.updatePosition();\n            }\n        }\n    }\n\n    closeAllTabs(): void {\n        this.openTabs = new Array<Tab>();\n        this._activeTab = null;\n    }\n\n    closeCurrentTab(): void {\n        const url = this.router.url.substring(1, this.router.url.length);\n        const tab = this.getTab(url);\n        if (tab) {\n            this.closeTab(tab);\n        }\n    }\n\n\n    \n\n\n    setChangedValues(url: string): void {\n        const tab = this.getTab(url);\n        if (tab && !tab.changedValues) {\n            tab.changedValues = true;\n            tab.updatePosition();\n        }\n    }\n\n    clearChangedValues(url: string): void {\n        const tab = this.getTab(url);\n        if (tab && tab.changedValues) {\n            tab.changedValues = false;\n            tab.updatePosition();\n        }\n    }\n}",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 32,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "accessors": {
+                "openTabs": {
+                    "name": "openTabs",
+                    "setSignature": {
+                        "name": "openTabs",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "Array<Tab>",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 17,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "Array<Tab>",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "openTabs",
+                        "type": "",
+                        "returnType": "Array<Tab>",
+                        "line": 14
+                    }
+                },
+                "activeTab": {
+                    "name": "activeTab",
+                    "getSignature": {
+                        "name": "activeTab",
+                        "type": "",
+                        "returnType": "Tab | null",
+                        "line": 21
+                    }
+                },
+                "hasChangedTab": {
+                    "name": "hasChangedTab",
+                    "getSignature": {
+                        "name": "hasChangedTab",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 25
+                    }
+                }
+            },
+            "type": "injectable"
+        }
+    ],
     "guards": [],
     "interceptors": [],
     "classes": [
+        {
+            "name": "CustomReuseStrategy",
+            "id": "class-CustomReuseStrategy-51faefb6e407bdd830bdd53b4329adde381c9a84c468ee9f570fdc649dc8aa71c36540d2f97416923714aaf0a886947f4e654ef099e3630e95399a204fa5d646",
+            "file": "projects/zambon-lib/src/lib/routes/custom-reuse-strategy.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { ActivatedRouteSnapshot, DetachedRouteHandle, RouteReuseStrategy } from '@angular/router';\n\ninterface RouteStorageObject {\n    snapshot: ActivatedRouteSnapshot;\n    handle: DetachedRouteHandle | null;\n}\n\nexport class CustomReuseStrategy implements RouteReuseStrategy {\n    \n    private storedRoutes: { [key: string]: RouteStorageObject } = {};\n    \n\n    shouldDetach(route: ActivatedRouteSnapshot): boolean {\n        const routePath = this.getFullRoute(route);\n        if (route.component && this.storedRoutes[routePath]) {\n            return true;\n        }\n        return false;\n    }\n\n    store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle | null): void {\n        const routePath = this.getFullRoute(route);\n        if (route.component && this.storedRoutes[routePath]) {\n            this.storedRoutes[routePath].snapshot = route;\n            this.storedRoutes[routePath].handle = handle;\n        }\n    }\n\n    shouldAttach(route: ActivatedRouteSnapshot): boolean {\n        const routePath = this.getFullRoute(route);\n        if (route.component && this.storedRoutes[routePath] && this.storedRoutes[routePath].handle) {\n            return true;\n        }\n        return false;\n    }\n\n    retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle | null {\n        const routePath = this.getFullRoute(route);\n        if (route.component && this.storedRoutes[routePath]) {\n            return this.storedRoutes[routePath].handle;\n        }\n        return null;\n    }\n\n    shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): boolean {\n        const futureRoute = this.getFullRoute(future);\n        const currRoute = this.getFullRoute(curr);\n        return future.routeConfig === curr.routeConfig && futureRoute === currRoute;\n    }\n\n\n    private getFullRoute(route: ActivatedRouteSnapshot): string {\n        let parentRoute = '';\n        if (route.parent) {\n            parentRoute = this.getFullRoute(route.parent);\n            if (parentRoute !== '' && route.routeConfig?.path) {\n                parentRoute += '/';\n            }\n        }\n\n        let path = route.routeConfig?.path ?? '';\n        route.paramMap.keys.forEach(k => {\n            path = path.replace(':' + k, route.paramMap.get(k) ?? '');\n        });\n\n        return parentRoute + path;\n    }\n\n    public storeNewRoute(route: string): void {\n        let newStoredRoute: RouteStorageObject = {\n            snapshot: new ActivatedRouteSnapshot(),\n            handle: null\n        };\n        this.storedRoutes[route] = newStoredRoute;\n    }\n\n    public redirectRoute(oldUrl: string, newUrl: string) {\n        const route = this.storedRoutes[oldUrl];\n        this.storedRoutes[newUrl] = route;\n    }\n\n    public removeRoute(route: string): void {\n        delete this.storedRoutes[route];\n    }\n}",
+            "properties": [
+                {
+                    "name": "storedRoutes",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getFullRoute",
+                    "args": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 52,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "redirectRoute",
+                    "args": [
+                        {
+                            "name": "oldUrl",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "newUrl",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 77,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "oldUrl",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "newUrl",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "removeRoute",
+                    "args": [
+                        {
+                            "name": "route",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 82,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "route",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "retrieve",
+                    "args": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "DetachedRouteHandle | null",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "shouldAttach",
+                    "args": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "shouldDetach",
+                    "args": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "shouldReuseRoute",
+                    "args": [
+                        {
+                            "name": "future",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "curr",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "future",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "curr",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "store",
+                    "args": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "handle",
+                            "type": "DetachedRouteHandle | null",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "route",
+                            "type": "ActivatedRouteSnapshot",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "handle",
+                            "type": "DetachedRouteHandle | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "storeNewRoute",
+                    "args": [
+                        {
+                            "name": "route",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 69,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "route",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "implements": [
+                "RouteReuseStrategy"
+            ]
+        },
         {
             "name": "MenuItem",
             "id": "class-MenuItem-eb573608474890945a20e3fb22aa9b421f88bfb7b683ff582dcdfe7d2c0236dd6b72e08f5d1aee4ef0ab4bbf96f0b1c8cc942a954cc88b4b4d13a60158ae5003",
@@ -127,6 +1296,90 @@
                     "modifierKind": [
                         123
                     ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        },
+        {
+            "name": "Tab",
+            "id": "class-Tab-1cc47b0f1280bdfbe92ea2ddc0a04c141f7a128c70343a99382b5194bae81a5ac66d3ef032f48142190e2b52b923e0c7d623795a9f1f37a548ac1c222e40c1dc",
+            "file": "projects/zambon-lib/src/lib/models/tab.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import { IBaseView } from '../interfaces/ibase-view';\nimport { EventEmitter } from '@angular/core';\n\nexport class Tab {\n    view!: IBaseView;\n    url!: string;\n    \n    x!: number;\n    width!: number;\n\n    changedValues = false;\n\n    updatedPosition = new EventEmitter();\n\n    updatePosition() {\n        setTimeout(() => {\n            this.updatedPosition.emit();\n        }, 10);\n    }\n}",
+            "properties": [
+                {
+                    "name": "changedValues",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "updatedPosition",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "url",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "view",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "IBaseView",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "width",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "x",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "methods": [
+                {
+                    "name": "updatePosition",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": ""
                 }
             ],
             "indexSignatures": [],
@@ -327,6 +1580,185 @@
                     }
                 }
             }
+        },
+        {
+            "name": "CloseTabModalComponent",
+            "id": "component-CloseTabModalComponent-61d324fb9b3ad325e2f0f8a9a9b537efa411e8e5a26ea3799ce9559bfc191e64d9bf5384bfcc8c8458dc0c82d4058585706e9ddb606d455de51cb58910d5c5dc",
+            "file": "projects/zambon-lib/src/lib/components/tabs/close-tab-modal/close-tab-modal.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "zambon-lib-close-tab-modal",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./close-tab-modal.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "cancelLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "confirmLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "message",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "close",
+                    "defaultValue": "new EventEmitter<Tab>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "modal",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Modal",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "modalElement",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLDivElement>",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'modal'"
+                        }
+                    ]
+                },
+                {
+                    "name": "tab",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Tab",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "confirmClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "show",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "Tab",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "Tab",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';\nimport { Modal } from 'bootstrap';\n\nimport { Tab } from '../../../models/tab';\n\n@Component({\n    selector: 'zambon-lib-close-tab-modal',\n    templateUrl: './close-tab-modal.component.html'\n})\nexport class CloseTabModalComponent implements OnInit {\n\n    @Input() title!: string;\n    @Input() message!: string;\n    @Input() cancelLabel!: string;\n    @Input() confirmLabel!: string;\n\n    @ViewChild('modal') modalElement!: ElementRef<HTMLDivElement>;\n    modal!: Modal;\n    tab!: Tab;\n\n    @Output() close = new EventEmitter<Tab>();\n\n    constructor() { }\n\n    ngOnInit(): void {\n    }\n\n    ngAfterViewInit(): void {\n        this.modal = new Modal(this.modalElement.nativeElement);\n    }\n\n\n    show(tab: Tab): void {\n        this.tab = tab;\n        this.modal.show();\n    }\n\n    confirmClick(): void {\n        this.close.emit(this.tab);\n    }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 21
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div #modal class=\"modal fade\" id=\"closeModal\" tabindex=\"-1\" aria-hidden=\"true\" aria-hidden=\"true\" role=\"dialog\">\n    <div class=\"modal-dialog\">\n        <div class=\"modal-content\">\n            <div class=\"modal-body\">\n                <h5 class=\"mb-2\">{{ title }}</h5>\n                <h6>{{ message }}</h6>\n            </div>\n\n            <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">{{ cancelLabel }}</button>\n                <button type=\"button\" class=\"btn btn-danger\" data-bs-dismiss=\"modal\" (click)=\"confirmClick()\">{{ confirmLabel }}</button>\n            </div>\n        </div>\n    </div>\n</div>"
         },
         {
             "name": "HeaderComponent",
@@ -932,7 +2364,7 @@
         },
         {
             "name": "NavigationDrawerComponent",
-            "id": "component-NavigationDrawerComponent-5de62e4e4e68718831d1c23f9539e2f41d26738303ffbe638f6cf78384d0e5f0b2fb7d81f88ea58b7b4deb27b89c33c0113a19fb6169cedc8aac185b888e3aa5",
+            "id": "component-NavigationDrawerComponent-e862a8830647358862901bf1888b81a703b2c06bb0cfde6ed003bf9045c8b53d0e824f6b855993e2d2c266823f4a5abe90ae8e679de103a3f618fdbcea757a73",
             "file": "projects/zambon-lib/src/lib/components/navigation/navigation-drawer/navigation-drawer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -951,11 +2383,20 @@
             "viewProviders": [],
             "inputsClass": [
                 {
+                    "name": "autoNavigate",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
                     "name": "menus",
                     "defaultValue": "null",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
+                    "line": 19,
                     "type": "MenuItem[] | null",
                     "decorators": []
                 },
@@ -963,7 +2404,7 @@
                     "name": "userDepartment",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "string",
                     "decorators": []
                 },
@@ -971,7 +2412,7 @@
                     "name": "userImage",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 29,
+                    "line": 30,
                     "type": "SafeUrl",
                     "decorators": []
                 },
@@ -979,7 +2420,7 @@
                     "name": "userName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "string",
                     "decorators": []
                 }
@@ -990,7 +2431,7 @@
                     "defaultValue": "new EventEmitter<MenuItem>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
+                    "line": 35,
                     "type": "EventEmitter"
                 }
             ],
@@ -1003,7 +2444,7 @@
                     "type": "MenuItem | null",
                     "optional": false,
                     "description": "",
-                    "line": 35,
+                    "line": 37,
                     "modifierKind": [
                         121
                     ]
@@ -1016,7 +2457,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 21,
+                    "line": 22,
                     "modifierKind": [
                         123
                     ]
@@ -1029,7 +2470,7 @@
                     "type": "number",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 23,
                     "modifierKind": [
                         123
                     ]
@@ -1042,7 +2483,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 21,
                     "modifierKind": [
                         123
                     ]
@@ -1054,7 +2495,7 @@
                     "type": "ElementRef<HTMLUListElement>",
                     "optional": false,
                     "description": "",
-                    "line": 31,
+                    "line": 33,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -1070,7 +2511,7 @@
                     "type": "boolean",
                     "optional": false,
                     "description": "",
-                    "line": 24,
+                    "line": 25,
                     "modifierKind": [
                         123
                     ]
@@ -1083,7 +2524,7 @@
                     "type": "NodeJS.Timeout | null",
                     "optional": false,
                     "description": "",
-                    "line": 25,
+                    "line": 26,
                     "modifierKind": [
                         121
                     ]
@@ -1103,7 +2544,7 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 69,
+                    "line": 75,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1128,7 +2569,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 163,
+                    "line": 169,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1142,7 +2583,7 @@
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 170,
+                    "line": 176,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1155,7 +2596,7 @@
                     "optional": false,
                     "returnType": "number",
                     "typeParameters": [],
-                    "line": 174,
+                    "line": 180,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1175,7 +2616,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 54,
+                    "line": 56,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1199,7 +2640,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 39,
+                    "line": 41,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1216,7 +2657,7 @@
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 96,
+                    "line": 102,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1241,7 +2682,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 43,
+                    "line": 45,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1262,7 +2703,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 178,
+                    "line": 184,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1288,7 +2729,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';\nimport { SafeUrl } from '@angular/platform-browser';\nimport { of } from 'rxjs';\nimport { delay, map } from 'rxjs/operators';\n\nimport { MenuItem } from '../../../models/menu-item';\n\n@Component({\n    selector: 'zambon-lib-navigation-drawer',\n    templateUrl: './navigation-drawer.component.html',\n    styleUrls: [\n        './navigation-drawer.component.scss',\n        './navigation-drawer.component-animations.scss'\n    ]\n})\nexport class NavigationDrawerComponent implements OnInit {\n\n    @Input() menus: MenuItem[] | null = null;\n\n    public firstOpened: boolean = true;\n    public collapsed: boolean = false;\n    public currentScroll: number = 0;\n\n    public scrolling: boolean = false;\n    private scrollingTimer: NodeJS.Timeout | null = null;\n\n    @Input() userName!: string;\n    @Input() userDepartment!: string;\n    @Input() userImage!: SafeUrl;\n\n    @ViewChild('navMenu') navMenu!: ElementRef<HTMLUListElement>;\n\n    @Output() navigated = new EventEmitter<MenuItem>();\n\n    private activeRootNode: MenuItem | null = null;\n\n    constructor() { }\n\n    ngOnInit(): void { \n    }\n\n\n    public async toggleState() {\n        if (this.activeRootNode?.floatMenuState === 'show') {\n            await this.clearSelection(this.activeRootNode);\n            this.activeRootNode = null;\n        }\n\n        this.collapsed = !this.collapsed;\n        this.firstOpened = false;\n    }\n\n\n    async menuClick(menu: MenuItem) {\n        await this.selectMenu(menu);\n\n        if (menu.url) {\n            this.navigated.emit(menu);\n\n            if (this.collapsed) {\n                this.closeFloatMenu();\n            }\n            else if (this.activeRootNode) {\n                this.clearSelection(this.activeRootNode);\n            }\n        }\n    }\n\n    private async clearSelection(menu: MenuItem): Promise<void> {\n        if (!(menu.parent) && menu.floatMenuState == 'show') {\n            menu.floatMenuState = 'closing';\n\n            await of(menu)\n                .pipe(\n                    delay(400),\n                    map(menu => {\n                        menu.floatMenuState = 'hide';\n                        return menu;\n                    }),\n                    delay(100),\n                    map(menu => {\n                        menu.floatMenuState = '';\n                        return;\n                    })\n                ).toPromise();\n        }\n\n        menu.selected = false;\n        menu = menu.children.filter(el => el.selected)[0];\n        if (menu) {\n            this.clearSelection(menu);\n        }\n        return;\n    }\n\n    private async selectMenu(menu: MenuItem): Promise<void> {\n        const rootNode = menu.getRootNode();\n\n        if (this.collapsed && menu.parent === null) {\n            if (this.activeRootNode?.floatMenuState === 'show') {\n                this.clearSelection(this.activeRootNode);\n\n                if (this.activeRootNode === menu) {\n                    this.activeRootNode = null;\n                    return;\n                }\n            }\n            else if (this.activeRootNode && this.activeRootNode !== menu) {\n                this.clearSelection(this.activeRootNode);\n            }\n\n            if (menu.children.length > 0) {\n                this.activeRootNode = menu;\n                this.activeRootNode.floatMenuState = 'opening';\n                this.activeRootNode.selected = true;\n                \n                return of(this.activeRootNode)\n                    .pipe(\n                        delay(400),\n                        map(menu => {\n                            menu.floatMenuState = 'show';\n                        })\n                    ).toPromise();\n            }\n        }\n        else {\n            if (this.activeRootNode) {\n                if (this.activeRootNode !== rootNode) {\n                    await this.clearSelection(this.activeRootNode);\n                }\n                else {\n                    let activeNode: MenuItem | null = this.activeRootNode;\n                    let menuNode = rootNode;\n\n                    while (activeNode) {\n                        if (activeNode === menu) {\n                            this.clearSelection(activeNode);\n\n                            if (activeNode === this.activeRootNode) {\n                                this.activeRootNode = null;\n                            }\n                            return;\n                        }\n                        else if (activeNode !== menuNode) {\n                            this.clearSelection(activeNode);\n                            break;\n                        }\n                        \n                        activeNode = activeNode.children.filter(el => el.selected)[0];\n\n                        menuNode = menuNode.children.filter(el => el.id == menu.id)[0]\n                                    ?? menuNode.children.filter(el => el.selected)[0];\n                    }\n                }\n            }\n        }\n        \n        this.activeRootNode = rootNode;\n        menu.selected = true;\n    }\n\n\n    public async closeFloatMenu() {\n        if (this.activeRootNode && this.activeRootNode.floatMenuState === 'show') {\n            await this.clearSelection(this.activeRootNode);\n        }\n    }\n\n\n    public getOffsetHeight(): number {\n        return this.navMenu.nativeElement.offsetHeight;\n    }\n\n    public getOffsetTop(): number {\n        return this.navMenu.nativeElement.offsetTop;\n    }\n\n    public updateScroll(event: number) {\n        this.currentScroll = event;\n        this.scrolling = true;\n\n        if(this.scrollingTimer) {\n            clearTimeout(this.scrollingTimer);\n        }\n\n        this.scrollingTimer = setTimeout(() => {\n            this.scrolling = false;\n            this.scrollingTimer = null;\n        }, 100);\n    }\n}",
+            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';\nimport { SafeUrl } from '@angular/platform-browser';\nimport { Router } from '@angular/router';\nimport { of } from 'rxjs';\nimport { delay, map } from 'rxjs/operators';\n\nimport { MenuItem } from '../../../models/menu-item';\n\n@Component({\n    selector: 'zambon-lib-navigation-drawer',\n    templateUrl: './navigation-drawer.component.html',\n    styleUrls: [\n        './navigation-drawer.component.scss',\n        './navigation-drawer.component-animations.scss'\n    ]\n})\nexport class NavigationDrawerComponent implements OnInit {\n\n    @Input() menus: MenuItem[] | null = null;\n\n    public firstOpened: boolean = true;\n    public collapsed: boolean = false;\n    public currentScroll: number = 0;\n\n    public scrolling: boolean = false;\n    private scrollingTimer: NodeJS.Timeout | null = null;\n\n    @Input() userName!: string;\n    @Input() userDepartment!: string;\n    @Input() userImage!: SafeUrl;\n    @Input() autoNavigate: boolean = true;\n\n    @ViewChild('navMenu') navMenu!: ElementRef<HTMLUListElement>;\n\n    @Output() navigated = new EventEmitter<MenuItem>();\n\n    private activeRootNode: MenuItem | null = null;\n\n    constructor(private router: Router) { }\n\n    ngOnInit(): void { \n    }\n\n\n    public async toggleState() {\n        if (this.activeRootNode?.floatMenuState === 'show') {\n            await this.clearSelection(this.activeRootNode);\n            this.activeRootNode = null;\n        }\n\n        this.collapsed = !this.collapsed;\n        this.firstOpened = false;\n    }\n\n\n    async menuClick(menu: MenuItem) {\n        await this.selectMenu(menu);\n\n        if (menu.url) {\n            if (this.autoNavigate) {\n                this.router.navigate([menu.url]);\n            } else {\n                this.navigated.emit(menu);\n            }\n\n            if (this.collapsed) {\n                this.closeFloatMenu();\n            }\n            //else if (this.activeRootNode) {\n            //    this.clearSelection(this.activeRootNode);\n            //}\n        }\n    }\n\n    private async clearSelection(menu: MenuItem): Promise<void> {\n        if (!(menu.parent) && menu.floatMenuState == 'show') {\n            menu.floatMenuState = 'closing';\n\n            await of(menu)\n                .pipe(\n                    delay(400),\n                    map(menu => {\n                        menu.floatMenuState = 'hide';\n                        return menu;\n                    }),\n                    delay(100),\n                    map(menu => {\n                        menu.floatMenuState = '';\n                        return;\n                    })\n                ).toPromise();\n        }\n\n        menu.selected = false;\n        menu = menu.children.filter(el => el.selected)[0];\n        if (menu) {\n            this.clearSelection(menu);\n        }\n        return;\n    }\n\n    private async selectMenu(menu: MenuItem): Promise<void> {\n        const rootNode = menu.getRootNode();\n\n        if (this.collapsed && menu.parent === null) {\n            if (this.activeRootNode?.floatMenuState === 'show') {\n                this.clearSelection(this.activeRootNode);\n\n                if (this.activeRootNode === menu) {\n                    this.activeRootNode = null;\n                    return;\n                }\n            }\n            else if (this.activeRootNode && this.activeRootNode !== menu) {\n                this.clearSelection(this.activeRootNode);\n            }\n\n            if (menu.children.length > 0) {\n                this.activeRootNode = menu;\n                this.activeRootNode.floatMenuState = 'opening';\n                this.activeRootNode.selected = true;\n                \n                return of(this.activeRootNode)\n                    .pipe(\n                        delay(400),\n                        map(menu => {\n                            menu.floatMenuState = 'show';\n                        })\n                    ).toPromise();\n            }\n        }\n        else {\n            if (this.activeRootNode) {\n                if (this.activeRootNode !== rootNode) {\n                    await this.clearSelection(this.activeRootNode);\n                }\n                else {\n                    let activeNode: MenuItem | null = this.activeRootNode;\n                    let menuNode = rootNode;\n\n                    while (activeNode) {\n                        if (activeNode === menu) {\n                            this.clearSelection(activeNode);\n\n                            if (activeNode === this.activeRootNode) {\n                                this.activeRootNode = null;\n                            }\n                            return;\n                        }\n                        else if (activeNode !== menuNode) {\n                            this.clearSelection(activeNode);\n                            break;\n                        }\n                        \n                        activeNode = activeNode.children.filter(el => el.selected)[0];\n\n                        menuNode = menuNode.children.filter(el => el.id == menu.id)[0]\n                                    ?? menuNode.children.filter(el => el.selected)[0];\n                    }\n                }\n            }\n        }\n        \n        this.activeRootNode = rootNode;\n        menu.selected = true;\n    }\n\n\n    public async closeFloatMenu() {\n        if (this.activeRootNode && this.activeRootNode.floatMenuState === 'show') {\n            await this.clearSelection(this.activeRootNode);\n        }\n    }\n\n\n    public getOffsetHeight(): number {\n        return this.navMenu.nativeElement.offsetHeight;\n    }\n\n    public getOffsetTop(): number {\n        return this.navMenu.nativeElement.offsetTop;\n    }\n\n    public updateScroll(event: number) {\n        this.currentScroll = event;\n        this.scrolling = true;\n\n        if(this.scrollingTimer) {\n            clearTimeout(this.scrollingTimer);\n        }\n\n        this.scrollingTimer = setTimeout(() => {\n            this.scrolling = false;\n            this.scrollingTimer = null;\n        }, 100);\n    }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1306,8 +2747,26 @@
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "args": [],
-                "line": 35
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 37,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
             },
             "implements": [
                 "OnInit"
@@ -1316,7 +2775,7 @@
         },
         {
             "name": "NavigationDrawerStoryComponent",
-            "id": "component-NavigationDrawerStoryComponent-c2aed5417a3d9950a6f273ad5d57d9dc440347ab2a52deb1fc049b7da4ff2423cbc73a58895dce88af9fec7dfcd800eeb98e24a58544e1715e5664b631bc2c7e",
+            "id": "component-NavigationDrawerStoryComponent-9cdf338f6c6d38483c7349e2a7e3885f1f37ef717eb00e55e76172a572d29468158a8aa877703a0447679e03eea2797a6599f6c1c8b67b9fc41c9d874e8eefd6",
             "file": "stories/navigation/navigation-drawer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1341,7 +2800,7 @@
                     "type": "NavigationDrawerComponent",
                     "optional": false,
                     "description": "",
-                    "line": 29,
+                    "line": 30,
                     "decorators": [
                         {
                             "name": "ViewChild",
@@ -1352,12 +2811,107 @@
             ],
             "methodsClass": [
                 {
+                    "name": "createMenuItem",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "icon",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "label",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "url",
+                            "type": "string | undefined",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "undefined"
+                        },
+                        {
+                            "name": "parent",
+                            "type": "MenuItem | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "null"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 61,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "icon",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "label",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "url",
+                            "type": "string | undefined",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "undefined",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "parent",
+                            "type": "MenuItem | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "null",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "ngAfterViewInit",
                     "args": [],
                     "optional": false,
                     "returnType": "Promise<void>",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
@@ -1370,7 +2924,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 57,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1382,7 +2936,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\nimport { MenuItem, NavigationDrawerComponent } from 'projects/zambon-lib/src/public-api';\n\n@Component({\n  selector: 'storybook-navigation-drawer',\n  template: `\n    <div class=\"d-flex box\">\n        <zambon-lib-navigation-drawer #navigation\n            [userName]=\"'Test'\"\n            [userDepartment]=\"'Test department'\"\n            [userImage]=\"null\"\n        >\n        </zambon-lib-navigation-drawer>\n        \n        <div class=\"main d-flex flex-grow-1 flex-column\">\n            <div class=\"toolbar position-relative d-flex flex-shrink-0 p-2 align-items-center\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleNavigation()\">\n                    <i class=\"fas fa-bars\"></i>\n                </button>\n            </div>\n\n            <div class=\"container-fluid position-relative flex-grow-1 pt-3 pb-2\">\n            </div>\n        </div>\n    </div>`,\n  styleUrls: [ './navigation-drawer-story.component.scss' ]\n})\nexport default class NavigationDrawerStoryComponent implements AfterViewInit {\n  @ViewChild('navigation') navigation!: NavigationDrawerComponent;\n  \n  constructor() {\n    \n  }\n\n  async ngAfterViewInit(): Promise<void> {\n    const home = new MenuItem(); home.id = 1; home.icon = 'home'; home.label = 'Home page'; home.url = '';\n    \n    const menus = [\n      home\n    ];\n\n    this.navigation.menus = menus;  \n  }\n\n\n  toggleNavigation() {\n    this.navigation.toggleState();\n  }\n}\n",
+            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\nimport { create } from 'domain';\nimport { MenuItem, NavigationDrawerComponent } from 'projects/zambon-lib/src/public-api';\n\n@Component({\n  selector: 'storybook-navigation-drawer',\n  template: `\n    <div class=\"d-flex box\">\n        <zambon-lib-navigation-drawer #navigation\n            [userName]=\"'Test'\"\n            [userDepartment]=\"'Test department'\"\n            [userImage]=\"null\"\n        >\n        </zambon-lib-navigation-drawer>\n        \n        <div class=\"main d-flex flex-grow-1 flex-column\">\n            <div class=\"toolbar position-relative d-flex flex-shrink-0 p-2 align-items-center\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleNavigation()\">\n                    <i class=\"fas fa-bars\"></i>\n                </button>\n            </div>\n\n            <div class=\"container-fluid position-relative flex-grow-1 pt-3 pb-2\">\n            </div>\n        </div>\n    </div>`,\n  styleUrls: [ './navigation-drawer-story.component.scss' ]\n})\nexport default class NavigationDrawerStoryComponent implements AfterViewInit {\n  @ViewChild('navigation') navigation!: NavigationDrawerComponent;\n  \n  constructor() {\n    \n  }\n\n  async ngAfterViewInit(): Promise<void> {\n    const home = this.createMenuItem(1, 'home', 'Home page', '');\n\n    const security = this.createMenuItem(2, 'user', 'Security');\n    security.children.push(this.createMenuItem(3, '', 'Users', '1', security));\n    security.children.push(this.createMenuItem(4, '', 'Roles', '2', security));\n    security.children.push(this.createMenuItem(5, '', 'Actions', '3', security));\n    \n    const reports = this.createMenuItem(6, 'file-alt', 'Reports');\n    reports.children.push(this.createMenuItem(7, '', 'Report A', '4', reports));\n    reports.children.push(this.createMenuItem(8, '', 'Report B', '5', reports));\n    reports.children.push(this.createMenuItem(9, '', 'Report C', '6', reports));\n    \n    this.navigation.menus = [\n        home,\n        security,\n        reports\n    ];\n  }\n\n\n  toggleNavigation() {\n    this.navigation.toggleState();\n  }\n\n  private createMenuItem(id: number, icon: string, label: string, url: string | undefined = undefined, parent: MenuItem | null = null) {\n      const menuItem = new MenuItem();\n\n      menuItem.id = id;\n      menuItem.icon = icon;\n      menuItem.label = label;\n      menuItem.url = url;\n\n      menuItem.parent = parent;\n\n      return menuItem;\n  }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1397,7 +2951,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 29
+                "line": 30
             },
             "implements": [
                 "AfterViewInit"
@@ -1405,7 +2959,7 @@
         },
         {
             "name": "NavigationItemComponent",
-            "id": "component-NavigationItemComponent-37b0ca118c90cd5a5f42b6e1c64bab927315e5b839470598f56322132409d8edeab65e458054f5353936e9fba81202ae1ca97ec05e386e72c6c2c3da9676dba5",
+            "id": "component-NavigationItemComponent-e61ed0bd3af5bbac08b0436b14e12f98abbe093e6301680bd118c21824bb4869ac942c613b0dd54ca00048abe1699588de8915f56cc096b76b770cc0ff7d9409",
             "file": "projects/zambon-lib/src/lib/components/navigation/navigation-item/navigation-item.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1658,15 +3212,15 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';\nimport { ActivatedRoute, ActivationEnd, Router } from '@angular/router';\n\nimport { MenuItem } from '../../../models/menu-item';\n\n@Component({\n    selector: 'zambon-lib-navigation-item',\n    templateUrl: './navigation-item.component.html',\n    styleUrls: [\n        './navigation-item.component.scss',\n        './navigation-item.component-animations.scss'\n    ]\n})\nexport class NavigationItemComponent implements OnInit {\n\n    @ViewChild('navItem') navItem!: ElementRef<HTMLLIElement>;\n\n    @Input() parentCollapsed!: boolean;\n    @Input() parentScrolling!: boolean;\n    @Input() firstOpened!: boolean;\n    @Input() level: number = 0;\n\n    @Input() parentOffsetTop!: number;\n    @Input() parentScroll: number = 0;\n    @Input() parentOffsetHeight!: number;\n    \n    @Input() menu!: MenuItem;\n\n    @Output() menuClick = new EventEmitter<MenuItem>();\n    @Output() closeFloatMenu = new EventEmitter();\n        \n    constructor(private router: Router, private activatedRoute: ActivatedRoute) { }\n\n    ngOnInit(): void {\n        const activatedPath = this.router.url.substring(1, this.router.url.length);\n        if (activatedPath === this.menu.url) {\n            this.menuClick.emit(this.menu);\n        }\n\n        this.router.events.subscribe(event => {\n            if (event instanceof ActivationEnd) {\n                if (event.snapshot.component && event.snapshot.firstChild?.url[0] && event.snapshot.firstChild?.url[0].path === this.menu.url) {\n                    this.menu.linkActive = true;\n                    let menu = this.menu;\n                    \n                    while (menu.parent) {\n                        menu.parent.linkActive = true;\n                        menu = menu.parent;\n                    }\n                }\n                else if (this.menu.linkActive) {\n                    this.menu.linkActive = false;\n                    let menu = this.menu;\n                    \n                    while (menu.parent) {\n                        menu.parent.linkActive = false;\n                        menu = menu.parent;\n                    }\n                }\n            }\n        });\n    }\n    \n\n    public click() {\n        this.menuClick.emit(this.menu);\n    }\n\n    public subMenuClick(menu: MenuItem) {\n        this.menuClick.emit(menu);\n    }\n\n    public subMenuCloseFloatMenu() {\n        this.closeFloatMenu.emit();\n    }\n\n    \n    public calculateHeight(menu: MenuItem): number {\n        if (menu.children.length > 0 && menu.selected) {\n            \n            let height = menu.children.length * 45;\n            menu.children.forEach(subMenu => {\n                height += this.calculateHeight(subMenu);\n            });\n\n            const maxHeight = this.calculateMaxHeight() as number;\n\n            return height < maxHeight || this.level > 0 || !this.parentCollapsed\n                ? height\n                : maxHeight ?? height;\n        }\n        return 0;\n    }\n\n    public calculateMarginTop() {\n        if (this.parentCollapsed && (this.menu.floatMenuState === 'opening' || this.menu.floatMenuState === 'show' || this.menu.floatMenuState === 'closing')) {\n            if (this.navItem.nativeElement.offsetTop - this.parentScroll <= this.parentOffsetTop) {\n                //this.closeFloatMenu.emit();\n                return this.parentOffsetTop - this.navItem.nativeElement.offsetTop - 45;\n            }\n            else if (this.navItem.nativeElement.offsetTop + this.calculateHeight(this.menu) - this.parentOffsetTop - this.parentScroll > this.parentOffsetHeight) {\n                //this.closeFloatMenu.emit();\n                return this.parentOffsetTop - this.navItem.nativeElement.offsetTop + this.parentOffsetHeight - this.calculateHeight(this.menu) - 45;\n            }\n            return (this.parentScroll + this.navItem.nativeElement.clientHeight) * -1;\n        }\n        return 0;\n    }\n\n    public calculateMaxHeight(): number | null {\n        return this.parentCollapsed\n            ? this.parentOffsetHeight\n            : null;\n    }\n}",
+            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';\nimport { ActivatedRoute, ActivationEnd, Router } from '@angular/router';\n\nimport { MenuItem } from '../../../models/menu-item';\n\n@Component({\n    selector: 'zambon-lib-navigation-item',\n    templateUrl: './navigation-item.component.html',\n    styleUrls: [\n        './navigation-item.component.scss',\n        './navigation-item.component-animations.scss'\n    ]\n})\nexport class NavigationItemComponent implements OnInit {\n\n    @ViewChild('navItem') navItem!: ElementRef<HTMLLIElement>;\n\n    @Input() parentCollapsed!: boolean;\n    @Input() parentScrolling!: boolean;\n    @Input() firstOpened!: boolean;\n    @Input() level: number = 0;\n\n    @Input() parentOffsetTop!: number;\n    @Input() parentScroll: number = 0;\n    @Input() parentOffsetHeight!: number;\n    \n    @Input() menu!: MenuItem;\n\n    @Output() menuClick = new EventEmitter<MenuItem>();\n    @Output() closeFloatMenu = new EventEmitter();\n        \n    constructor(private router: Router, private activatedRoute: ActivatedRoute) { }\n\n    ngOnInit(): void {\n        const activatedPath = this.router.url.substring(1, this.router.url.length);\n        if (activatedPath === this.menu.url) {\n            this.menuClick.emit(this.menu);\n        }\n\n        this.router.events.subscribe(event => {\n            if (event instanceof ActivationEnd) {\n                if (event.snapshot.component && event.snapshot.firstChild?.url[0] && event.snapshot.firstChild?.url[0].path === this.menu.url) {\n                    this.menu.linkActive = true;\n                    let menu = this.menu;\n                    \n                    while (menu.parent) {\n                        menu.parent.linkActive = true;\n                        menu = menu.parent;\n                    }\n                }\n                else if (this.menu.linkActive && this.menu.children.length === 0) {\n                    this.menu.linkActive = false;\n                    let menu = this.menu;\n                    \n                    while (menu.parent) {\n                        menu.parent.linkActive = false;\n                        menu = menu.parent;\n                    }\n                }\n            }\n        });\n    }\n    \n\n    public click() {\n        this.menuClick.emit(this.menu);\n    }\n\n    public subMenuClick(menu: MenuItem) {\n        this.menuClick.emit(menu);\n    }\n\n    public subMenuCloseFloatMenu() {\n        this.closeFloatMenu.emit();\n    }\n\n    \n    public calculateHeight(menu: MenuItem): number {\n        if (menu.children.length > 0 && menu.selected) {\n            \n            let height = menu.children.length * 45;\n            menu.children.forEach(subMenu => {\n                height += this.calculateHeight(subMenu);\n            });\n\n            const maxHeight = this.calculateMaxHeight() as number;\n\n            return height < maxHeight || this.level > 0 || !this.parentCollapsed\n                ? height\n                : maxHeight ?? height;\n        }\n        return 0;\n    }\n\n    public calculateMarginTop() {\n        if (this.parentCollapsed && (this.menu.floatMenuState === 'opening' || this.menu.floatMenuState === 'show' || this.menu.floatMenuState === 'closing')) {\n            if (this.navItem.nativeElement.offsetTop - this.parentScroll <= this.parentOffsetTop) {\n                //this.closeFloatMenu.emit();\n                return this.parentOffsetTop - this.navItem.nativeElement.offsetTop - 45;\n            }\n            else if (this.navItem.nativeElement.offsetTop + this.calculateHeight(this.menu) - this.parentOffsetTop - this.parentScroll > this.parentOffsetHeight) {\n                //this.closeFloatMenu.emit();\n                return this.parentOffsetTop - this.navItem.nativeElement.offsetTop + this.parentOffsetHeight - this.calculateHeight(this.menu) - 45;\n            }\n            return (this.parentScroll + this.navItem.nativeElement.clientHeight) * -1;\n        }\n        return 0;\n    }\n\n    public calculateMaxHeight(): number | null {\n        return this.parentCollapsed\n            ? this.parentOffsetHeight\n            : null;\n    }\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n@import '../../../../assets/styles/mixins/navigation/navigation-drawer';\r\n@import '../../../../assets/styles/mixins/no-select';\r\n\r\n@include navigation-item();\r\n\r\n.nav-item {\r\n    font-size: 0.9rem;\r\n    position: static;\r\n\r\n    &.first-level {\r\n\r\n        > .nav-link {\r\n            z-index: 1;\r\n\r\n            &.has-sub-menu {\r\n                &:after {\r\n                    opacity: 1;\r\n                    transition: all $opacity-animation-speed ease;\r\n                }\r\n            }\r\n\r\n            .icon {\r\n                transition: all $icon-animation-speed ease-in-out;\r\n            }\r\n\r\n            .label {\r\n                opacity: 1;\r\n                transition: opacity $opacity-animation-speed ease;\r\n            }\r\n        }\r\n\r\n        > .nav {\r\n            max-height: 90%;\r\n        }\r\n    }\r\n\r\n    .active-item {\r\n        position: relative;\r\n\r\n        &:before {\r\n            content: '';\r\n            position: absolute;\r\n            top: 0;\r\n            left: 0;\r\n            right: 0;\r\n            width: 0px;\r\n            height: $menu-height-item;\r\n            z-index: 2;\r\n            transition: width $menu-animation-speed linear;\r\n        }\r\n    }\r\n\r\n    .nav-link {\r\n        display: block;\r\n        position: relative;\r\n        font-weight: 600;\r\n        padding: .75rem 1.4rem;\r\n        cursor: pointer;\r\n        height: $menu-height-item;\r\n        white-space: nowrap;\r\n        text-overflow: ellipsis;\r\n\r\n        @include no-select();\r\n\r\n        &.has-sub-menu {\r\n            &:after {\r\n                content: \"\\f104\";\r\n                position: absolute;\r\n                font-family: \"Font Awesome 5 Free\";\r\n                font-weight: 900;\r\n                text-align: center;\r\n                width: 1.25em;\r\n                right: .5rem;\r\n                top: .8rem;\r\n            }\r\n        }\r\n\r\n        .item-background {\r\n            position: absolute;\r\n            top: 0;\r\n            left: 0;\r\n            right: 0;\r\n            bottom: 0;\r\n            z-index: -1;\r\n\r\n            background: url(#{$background-url}) no-repeat;\r\n        }\r\n    }\r\n\r\n    .nav {\r\n        overflow: hidden;\r\n        position: relative;\r\n    }\r\n}",
+                    "data": "@import '../../../../assets/styles/mixins/navigation/navigation-drawer';\r\n@import '../../../../assets/styles/mixins/no-select';\r\n\r\n@include navigation-item();\r\n@include navigation-item-set-size();\r\n\r\n.nav-item {\r\n    font-size: 0.9rem;\r\n    position: static;\r\n\r\n    &.active .active-item:before {\r\n        width: 4px;\r\n    }\r\n\r\n    &.first-level {\r\n\r\n        > .nav-link {\r\n            z-index: 1;\r\n\r\n            &.has-sub-menu:after, .label {\r\n                opacity: 1;\r\n            }\r\n        }\r\n\r\n        > .nav {\r\n            max-height: 90%;\r\n        }\r\n    }\r\n\r\n    &.menu-collapsed {\r\n        &:not(.menu-first-opened).first-level > .nav-link {\r\n            &.has-sub-menu:after, .label {\r\n                opacity: 0;\r\n            }\r\n\r\n            .icon {\r\n                font-size: 1.3333333333em;\r\n                line-height: 0.75em;\r\n                vertical-align: -0.0667em;\r\n            }\r\n        }\r\n\r\n        &.menu-first-opened .icon {\r\n            font-size: 1.3333333333em;\r\n            line-height: 0.75em;\r\n            vertical-align: -0.0667em;\r\n        }\r\n\r\n        &.first-level {\r\n            > .nav-link {\r\n                text-overflow: clip;\r\n\r\n                &.has-sub-menu:after, .label {\r\n                    opacity: 0;\r\n                }\r\n            }\r\n\r\n            > .nav {\r\n                &:not(.open-float-menu):not(.close-float-menu):not(.show) {\r\n                    height: 0px !important;\r\n                }\r\n\r\n                &.open-float-menu, &.close-float-menu, &.show {\r\n                    position: absolute;\r\n                    width: 150px;\r\n                    border-top-right-radius: 0.4rem;\r\n                    border-bottom-right-radius: 0.4rem;\r\n                    z-index: -1;\r\n                    max-height: inherit;\r\n                }\r\n\r\n                &.show {\r\n                    overflow-y: auto;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    &:not(.opened) .nav {\r\n        height: 0px !important;\r\n    }\r\n\r\n    .active-item {\r\n        position: relative;\r\n\r\n        &:before {\r\n            content: '';\r\n            position: absolute;\r\n            top: 0;\r\n            left: 0;\r\n            right: 0;\r\n            width: 0px;\r\n            z-index: 2;\r\n        }\r\n    }\r\n\r\n    .nav-link {\r\n        display: block;\r\n        position: relative;\r\n        font-weight: 600;\r\n        padding: .75rem 1.4rem;\r\n        cursor: pointer;\r\n        white-space: nowrap;\r\n        text-overflow: ellipsis;\r\n\r\n        @include no-select();\r\n\r\n        &.has-sub-menu:after {\r\n            content: \"\\f104\";\r\n            position: absolute;\r\n            font-family: \"Font Awesome 5 Free\";\r\n            font-weight: 900;\r\n            text-align: center;\r\n            width: 1.25em;\r\n            right: .5rem;\r\n            top: .8rem;\r\n        }\r\n\r\n        .item-background {\r\n            position: absolute;\r\n            top: 0;\r\n            left: 0;\r\n            right: 0;\r\n            bottom: 0;\r\n            z-index: -1;\r\n        }\r\n    }\r\n\r\n    .nav {\r\n        overflow: hidden;\r\n        position: relative;\r\n    }\r\n}\r\n\r\n@media (max-width:768px) {\r\n    .nav-item.menu-expanded.first-level .nav-link {\r\n        &.has-sub-menu:after, .label {\r\n            opacity: 0;\r\n        }\r\n\r\n        .icon {\r\n            font-size: 1.3333333333em;\r\n            line-height: 0.75em;\r\n            vertical-align: -0.0667em;\r\n        }\r\n    }\r\n}",
                     "styleUrl": "./navigation-item.component.scss"
                 },
                 {
-                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n@import \"../../../../assets/styles/mixins/scroll\";\r\n\r\n/* Animations */\r\n@keyframes collapseItem {\r\n    from { text-overflow: ellipsis; }\r\n    to { text-overflow: clip; }\r\n}\r\n\r\n@keyframes expandItem {\r\n    from { text-overflow: clip; }\r\n    to { text-overflow: ellipsis; }\r\n}\r\n\r\n.nav-item {\r\n\r\n    &:not(.menu-first-opened) {\r\n        .nav-link {\r\n            transition: all $menu-hover-speed;\r\n\r\n            &.has-sub-menu {\r\n                &:after {\r\n                    transition: all $menu-animation-speed ease-in-out;\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    &.menu-collapsed {\r\n\r\n        &:not(.menu-first-opened) {\r\n            \r\n            &.first-level {\r\n                > .nav-link {\r\n                    animation: collapseItem $menu-animation-speed ease-in-out;\r\n                    animation-fill-mode: forwards;\r\n\r\n                    &.has-sub-menu {\r\n                        &:after {\r\n                            opacity: 0;\r\n                        }\r\n                    }\r\n\r\n                    .icon {\r\n                        font-size: 1.3333333333em;\r\n                        line-height: 0.75em;\r\n                        vertical-align: -0.0667em;\r\n                    }\r\n            \r\n                    .label {\r\n                        opacity: 0;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n\r\n        &.menu-first-opened {\r\n            .icon {\r\n                font-size: 1.3333333333em;\r\n                line-height: 0.75em;\r\n                vertical-align: -0.0667em;\r\n            }\r\n        }\r\n\r\n        &.first-level {\r\n            > .nav-link {\r\n                text-overflow: clip;\r\n\r\n                &.has-sub-menu {\r\n                    &:after {\r\n                        opacity: 0;\r\n                    }\r\n                }\r\n\r\n                .label {\r\n                    opacity: 0;\r\n                }\r\n            }\r\n\r\n            > .nav {\r\n                &:not(.open-float-menu):not(.close-float-menu):not(.show) {\r\n                    height: 0px !important;\r\n                }\r\n\r\n                &.hide {\r\n                    transition: height 0s;\r\n                }\r\n\r\n                &.open-float-menu, &.close-float-menu, &.show {\r\n                    position: absolute;\r\n                    width: 150px;\r\n                    border-top-right-radius: 0.4rem;\r\n                    border-bottom-right-radius: 0.4rem;\r\n                    z-index: -1;\r\n                    max-height: inherit;\r\n                }\r\n                \r\n                &.open-float-menu, &.close-float-menu {\r\n                    animation-duration: 0.4s;\r\n                    animation-timing-function: ease-in-out;;\r\n                    animation-fill-mode: forwards;\r\n                    transition: height 0s;\r\n                }\r\n\r\n                &.show {\r\n                    overflow-y: auto;\r\n                    @include scroll(darken($home-base-color3, 7%));\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    &.menu-expanded {\r\n\r\n        &:not(.menu-first-opened) {\r\n            &.first-level {\r\n\r\n                > .nav-link {\r\n                    animation: expandItem $menu-animation-speed ease-in-out;\r\n                    animation-fill-mode: forwards;\r\n                }\r\n\r\n                > .nav {\r\n                    &.open-float-menu {\r\n                        animation-duration: $menu-open-close-speed;\r\n                        animation-fill-mode: forwards;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    &.menu-scrolling {\r\n        .nav {\r\n            transition:\r\n                height $menu-open-close-speed ease-in-out,\r\n                margin-top 0s ease-in-out\r\n        }\r\n    }\r\n\r\n    &.active {\r\n        .active-item {\r\n            &:before {\r\n                width: 4px;\r\n            }\r\n        }\r\n    }\r\n\r\n    .nav {\r\n        transition:\r\n            height $menu-open-close-speed ease-in-out,\r\n            margin-top $menu-open-close-speed ease-in-out;\r\n    }\r\n\r\n    &:not(.opened) {\r\n        .nav {\r\n            height: 0px !important;\r\n        }\r\n    }\r\n\r\n    &.opened {\r\n        > .nav-link {\r\n            &.has-sub-menu {\r\n                &:after {\r\n                    -webkit-transform: rotate(-90deg);\r\n                    -moz-transform: rotate(-90deg);\r\n                    -ms-transform: rotate(-90deg);\r\n                    -o-transform: rotate(-90deg);\r\n                    transform: rotate(-90deg);\r\n                }\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\n\r\n@media (max-width:768px) {\r\n    .nav-item {\r\n        &.menu-expanded {\r\n            &.first-level {\r\n                .nav-link {\r\n\r\n                    &.has-sub-menu {\r\n                        &:after {\r\n                            opacity: 0;\r\n                        }\r\n                    }\r\n\r\n                    .icon {\r\n                        font-size: 1.3333333333em;\r\n                        line-height: 0.75em;\r\n                        vertical-align: -0.0667em;\r\n                    }\r\n\r\n                    .label {\r\n                        opacity: 0;\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+                    "data": "@import \"../../../../assets/styles/variables/navigation.theme\";\r\n\r\n@keyframes collapseItem {\r\n    from { text-overflow: ellipsis; }\r\n    to { text-overflow: clip; }\r\n}\r\n\r\n@keyframes expandItem {\r\n    from { text-overflow: clip; }\r\n    to { text-overflow: ellipsis; }\r\n}\r\n\r\n.nav-item {\r\n\r\n    &.first-level > .nav-link {\r\n        &.has-sub-menu:after {\r\n            transition: all $opacity-animation-speed ease;\r\n        }\r\n\r\n        .icon {\r\n            transition: all $icon-animation-speed ease-in-out;\r\n        }\r\n\r\n        .label {\r\n            transition: opacity $opacity-animation-speed ease;\r\n        }\r\n    }\r\n\r\n    &.menu-collapsed {\r\n\r\n        &:not(.menu-first-opened).first-level > .nav-link {\r\n            animation: collapseItem $menu-animation-speed ease-in-out;\r\n            animation-fill-mode: forwards;\r\n        }\r\n\r\n        &.first-level > .nav {\r\n            &.hide {\r\n                transition: height 0s;\r\n            }\r\n\r\n            &.open-float-menu, &.close-float-menu {\r\n                animation-duration: 0.4s;\r\n                animation-timing-function: ease-in-out;;\r\n                animation-fill-mode: forwards;\r\n                transition: height 0s;\r\n            }\r\n        }\r\n    }\r\n\r\n    &.menu-expanded:not(.menu-first-opened).first-level {\r\n\r\n        > .nav-link {\r\n            animation: expandItem $menu-animation-speed ease-in-out;\r\n            animation-fill-mode: forwards;\r\n        }\r\n\r\n        > .nav.open-float-menu {\r\n            animation-duration: $menu-open-close-speed;\r\n            animation-fill-mode: forwards;\r\n        }\r\n    }\r\n\r\n    &.menu-scrolling.nav {\r\n        transition:\r\n            height $menu-open-close-speed ease-in-out,\r\n            margin-top 0s ease-in-out\r\n    }\r\n\r\n    &:not(.menu-first-opened) .nav-link {\r\n        transition: all $menu-hover-speed;\r\n\r\n        &.has-sub-menu:after {\r\n            transition: all $menu-animation-speed ease-in-out;\r\n        }\r\n    }\r\n    \r\n    &.opened  > .nav-link.has-sub-menu:after {\r\n        -webkit-transform: rotate(-90deg);\r\n        -moz-transform: rotate(-90deg);\r\n        -ms-transform: rotate(-90deg);\r\n        -o-transform: rotate(-90deg);\r\n        transform: rotate(-90deg);\r\n    }\r\n\r\n    .active-item:before {\r\n        transition: width $menu-animation-speed linear;\r\n    }\r\n\r\n    .nav {\r\n        transition:\r\n            height $menu-open-close-speed ease-in-out,\r\n            margin-top $menu-open-close-speed ease-in-out;\r\n    }\r\n}",
                     "styleUrl": "./navigation-item.component-animations.scss"
                 }
             ],
@@ -1789,18 +3343,579 @@
                 }
             ],
             "stylesData": ""
+        },
+        {
+            "name": "TabContainerComponent",
+            "id": "component-TabContainerComponent-0bc879a5f88844a1e1235f31f812825cbcb1dd4d77d1671ceb379b093da2a3f5c7182643899ae40c34736fb7916a3f8eff8360a359a7e92f5f4f0418d2c316bb",
+            "file": "projects/zambon-lib/src/lib/components/tabs/tab-container/tab-container.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "zambon-lib-tab-container",
+            "styleUrls": [
+                "./tab-container.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tab-container.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "modalCancelLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "modalConfirmLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "modalMessage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "modalTitle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "closeModal",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "CloseTabModalComponent",
+                    "optional": false,
+                    "description": "",
+                    "line": 23,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'closeModal'"
+                        }
+                    ]
+                },
+                {
+                    "name": "subs",
+                    "defaultValue": "new Subscription()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "closeTab",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "Tab",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 84,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "Tab",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "forceCloseTab",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "Tab",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 92,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "Tab",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getSelectedLeft",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 97,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "getSelectedWidth",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 101,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "setTabActive",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "Tab | null",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "Tab | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnDestroy, ViewChild } from '@angular/core';\nimport { RouteReuseStrategy } from '@angular/router';\nimport { DragulaService } from 'ng2-dragula';\nimport { Subscription } from 'rxjs';\n\nimport { Tab } from '../../../models/tab';\nimport { CustomReuseStrategy } from '../../../routes/custom-reuse-strategy';\nimport { TabService } from '../../../services/tab.service';\nimport { CloseTabModalComponent } from '../close-tab-modal/close-tab-modal.component';\n\n@Component({\n    selector: 'zambon-lib-tab-container',\n    templateUrl: './tab-container.component.html',\n    styleUrls: ['./tab-container.component.scss']\n})\nexport class TabContainerComponent implements OnDestroy {\n    \n    @Input() modalTitle!: string;\n    @Input() modalMessage!: string;\n    @Input() modalCancelLabel!: string;\n    @Input() modalConfirmLabel!: string;\n    \n    @ViewChild('closeModal') closeModal!: CloseTabModalComponent;\n\n    public get activeTab(): Tab | null {\n        return this.tabService.activeTab;\n    }\n    \n    public get openTabs(): Array<Tab> {\n        return this.tabService.openTabs;\n    }\n    public set openTabs(value: Array<Tab>) {\n        this.tabService.openTabs = value;\n    }\n\n    subs = new Subscription();\n        \n    constructor(\n        private routeReuse: RouteReuseStrategy,\n        private tabService: TabService,\n        private dragulaService: DragulaService\n    ) {\n        if (!this.dragulaService.find('TABS')) {\n            this.dragulaService.createGroup(\"TABS\", {\n                direction: 'horizontal'\n            });\n        }\n\n        this.subs.add(\n            this.tabService.tabOpened.subscribe(url => {\n                (<CustomReuseStrategy>this.routeReuse).storeNewRoute(url);\n            })\n        );\n\n        this.subs.add(\n            this.tabService.tabRedirected.subscribe(urls => {\n                (<CustomReuseStrategy>this.routeReuse).redirectRoute(urls.oldUrl, urls.newUrl);\n            })\n        );\n\n        this.subs.add(\n            this.tabService.tabClosed.subscribe(url => {\n                (<CustomReuseStrategy>this.routeReuse).removeRoute(url);\n            })\n        );\n\n        this.subs.add(\n            this.dragulaService.dragend(\"TABS\")\n                .subscribe(() => {\n                    this.activeTab?.updatePosition();\n                })\n        );\n    }\n\n    ngOnDestroy(): void {\n        this.subs.unsubscribe();\n    }\n\n\n    public setTabActive(tab: Tab | null): void {\n        this.tabService.setTabActive(tab);\n    }\n\n    public closeTab(tab: Tab): void {\n        if (tab.changedValues) {\n            this.closeModal.show(tab);\n        } else {\n            this.tabService.closeTab(tab);\n        }\n    }\n\n    public forceCloseTab(tab: Tab): void {\n        this.tabService.closeTab(tab);\n    }\n\n\n    public getSelectedLeft(): number {\n        return this.activeTab?.x ?? 0;\n    }\n\n    public getSelectedWidth(): number {\n        return this.activeTab?.width ?? 0;\n    }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import '../../../../assets/styles/mixins/tabs/tabs-container';\r\n// @import \"/src/app/shared/styles/dragula\";\r\n\r\n@include tabs-container();\r\n\r\n.tab-container {\r\n    position: relative;\r\n\r\n    .tabs-nav {\r\n        list-style: none;\r\n    }\r\n\r\n    .selector {\r\n        position: absolute;\r\n        bottom: 0;\r\n        height: 2px;\r\n        left: 0;\r\n        width: 0;\r\n        z-index: 2;\r\n\r\n        transition: all $tab-select-transition-speed ease;\r\n    }\r\n}\r\n\r\n.tab-content {\r\n    margin-top: -1px;\r\n    border-width: 1px;\r\n    border-style: solid;\r\n\r\n    ::ng-deep > *:not(router-outlet) {\r\n        display: flex;\r\n        flex-direction: column;\r\n        flex-grow: 1;\r\n        max-height: 100%;\r\n        height: 100%;\r\n    }\r\n}",
+                    "styleUrl": "./tab-container.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "routeReuse",
+                        "type": "RouteReuseStrategy",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "tabService",
+                        "type": "TabService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "dragulaService",
+                        "type": "DragulaService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 36,
+                "jsdoctags": [
+                    {
+                        "name": "routeReuse",
+                        "type": "RouteReuseStrategy",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "tabService",
+                        "type": "TabService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dragulaService",
+                        "type": "DragulaService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnDestroy"
+            ],
+            "accessors": {
+                "activeTab": {
+                    "name": "activeTab",
+                    "getSignature": {
+                        "name": "activeTab",
+                        "type": "",
+                        "returnType": "Tab | null",
+                        "line": 25
+                    }
+                },
+                "openTabs": {
+                    "name": "openTabs",
+                    "setSignature": {
+                        "name": "openTabs",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "Array<Tab>",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 32,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "Array<Tab>",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "openTabs",
+                        "type": "",
+                        "returnType": "Array<Tab>",
+                        "line": 29
+                    }
+                }
+            },
+            "templateData": "<div class=\"tab-container\">\n    <ul class=\"tabs-nav d-flex flex-row p-0 m-0\" dragula=\"TABS\" [(dragulaModel)]=\"openTabs\">\n        <zambon-lib-tab-item *ngFor=\"let tab of openTabs\"\n            [tab]=\"tab\" [isActive]=\"tab === this.activeTab\"\n            (navigated)=\"setTabActive($event)\"\n            (closed)=\"closeTab($event)\"\n        ></zambon-lib-tab-item>\n    </ul>\n\n    <div class=\"selector\"\n        [ngStyle]=\"{\n            'left.px': getSelectedLeft(),\n            'width.px': getSelectedWidth()\n        }\"></div>\n</div>\n\n<div class=\"tab-content d-flex flex-column flex-grow-1 rounded-bottom p-2\" *ngIf=\"openTabs.length > 0\">\n    <ng-content></ng-content>\n</div>\n\n<zambon-lib-close-tab-modal #closeModal (close)=\"forceCloseTab($event)\"\n    [title]=\"modalTitle\"\n    [message]=\"modalMessage\"\n    [cancelLabel]=\"modalCancelLabel\"\n    [confirmLabel]=\"modalConfirmLabel\"\n></zambon-lib-close-tab-modal>"
+        },
+        {
+            "name": "TabItemComponent",
+            "id": "component-TabItemComponent-be99f915674584720172defe05e194b46a9cb3e6a1c33e2a958e9e318eaa1fb2d505993c4a595fecb12e8ccc7e0b767dbd91f06d6c0f8c7114d28cb2b13accfb",
+            "file": "projects/zambon-lib/src/lib/components/tabs/tab-item/tab-item.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "zambon-lib-tab-item",
+            "styleUrls": [
+                "./tab-item.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tab-item.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "isActive",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "tab",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "Tab",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "closed",
+                    "defaultValue": "new EventEmitter<Tab>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "navigated",
+                    "defaultValue": "new EventEmitter<Tab>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "subs",
+                    "defaultValue": "new Subscription()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "tabItem",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'tabItem'"
+                        }
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "closeClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 46,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "itemClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';\nimport { Subscription } from 'rxjs';\n\nimport { Tab } from '../../../models/tab';\n\n@Component({\n  selector: 'zambon-lib-tab-item',\n  templateUrl: './tab-item.component.html',\n  styleUrls: ['./tab-item.component.scss']\n})\nexport class TabItemComponent implements OnInit {\n\n    @Input() tab!: Tab;\n    @Input() isActive!: boolean;\n\n    @ViewChild('tabItem') tabItem!: ElementRef;\n\n    @Output() navigated = new EventEmitter<Tab>();\n    @Output() closed = new EventEmitter<Tab>();\n\n    subs = new Subscription();\n\n    public get hasTitle(): boolean {\n        return this.tab?.view?.title !== undefined;\n    }\n\n\n    constructor() { }\n\n    ngOnInit(): void {\n        this.tab.updatedPosition.subscribe(() => {\n            this.tab.width = this.tabItem.nativeElement.clientWidth;\n            this.tab.x = this.tabItem.nativeElement.offsetLeft + 1;\n        });\n    }\n\n    ngOnDestroy(): void {\n        this.subs.unsubscribe();\n    }\n\n\n    itemClick(): void {\n        this.navigated.emit(this.tab);\n    }\n\n    closeClick(): void {\n        this.closed.emit(this.tab);\n    }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import '../../../../assets/styles/mixins/tabs/tabs-item';\r\n@import \"../../../../assets/styles/mixins/no-select\";\r\n\r\n@include tabs-item();\r\n\r\n.tab-item {\r\n    z-index: 2;\r\n    position: relative;\r\n    opacity: .65;\r\n    font-size: .95rem;\r\n    font-weight: 500;\r\n    max-width: $tab-max-width;\r\n    \r\n    transition: all $tab-select-transition-speed ease;\r\n    \r\n    &.active {\r\n        opacity: 1;\r\n    }\r\n\r\n    &.dragging {\r\n        position: absolute;\r\n    }\r\n    \r\n    &:hover .close {\r\n        opacity: .9;\r\n    }\r\n\r\n    .label {\r\n        padding-right: 1.8rem;\r\n        text-decoration: none;\r\n        font-size: 1rem;\r\n        color: inherit;\r\n        cursor: pointer;\r\n        overflow: hidden;\r\n\r\n        @include no-select();\r\n\r\n        span {\r\n            text-overflow: ellipsis;\r\n            overflow: hidden;\r\n            white-space: nowrap;\r\n        }\r\n\r\n        .spinner-border {\r\n            margin: .25rem .25rem .25rem .5rem;\r\n        }\r\n    }\r\n\r\n    .close {\r\n        position: absolute;\r\n        top: .35rem;\r\n        right: .3rem;\r\n        bottom: .35rem;\r\n        padding: .2rem;\r\n        cursor: pointer;\r\n        \r\n        opacity: .5;\r\n        transition: all $tab-select-transition-speed;\r\n    }\r\n}",
+                    "styleUrl": "./tab-item.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 25
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "accessors": {
+                "hasTitle": {
+                    "name": "hasTitle",
+                    "getSignature": {
+                        "name": "hasTitle",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 23
+                    }
+                }
+            },
+            "templateData": "<li #tabItem class=\"tab-item d-flex align-items-center rounded-top\" [class.active]=\"isActive\">\n    <div class=\"label py-2 ps-2 d-flex flex-row align-items-center\" (click)=\"itemClick()\">\n        <div class=\"spinner-border spinner-border-sm me-2\" role=\"status\"\n            *ngIf=\"!this.hasTitle\"\n        >\n            <span class=\"visually-hidden\">Loading...</span>\n        </div>\n\n        <span *ngIf=\"this.hasTitle\">\n            <span *ngIf=\"tab.changedValues\">*</span>\n            {{ tab.view.title ?? '' }}\n            <!-- {{ (tab.view.title ?? '') | translate }} -->\n        </span>\n    </div>\n    \n    <a class=\"close\" (click)=\"closeClick()\">\n        <i class=\"fas fa-times\"></i>\n    </a>\n</li>"
+        },
+        {
+            "name": "TabsContainerStoryComponent",
+            "id": "component-TabsContainerStoryComponent-11278c36cd7b1ac1ae4bf9e600de57e2784390a562186089a02181c040cd49f09cae6b099ad0c6b7e682dcd4c717432863847d9ee08e2d23e768907b060aad48",
+            "file": "stories/tabs/tabs-container.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-tabs-container",
+            "styleUrls": [
+                "./tabs-container-story.component.scss"
+            ],
+            "styles": [],
+            "template": "<!--<div class=\"d-flex box\">\n    <zambon-lib-navigation-drawer #navigation\n        [userName]=\"'Test'\"\n        [userDepartment]=\"'Test department'\"\n        [userImage]=\"null\"\n    >\n    </zambon-lib-navigation-drawer>\n\n    <div class=\"main d-flex flex-grow-1 flex-column\">\n        <div class=\"toolbar position-relative d-flex flex-shrink-0 p-2 align-items-center\">\n            <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleNavigation()\">\n                <i class=\"fas fa-bars\"></i>\n            </button>\n        </div>\n\n        <div class=\"container-fluid position-relative flex-grow-1 pt-3 pb-2\">\n        </div>\n    </div>\n</div>-->\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        131
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { AfterViewInit, Component, ViewChild } from '@angular/core';\nimport { create } from 'domain';\nimport { MenuItem, NavigationDrawerComponent } from 'projects/zambon-lib/src/public-api';\n\n@Component({\n  selector: 'storybook-tabs-container',\n  template: `\n    <!--<div class=\"d-flex box\">\n        <zambon-lib-navigation-drawer #navigation\n            [userName]=\"'Test'\"\n            [userDepartment]=\"'Test department'\"\n            [userImage]=\"null\"\n        >\n        </zambon-lib-navigation-drawer>\n        \n        <div class=\"main d-flex flex-grow-1 flex-column\">\n            <div class=\"toolbar position-relative d-flex flex-shrink-0 p-2 align-items-center\">\n                <button type=\"button\" class=\"btn btn-primary\" (click)=\"toggleNavigation()\">\n                    <i class=\"fas fa-bars\"></i>\n                </button>\n            </div>\n\n            <div class=\"container-fluid position-relative flex-grow-1 pt-3 pb-2\">\n            </div>\n        </div>\n    </div>-->\n    `,\n  styleUrls: [ './tabs-container-story.component.scss' ]\n})\nexport default class TabsContainerStoryComponent implements AfterViewInit {\n  //@ViewChild('navigation') navigation!: NavigationDrawerComponent;\n  \n  constructor() {\n    \n  }\n\n  async ngAfterViewInit(): Promise<void> {\n    // const home = this.createMenuItem(1, 'home', 'Home page', '');\n\n    // const security = this.createMenuItem(2, 'user', 'Security');\n    // security.children.push(this.createMenuItem(3, '', 'Users', '1', security));\n    // security.children.push(this.createMenuItem(4, '', 'Roles', '2', security));\n    // security.children.push(this.createMenuItem(5, '', 'Actions', '3', security));\n    \n    // const reports = this.createMenuItem(6, 'file-alt', 'Reports');\n    // reports.children.push(this.createMenuItem(7, '', 'Report A', '4', reports));\n    // reports.children.push(this.createMenuItem(8, '', 'Report B', '5', reports));\n    // reports.children.push(this.createMenuItem(9, '', 'Report C', '6', reports));\n    \n    // this.navigation.menus = [\n    //     home,\n    //     security,\n    //     reports\n    // ];\n  }\n\n\n//   toggleNavigation() {\n//     this.navigation.toggleState();\n//   }\n\n//   private createMenuItem(id: number, icon: string, label: string, url: string | undefined = undefined, parent: MenuItem | null = null) {\n//       const menuItem = new MenuItem();\n\n//       menuItem.id = id;\n//       menuItem.icon = icon;\n//       menuItem.label = label;\n//       menuItem.url = url;\n\n//       menuItem.parent = parent;\n\n//       return menuItem;\n//   }\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// @import '../../projects/zambon-lib/src/assets/styles/mixins/navigation/navigation-drawer';\r\n\r\n// @include navigation-drawer-background(\r\n//     '/assets/images/background.jpg'\r\n// );\r\n\r\n// @include navigation-drawer-logos(\r\n//     '/assets/images/logo_menu_expanded.png',\r\n//     '/assets/images/logo_menu_collapsed.png'\r\n// );\r\n\r\n// //If you require custom navigation size, use the following mixin\r\n// // @include navigation-drawer-set-custom-size(\r\n// //     300px,\r\n// //     100px\r\n// // );\r\n\r\n// /*\r\n\r\n// Workarounds for story page\r\n\r\n// */\r\n// .box {\r\n//     position: absolute;\r\n//     top: 0;\r\n//     bottom: 0;\r\n//     left: 0;\r\n//     right: 0;\r\n    \r\n//     .main {\r\n//         overflow: hidden;\r\n\r\n//         .toolbar {\r\n//             border-bottom: 1px solid darken(white, 15%);\r\n//             font-size: 0.9rem;\r\n//             color: black;\r\n//             z-index: 2;\r\n\r\n//             box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n//             -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n//             -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);\r\n//         }\r\n//     }\r\n// }",
+                    "styleUrl": "./tabs-container-story.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 30
+            },
+            "implements": [
+                "AfterViewInit"
+            ]
         }
     ],
     "modules": [
         {
             "name": "ComponentsModule",
-            "id": "module-ComponentsModule-485d125e94f40da0139733f6210e5ef566aa9534f5a974a55e2c51bfd31f9b1e96fc7a7150f9c207f525becbc94df493cbcab3b2337e96ae655b68e4d5afb634",
+            "id": "module-ComponentsModule-46b7888596fea565f63dbc706e2894edaa0159a5ef91876f3cc15a53a13532fb7d0ea25a5854ce43c60d5e0c3a723c50e7f22bedd5dc667305c689ee05e3c4e8",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/zambon-lib/src/lib/components/components.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\n\nimport { LoginModule } from './login/login.module';\nimport { NavigationModule } from './navigation/navigation.module';\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule,\n    LoginModule,\n    NavigationModule\n  ],\n  exports: [\n      LoginModule,\n      NavigationModule\n  ]\n})\nexport class ComponentsModule { }",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\n\nimport { LoginModule } from './login/login.module';\nimport { NavigationModule } from './navigation/navigation.module';\nimport { TabsModule } from './tabs/tabs.module';\n\n@NgModule({\n  declarations: [\n  ],\n  imports: [\n    CommonModule,\n    LoginModule,\n    NavigationModule,\n    TabsModule\n  ],\n  exports: [\n      LoginModule,\n      NavigationModule,\n      TabsModule\n  ]\n})\nexport class ComponentsModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -1818,6 +3933,9 @@
                         },
                         {
                             "name": "NavigationModule"
+                        },
+                        {
+                            "name": "TabsModule"
                         }
                     ]
                 },
@@ -1829,6 +3947,9 @@
                         },
                         {
                             "name": "NavigationModule"
+                        },
+                        {
+                            "name": "TabsModule"
                         }
                     ]
                 },
@@ -2061,6 +4182,62 @@
             ]
         },
         {
+            "name": "TabsModule",
+            "id": "module-TabsModule-350cce51ddf905494eb73256cb7cfb9b0c5905637750d1190b1da51cd0d98fe9b5575c05e680759251b48565850f113e560c084c121ae99e4fe6dcca9e037fed",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/zambon-lib/src/lib/components/tabs/tabs.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { TabContainerComponent } from './tab-container/tab-container.component';\nimport { CloseTabModalComponent } from './close-tab-modal/close-tab-modal.component';\nimport { TabItemComponent } from './tab-item/tab-item.component';\nimport { DragulaModule } from 'ng2-dragula';\n\n\n@NgModule({\n  declarations: [\n    CloseTabModalComponent,\n    TabContainerComponent,\n    TabItemComponent\n  ],\n  imports: [\n    CommonModule,\n    DragulaModule.forRoot()\n  ],\n  exports: [\n    CloseTabModalComponent,\n    TabContainerComponent,\n    TabItemComponent\n  ]\n})\nexport class TabsModule { }",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "CloseTabModalComponent"
+                        },
+                        {
+                            "name": "TabContainerComponent"
+                        },
+                        {
+                            "name": "TabItemComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "CloseTabModalComponent"
+                        },
+                        {
+                            "name": "TabContainerComponent"
+                        },
+                        {
+                            "name": "TabItemComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
             "name": "ZambonLibModule",
             "id": "module-ZambonLibModule-00a6f3650ab3a08f280ebf13e7c024d4fec9a72a8a0c635a211afecc3053e914b168ab694d8255cf4653d2889a5f0d1263a302294df583544f00022627dd3144",
             "description": "",
@@ -2132,6 +4309,16 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "stories/navigation/navigation-drawer.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Default",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/tabs/tabs-container.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -2286,6 +4473,16 @@
                 "deprecationMessage": "",
                 "type": "Story<NavigationDrawerStoryComponent>",
                 "defaultValue": "(args: NavigationDrawerStoryComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "stories/tabs/tabs-container.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TabsContainerStoryComponent>",
+                "defaultValue": "(args: TabsContainerStoryComponent) => ({\r\n  props: args,\r\n})"
             }
         ],
         "functions": [
@@ -2428,6 +4625,28 @@
                     "deprecationMessage": "",
                     "type": "Story<NavigationDrawerStoryComponent>",
                     "defaultValue": "(args: NavigationDrawerStoryComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "stories/tabs/tabs-container.stories.ts": [
+                {
+                    "name": "Default",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/tabs/tabs-container.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "stories/tabs/tabs-container.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TabsContainerStoryComponent>",
+                    "defaultValue": "(args: TabsContainerStoryComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "projects/zambon-lib/src/lib/i18n/i18n.module.ts": [
@@ -2639,7 +4858,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 2,
+        "count": 1,
         "status": "low",
         "files": [
             {
@@ -2666,7 +4885,7 @@
                 "linktype": "component",
                 "name": "NavigationDrawerComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/23",
+                "coverageCount": "0/24",
                 "status": "low"
             },
             {
@@ -2676,6 +4895,33 @@
                 "name": "NavigationItemComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/20",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zambon-lib/src/lib/components/tabs/close-tab-modal/close-tab-modal.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CloseTabModalComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zambon-lib/src/lib/components/tabs/tab-container/tab-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabContainerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zambon-lib/src/lib/components/tabs/tab-item/tab-item.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {
@@ -2718,12 +4964,57 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/zambon-lib/src/lib/interfaces/ibase-view.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "IBaseView",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/zambon-lib/src/lib/models/menu-item.ts",
                 "type": "class",
                 "linktype": "classe",
                 "name": "MenuItem",
                 "coveragePercent": 0,
                 "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zambon-lib/src/lib/models/tab.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "Tab",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zambon-lib/src/lib/routes/custom-reuse-strategy.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "CustomReuseStrategy",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zambon-lib/src/lib/routes/custom-reuse-strategy.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "RouteStorageObject",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/zambon-lib/src/lib/services/tab.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "TabService",
+                "coveragePercent": 0,
+                "coverageCount": "0/24",
                 "status": "low"
             },
             {
@@ -2927,7 +5218,7 @@
                 "linktype": "component",
                 "name": "NavigationDrawerStoryComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -2957,6 +5248,35 @@
                 "name": "PageComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/tabs/tabs-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabsContainerStoryComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/tabs/tabs-container.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Default",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "stories/tabs/tabs-container.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             }
         ]

@@ -1,0 +1,19 @@
+<li #tabItem class="tab-item d-flex align-items-center rounded-top" [class.active]="isActive">
+    <div class="label py-2 ps-2 d-flex flex-row align-items-center" (click)="itemClick()">
+        <div class="spinner-border spinner-border-sm me-2" role="status"
+            *ngIf="!this.hasTitle"
+        >
+            <span class="visually-hidden">{{ loadingMessage | translate }}</span>
+        </div>
+
+        <span *ngIf="this.hasTitle">
+            <span *ngIf="tab.changedValues">*</span>
+            <span *ngIf="!tab.translateTitle">{{ tab.view.title ?? '' }}</span>
+            <span *ngIf="tab.translateTitle">{{ (tab.view.title ?? '') | translate }}</span>
+        </span>
+    </div>
+    
+    <a class="close" (click)="closeClick()">
+        <i class="fas fa-times"></i>
+    </a>
+</li>

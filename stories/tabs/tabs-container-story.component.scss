@@ -1,0 +1,51 @@
+@import '../../projects/zambon-lib/src/assets/styles/mixins/navigation/navigation-drawer';
+@import '../../projects/zambon-lib/src/assets/styles/mixins/tabs/tab-container';
+@import '../../projects/zambon-lib/src/assets/styles/mixins/tabs/tab-item';
+
+@include navigation-drawer-background(
+    '/assets/images/background.jpg'
+);
+
+@include navigation-drawer-logos(
+    '/assets/images/logo_menu_expanded.png',
+    '/assets/images/logo_menu_collapsed.png'
+);
+
+@include tabs-container-background(
+    '/assets/images/background.jpg'
+);
+
+@include tabs-item-background(
+    '/assets/images/background.jpg'
+);
+/*
+
+Workarounds for story page
+
+*/
+.box {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    .main {
+        overflow: hidden;
+
+        .toolbar {
+            border-bottom: 1px solid darken(white, 15%);
+            font-size: 0.9rem;
+            color: black;
+            z-index: 2;
+
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
+            -moz-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2), 0 3px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .container-fluid {
+            overflow: hidden;
+        }
+    }
+}

@@ -3,18 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { LoginModule } from './login/login.module';
 import { NavigationModule } from './navigation/navigation.module';
-
+import { TabsModule } from './tabs/tabs.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     LoginModule,
-    NavigationModule
+    NavigationModule,
+    TabsModule
   ],
   exports: [
       LoginModule,
-      NavigationModule
+      NavigationModule,
+      TabsModule
   ]
 })
 export class ComponentsModule { }

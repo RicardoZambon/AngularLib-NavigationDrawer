@@ -1,0 +1,60 @@
+@import '../../../../assets/styles/mixins/tabs/tab-item';
+@import "../../../../assets/styles/mixins/no-select";
+
+@include tabs-item();
+
+.tab-item {
+    z-index: 2;
+    position: relative;
+    opacity: .65;
+    font-size: .95rem;
+    font-weight: 500;
+    max-width: $tab-max-width;
+    
+    transition: all $tab-select-transition-speed ease;
+    
+    &.active {
+        opacity: 1;
+    }
+
+    &.dragging {
+        position: absolute;
+    }
+    
+    &:hover .close {
+        opacity: .9;
+    }
+
+    .label {
+        padding-right: 1.8rem;
+        text-decoration: none;
+        font-size: 1rem;
+        color: inherit;
+        cursor: pointer;
+        overflow: hidden;
+
+        @include no-select();
+
+        span {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .spinner-border {
+            margin: .25rem .25rem .25rem .5rem;
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: .35rem;
+        right: .3rem;
+        bottom: .35rem;
+        padding: .2rem;
+        cursor: pointer;
+        
+        opacity: .5;
+        transition: all $tab-select-transition-speed;
+    }
+}

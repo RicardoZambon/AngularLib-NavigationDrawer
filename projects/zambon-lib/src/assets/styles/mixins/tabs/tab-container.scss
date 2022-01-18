@@ -1,0 +1,39 @@
+@import "../../variables/tabs.theme";
+
+@import "../background";
+@import "../scroll";
+
+@mixin tabs-container-background(
+    $background-url
+) {
+    :host ::ng-deep zambon-lib-tab-container {
+        .tab-content:before {
+            background: url("#{$background-url}");
+        }
+    }
+}
+
+@mixin tabs-container(
+    $item-active-color: $home-base-color3,
+    $item-active-background-color: $home-base-color,
+    $item-active-shadow-color: $home-base-color4,
+    $item-background-color: darken($home-base-color, 8%)
+) {
+    .tab-container .selector {
+        background-color: $item-active-color;
+    }
+
+    .tab-content {
+        border-color: darken($item-background-color, 20%);
+
+        @include background($item-active-background-color, .93);
+
+        box-shadow: 0 4px 8px 0 rgba($item-active-shadow-color, 0.2), 0 6px 20px 0 rgba($item-active-shadow-color, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba($item-active-shadow-color, 0.2), 0 6px 20px 0 rgba($item-active-shadow-color, 0.19);
+        -moz-box-shadow: 0 4px 8px 0 rgba($item-active-shadow-color, 0.2), 0 6px 20px 0 rgba($item-active-shadow-color, 0.19);
+
+        &.use-scroll {
+            @include scroll(transparent);
+        }
+    }
+}

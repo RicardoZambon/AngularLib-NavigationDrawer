@@ -3,5 +3,12 @@
 
     "SelectLanguage-Title": "Select language",
     "SelectLanguage-en": "English",
-    "SelectLanguage-pt": "Português"
+    "SelectLanguage-pt": "Português",
+
+    "TabContainer-CloseConfirmModal-Title": "Do you want to close this tab?",
+    "TabContainer-CloseConfirmModal-Message": "Changes you made may not be saved.",
+    "TabContainer-CloseConfirmModal-ButtonCancel": "Cancel",
+    "TabContainer-CloseConfirmModal-ButtonClose": "Confirm close",
+    
+    "TabItem-LoadingMessage": "Loading..."
 }

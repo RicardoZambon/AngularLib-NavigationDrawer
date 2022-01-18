@@ -1,0 +1,27 @@
+<div class="tab-container">
+    <ul class="tabs-nav d-flex flex-row p-0 m-0" dragula="TABS" [(dragulaModel)]="openTabs">
+        <zambon-lib-tab-item *ngFor="let tab of openTabs"
+            [tab]="tab" [isActive]="tab === this.activeTab"
+            [loadingMessage]="tabLoadingMessage"
+            (navigated)="setTabActive($event)"
+            (closed)="closeTab($event)"
+        ></zambon-lib-tab-item>
+    </ul>
+
+    <div class="selector"
+        [ngStyle]="{
+            'left.px': getSelectedLeft(),
+            'width.px': getSelectedWidth()
+        }"></div>
+</div>
+
+<div class="tab-content d-flex flex-column flex-grow-1 rounded-bottom p-2" [ngClass]="{'use-scroll': activeTabUseScroll()}" *ngIf="openTabs.length > 0">
+    <ng-content></ng-content>
+</div>
+
+<zambon-lib-close-tab-modal #closeModal (close)="forceCloseTab($event)"
+    [title]="modalTitle"
+    [message]="modalMessage"
+    [cancelLabel]="modalCancelLabel"
+    [confirmLabel]="modalConfirmLabel"
+></zambon-lib-close-tab-modal>

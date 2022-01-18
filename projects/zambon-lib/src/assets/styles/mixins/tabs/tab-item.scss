@@ -1,0 +1,47 @@
+@import "../../variables/tabs.theme";
+
+@import "../background";
+
+@mixin tabs-item-background(
+    $background-url
+) {
+    :host ::ng-deep zambon-lib-tab-item {
+        .tab-item {
+            &:before, &.active:before {
+                background: url("#{$background-url}");
+            }
+        }
+    }
+}
+
+@mixin tabs-item(
+    $fore-color: darken($home-fore-color, 10%),
+    $border-color: darken($home-base-color, 30%),
+    $background-color: darken($home-base-color, 8%),
+    $active-background-color: $home-base-color,
+    $close-button-color: rgba($home-base-color2, .75),
+    $close-button-hover-color: $close-button-hover-color-default
+) {
+    .tab-item {
+        color: $fore-color;
+        background-color: $background-color;
+
+        border-top: 1px solid $border-color;
+        border-left: 1px solid $border-color;
+        border-right: 1px solid $border-color;
+
+        @include background($background-color, .96);
+
+        &.active {
+            @include background($active-background-color, .96);
+        }
+
+        .close {
+            color: $close-button-color;
+            
+            &:hover {
+                color: $close-button-hover-color;
+            }
+        }
+    }
+}

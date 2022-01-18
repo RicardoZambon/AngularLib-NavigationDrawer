@@ -5,7 +5,8 @@ import { I18nModule } from './i18n/i18n.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
       CommonModule,
       I18nModule,
